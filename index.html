@@ -65,8 +65,8 @@
     <nav class="bg-[#FFFDF5] shadow-md sticky top-0 z-50">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
             <div class="flex items-center space-x-2">
-                <!-- ナビゲーションの「幸」の文字を #E0FFFF に設定 -->
-                <span class="text-2xl font-bold teal-text" data-i18n="company_name">株式会社<span class="gold-text">運</span><span class="text-[#E0FFFF]">幸</span>ジャパン</span> 
+                <!-- ナビゲーションの「運幸」の文字を #D4AF37 (金色) に統一 -->
+                <span class="text-2xl font-bold teal-text" data-i18n="company_name">株式会社<span class="gold-text">運幸</span>ジャパン</span> 
             </div>
             <div class="hidden md:flex items-center space-x-6">
                 <!-- ナビゲーションリンクをすべて金色に変更 -->
@@ -352,9 +352,9 @@
             <p class="mb-8 text-lg opacity-90" data-i18n="footer_cta_desc">お客様の<span class="text-[#FFD700]">運</span>と<span class="text-[#E0FFFF]">幸</span>を全力でサポートいたします。</p>
             
             <div class="flex flex-col md:flex-row justify-center gap-6 mb-12">
-                <!-- メール絵文字を追加 -->
+                <!-- お問い合わせフォームを「お問い合わせ」に変更 -->
                 <a href="mailto:helpful@unkou-japan.jp" class="bg-[#D4AF37] hover:bg-[#B4941F] text-white font-bold py-4 px-10 rounded-full shadow-lg transition transform hover:scale-105 flex items-center justify-center gap-2" data-i18n="btn_contact_form">
-                    📧 お問い合わせフォーム
+                    📧 お問い合わせ
                 </a>
                 <!-- 電話絵文字を追加 -->
                 <a href="tel:+81366667996" class="bg-white text-[#00A3A3] hover:bg-gray-100 font-bold py-4 px-10 rounded-full shadow-lg transition transform hover:scale-105 flex items-center justify-center gap-2" data-i18n="btn_contact_tel">
@@ -379,7 +379,7 @@
         // --- Translation Data ---
         const LANG_DATA = {
             'ja': {
-                'company_name': '株式会社<span class="gold-text">運</span><span class="text-[#E0FFFF]">幸</span>ジャパン',
+                'company_name': '株式会社<span class="gold-text">運幸</span>ジャパン', // 運幸を金色に統一
                 'nav_home': 'ホーム',
                 'nav_concept': 'コンセプト',
                 'nav_services': '事業内容',
@@ -427,7 +427,7 @@
                 'btn_tshirt_site': '特設サイトへGO！',
                 'footer_cta_title': 'まずはご相談ください',
                 'footer_cta_desc': 'お客様の<span class="text-[#FFD700]">運</span>と<span class="text-[#E0FFFF]">幸</span>を全力でサポートいたします。',
-                'btn_contact_form': '📧 お問い合わせフォーム',
+                'btn_contact_form': '📧 お問い合わせ',
                 'btn_contact_tel': '📞 03-6666-7996',
 
                 // Service Card Data - JA
@@ -495,7 +495,7 @@
                 'btn_tshirt_site': 'Go to Special Site!',
                 'footer_cta_title': 'Contact us now',
                 'footer_cta_desc': 'We fully support your <span class="text-[#FFD700]">Luck</span> and <span class="text-[#E0FFFF]">Fortune</span>.',
-                'btn_contact_form': '📧 Contact Form',
+                'btn_contact_form': '📧 Contact',
                 'btn_contact_tel': '📞 +81-3-6666-7996',
                 
                 // Service Card Data - EN
@@ -520,7 +520,7 @@
                 'key_message_main': 'Ein Partner für Ihr <span class="text-[#FFD700]">Glück</span> und Ihren <span class="text-[#E0FFFF]">Erfolg</span>', 'key_message_sub1': 'Ein Licht der Ruhe für Ihr Herz.', 'key_message_sub2': 'Wir bauen Brücken in die Zukunft durch Vertrauen und Ergebnisse.',
                 'btn_view_services': 'Dienstleistungen ansehen', 'section_concept_title': 'Designkonzept & Philosophie', 'filter_all': 'Alle anzeigen', 'filter_domestic': 'Inlandssupport', 'filter_consulting': 'Beratung & Vermögen', 'filter_global': 'Globales Geschäft',
                 'section_strengths_title': 'Unsere Stärken', 'section_company_title': 'Unternehmensinformationen', 'section_access_title': 'Zugang', 'btn_map_open': 'In Google Maps öffnen ↗', 'section_special_title': 'Sonderinhalt',
-                'tshirt_title': 'UNKOU Japan Original T-Shirt Verkauf', 'tshirt_price': 'Preis: 3,980 JPY (inkl. MwSt.)', 'btn_tshirt_site': 'Zur Sonderseite!', 'footer_cta_title': 'Kontaktieren Sie uns', 'btn_contact_form': '📧 Kontaktformular', 'btn_contact_tel': '📞 +81-3-6666-7996',
+                'tshirt_title': 'UNKOU Japan Original T-Shirt Verkauf', 'tshirt_price': 'Preis: 3,980 JPY (inkl. MwSt.)', 'btn_tshirt_site': 'Zur Sonderseite!', 'footer_cta_title': 'Kontaktieren Sie uns', 'btn_contact_form': '📧 Kontakt', 'btn_contact_tel': '📞 +81-3-6666-7996',
                 // Fallback service list to English for complex data
                 'services_list': [
                     { category: 'domestic', icon: '🗑️', title: 'Haushaltsauflösung & Nachlass', desc: 'Sorgfältige Sortierung und Entsorgung.' },
@@ -542,7 +542,7 @@
                 'key_message_main': 'พันธมิตรที่สร้าง <span class="text-[#FFD700]">โชค</span> และ <span class="text-[#E0FFFF]">ความสุข</span> ให้กับคุณ', 'key_message_sub1': 'นำแสงแห่งความสงบสุขมาสู่หัวใจของทุกคน', 'key_message_sub2': 'สร้างสะพานสู่<br>อนาคตด้วยความไว้วางใจและผลลัพธ์',
                 'btn_view_services': 'ดูรายละเอียดบริการ', 'section_concept_title': 'แนวคิดการออกแบบและปรัชญา', 'filter_all': 'แสดงทั้งหมด', 'filter_domestic': 'สนับสนุนภายในประเทศ', 'filter_consulting': 'การให้คำปรึกษา', 'filter_global': 'ธุรกิจระดับโลก',
                 'section_strengths_title': 'จุดแข็งของเรา', 'section_company_title': 'ข้อมูลบริษัท', 'section_access_title': 'การเข้าถึง', 'btn_map_open': 'เปิดใน Google Maps ↗', 'section_special_title': 'เนื้อหาพิเศษ',
-                'tshirt_title': 'จำหน่ายเสื้อยืด UNKOU Japan Original', 'tshirt_price': 'ราคา: 3,980 เยน (รวมภาษี)', 'btn_tshirt_site': 'ไปที่เว็บไซต์พิเศษ!', 'footer_cta_title': 'โปรดติดต่อเราก่อน', 'btn_contact_form': '📧 แบบฟอร์มติดต่อ', 'btn_contact_tel': '📞 03-6666-7996',
+                'tshirt_title': 'จำหน่ายเสื้อยืด UNKOU Japan Original', 'tshirt_price': 'ราคา: 3,980 เยน (รวมภาษี)', 'btn_tshirt_site': 'ไปที่เว็บไซต์พิเศษ!', 'footer_cta_title': 'โปรดติดต่อเราก่อน', 'btn_contact_form': '📧 ติดต่อ', 'btn_contact_tel': '📞 03-6666-7996',
                 'services_list': [
                     { category: 'domestic', icon: '🗑️', title: 'กำจัดสิ่งของ/เคลียร์มรดก', desc: 'การคัดแยกและกำจัดอย่างระมัดระวัง' },
                     { category: 'domestic', icon: '🐀', title: 'ควบคุมสัตว์รบกวน', desc: 'บริการกำจัดอย่างรวดเร็วและปลอดภัย' },
@@ -563,7 +563,7 @@
                 'key_message_main': '고객님의 <span class="text-[#FFD700]">운</span>과 <span class="text-[#E0FFFF]">행복</span>을 창조하는 파트너', 'key_message_sub1': '모두의 마음에 평온의 빛을', 'key_message_sub2': '신뢰와 실적으로 미래로의 다리를 만듭니다.',
                 'btn_view_services': '사업 내용 보기', 'section_concept_title': '디자인 콘셉트와 철학', 'filter_all': '전체 보기', 'filter_domestic': '생활 지원 (국내)', 'filter_consulting': '경영·자산 컨설팅', 'filter_global': '글로벌 비즈니스',
                 'section_strengths_title': '당사의 강점', 'section_company_title': '회사 정보', 'section_access_title': '오시는 길', 'btn_map_open': 'Google 지도에서 열기 ↗', 'section_special_title': '특별 콘텐츠',
-                'tshirt_title': '운코 재팬 오리지널 T 셔츠 판매', 'tshirt_price': '가격: 3,980엔 (세금 포함)', 'btn_tshirt_site': '특별 사이트로 이동!', 'footer_cta_title': '우선 상담해 주세요', 'btn_contact_form': '📧 문의 양식', 'btn_contact_tel': '📞 03-6666-7996',
+                'tshirt_title': '운코 재팬 오리지널 T 셔츠 판매', 'tshirt_price': '가격: 3,980엔 (세금 포함)', 'btn_tshirt_site': '특별 사이트로 이동!', 'footer_cta_title': '우선 상담해 주세요', 'btn_contact_form': '📧 문의', 'btn_contact_tel': '📞 03-6666-7996',
                 'services_list': [
                     { category: 'domestic', icon: '🗑️', title: '불용품 회수·유품 정리', desc: '정성스러운 분류 및 회수를 진행합니다. 마음에 다가가는 정리를 지향합니다.' },
                     { category: 'domestic', icon: '🐀', title: '해충·해수 구제', desc: '신속하고 안전한 구제 대응으로 쾌적한 생활 환경을 되찾아 드립니다.' },
@@ -584,7 +584,7 @@
                 'key_message_main': '创造您 <span class="text-[#FFD700]">运气</span> 和 <span class="text-[#E0FFFF]">幸福</span> 的合作伙伴', 'key_message_sub1': '为所有人的心带来安宁之光', 'key_message_sub2': '以信任和实绩搭建通往未来的桥梁。',
                 'btn_view_services': '查看业务内容', 'section_concept_title': '设计理念与哲学', 'filter_all': '全部显示', 'filter_domestic': '生活支持 (国内)', 'filter_consulting': '经营·资产咨询', 'filter_global': '全球业务',
                 'section_strengths_title': '我们的优势', 'section_company_title': '公司信息', 'section_access_title': '交通方式', 'btn_map_open': '在 Google 地图中打开 ↗', 'section_special_title': '特别内容',
-                'tshirt_title': '运幸日本原创T恤销售', 'tshirt_price': '价格: 3,980日元 (含税)', 'btn_tshirt_site': '前往特别网站!', 'footer_cta_title': '请先咨询', 'btn_contact_form': '📧 咨询表格', 'btn_contact_tel': '📞 03-6666-7996',
+                'tshirt_title': '运幸日本原创T恤销售', 'tshirt_price': '价格: 3,980日元 (含税)', 'btn_tshirt_site': '前往特别网站!', 'footer_cta_title': '请先咨询', 'btn_contact_form': '📧 咨询', 'btn_contact_tel': '📞 03-6666-7996',
                 'services_list': [
                     { category: 'domestic', icon: '🗑️', title: '废弃物回收/遗物整理', desc: '细致的分类和回收。我们用心处理清算事宜。' },
                     { category: 'domestic', icon: '🐀', title: '害虫/害兽驱除', desc: '迅速安全的驱除应对，恢复舒适的生活环境。' },
