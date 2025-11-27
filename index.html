@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>株式会社運幸ジャパン - インタラクティブ企業案内</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* Chart Container Styling per Requirements (Placeholder kept for consistency, but chart elements are removed) */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        body {
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            /* 背景全体に微かに金色（オフホワイト）のトーンを持たせる */
+            background-color: #FDFCF5; 
+        }
+        .gold-text { color: #D4AF37; }
+        .gold-bg { background-color: #D4AF37; }
+        .teal-text { color: #008080; }
+        .teal-bg { background-color: #008080; }
+        
+        /* Custom scrollbar for better aesthetics */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #D4AF37; 
+            border-radius: 4px;
+        }
+    </style>
+    <!-- Chosen Palette: Gold (#D4AF37) for accents/luck and Sky Blue/Teal (#008080/#FDFCF5) for trust/main background. -->
+    <!-- Application Structure Plan: A single-page storytelling flow. 
+         1. Hero Section: Emotional connection & Key Message.
+         2. Design Philosophy Dashboard: Focus shifted to pure textual emphasis of core values after removing the chart.
+         3. Service Ecosystem: An interactive filterable grid allowing users to explore the 3 business pillars without clutter.
+         4. Strengths Showcase: Visual breakdown of the USP (Price, Scope, Niche) with updated copy.
+         5. Corporate Data & Access: Clean tabular data with reduced map size.
+         This structure prioritizes the "Concept" and "Services" as the primary exploration points. -->
+    <!-- Visualization & Content Choices:
+         1. Design Concept Text Blocks (HTML/CSS): Replaced chart with structured text blocks to emphasize color meanings. Goal: Inform.
+         2. Service Filter (JS + DOM): Allows users to toggle between Domestic, Consulting, and Global services. Goal: Organize/Change.
+         3. Language Support Bar (HTML/CSS): Visual representation of the 6 supported languages. Goal: Inform.
+         4. NO SVG/Mermaid: All icons use Unicode emojis. Charts use Chart.js Canvas (though chart removed, library link remains). -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+</head>
+<body class="text-gray-800">
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <span class="text-2xl font-bold teal-text">🌊 株式会社運幸ジャパン</span>
+            </div>
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="#home" class="hover:text-[#D4AF37] transition font-bold">ホーム</a>
+                <a href="#concept" class="hover:text-[#D4AF37] transition font-bold">コンセプト</a>
+                <a href="#services" class="hover:text-[#D4AF37] transition font-bold">事業内容</a>
+                <a href="#strengths" class="hover:text-[#D4AF37] transition font-bold">強み</a>
+                <a href="#company" class="hover:text-[#D4AF37] transition font-bold">会社情報</a>
+            </div>
+            <div class="flex flex-col items-end">
+                <span class="text-xs gold-text font-bold">全省庁統一資格者番号 第0000233096号</span>
+                <select id="lang-select" class="bg-gray-100 border border-gray-300 text-sm rounded px-2 py-1 mt-1 cursor-pointer hover:border-[#D4AF37]">
+                    <option value="ja">🇯🇵 日本語</option>
+                    <option value="en">🇺🇸 English</option>
+                    <option value="de">🇩🇪 Deutsch</option>
+                    <option value="th">🇹🇭 ภาษาไทย</option>
+                    <option value="kr">🇰🇷 한국어</option>
+                    <option value="cn">🇨🇳 中文</option>
+                </select>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <!-- グラデーションをより安全なTailwindクラスベースに変更 -->
+    <section id="home" class="relative text-white py-20 lg:py-32 bg-gradient-to-r from-teal-700 to-cyan-500">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 drop-shadow-lg">
+                お客様の<span class="text-[#FFD700]">運</span>と<span class="text-[#E0FFFF]">幸</span>を<br>創造するパートナー
+            </h1>
+            <p class="text-xl md:text-2xl mb-8 font-light">
+                信頼と実績で、未来への架け橋を築きます。<br>
+                <span class="text-sm mt-2 block opacity-90">「少しでも弊社と関わって頂けた方々に喜んで頂きたい一心でお仕事を頑張れています。」</span>
+            </p>
+            <button onclick="document.getElementById('services').scrollIntoView({behavior: 'smooth'})" class="bg-[#D4AF37] hover:bg-[#B4941F] text-white font-bold py-3 px-8 rounded-full shadow-lg transition transform hover:scale-105">
+                事業内容を見る 🤝
+            </button>
+        </div>
+    </section>
+
+    <!-- Design Concept & Philosophy (Text emphasis only) -->
+    <!-- 背景をシンプルな白に戻し、bodyの背景で金色トーンを出す -->
+    <section id="concept" class="py-16 bg-white shadow-inner">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold teal-text mb-4">🎨 デザインコンセプトと哲学</h2>
+                <p class="max-w-2xl mx-auto text-gray-600">
+                    私たちのブランドカラーには意味があります。水色は「誠実・未来」を、金色のアクセントは「成功・幸運」を象徴しています。
+                    このバランスこそが、私たちがお客様に提供する価値の比率です。
+                </p>
+            </div>
+
+            <!-- 1カラムレイアウトに調整し、テキストを強調 -->
+            <div class="max-w-3xl mx-auto space-y-6">
+                <div class="flex items-start bg-gray-50 p-4 rounded-xl shadow-md border-l-4 border-[#008080]">
+                    <div class="text-4xl mr-4 text-[#008080]">💧</div>
+                    <div>
+                        <h4 class="text-xl font-bold teal-text">水色 (Sky Blue/Teal)</h4>
+                        <p class="text-gray-600">清潔感、誠実、安心、未来志向。私たちがベースとする信頼の証です。</p>
+                    </div>
+                </div>
+                <div class="flex items-start bg-gray-50 p-4 rounded-xl shadow-md border-l-4 border-[#D4AF37]">
+                    <div class="text-4xl mr-4 text-[#D4AF37]">🌟</div>
+                    <div>
+                        <h4 class="text-xl font-bold gold-text">金色 (Gold)</h4>
+                        <p class="text-gray-600">信頼、品質、成功、高級感。お客様に届ける「運」と「幸」の輝きです。</p>
+                    </div>
+                </div>
+                <div class="bg-[#F0F9FF] p-4 rounded-lg border-l-4 border-[#008080]">
+                    <p class="font-bold text-sm text-gray-700">🌐 多言語対応</p>
+                    <p class="text-sm text-gray-600 mt-1">
+                        世界中のお客様と繋がるため、6つの言語（日・英・独・タイ・韓・中）に対応し、グローバルな信頼関係を構築します。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Ecosystem (Interactive Filter) -->
+    <!-- 背景をシンプルなグレーに戻し、bodyの背景で金色トーンを出す -->
+    <section id="services" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-bold teal-text mb-4">💼 事業内容</h2>
+                <p class="text-gray-600">多岐にわたる専門分野で、お客様のニーズにお応えします。<br>カテゴリーをクリックして詳細をご覧ください。</p>
+            </div>
+
+            <!-- Filter Buttons -->
+            <div class="flex flex-wrap justify-center gap-4 mb-8">
+                <button onclick="filterServices('all')" class="service-filter-btn active bg-white border-2 border-[#008080] text-[#008080] hover:bg-[#008080] hover:text-white px-6 py-2 rounded-full font-bold transition">全て表示</button>
+                <button onclick="filterServices('domestic')" class="service-filter-btn bg-white border-2 border-[#008080] text-[#008080] hover:bg-[#008080] hover:text-white px-6 py-2 rounded-full font-bold transition">🏠 生活サポート (国内)</button>
+                <button onclick="filterServices('consulting')" class="service-filter-btn bg-white border-2 border-[#008080] text-[#008080] hover:bg-[#008080] hover:text-white px-6 py-2 rounded-full font-bold transition">📊 経営・資産コンサル</button>
+                <button onclick="filterServices('global')" class="service-filter-btn bg-white border-2 border-[#008080] text-[#008080] hover:bg-[#008080] hover:text-white px-6 py-2 rounded-full font-bold transition">🚢 グローバルビジネス</button>
+            </div>
+
+            <!-- Services Grid -->
+            <div id="services-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Populated by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Strengths (Cards) -->
+    <section id="strengths" class="py-16 bg-gradient-to-br from-gray-900 to-gray-800 text-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-[#D4AF37] mb-4">💪 弊社の強み</h2>
+                <p class="text-gray-300">なぜ運幸ジャパンが選ばれるのか。私たちの3つの約束。</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Strength 1: 誠実な価格交渉 (Updated Copy) -->
+                <div class="bg-white/10 backdrop-blur-sm p-8 rounded-xl border border-[#D4AF37]/30 hover:border-[#D4AF37] transition duration-300">
+                    <div class="text-5xl mb-4">💰</div>
+                    <h3 class="text-xl font-bold text-[#D4AF37] mb-3">誠実な価格交渉</h3>
+                    <p class="text-sm leading-relaxed">
+                        「他社様のお見積もりを拝見し、それよりも誠心誠意努力させていただきます。」
+                        <br><br>
+                        お客様の期待を超えるコストパフォーマンスに挑戦します。
+                    </p>
+                </div>
+
+                <!-- Strength 2: 世界を繋ぐ総合力 (Updated Copy) -->
+                <div class="bg-white/10 backdrop-blur-sm p-8 rounded-xl border border-[#D4AF37]/30 hover:border-[#D4AF37] transition duration-300">
+                    <div class="text-5xl mb-4">🌍</div>
+                    <h3 class="text-xl font-bold text-[#D4AF37] mb-3">世界を繋ぐ総合力</h3>
+                    <p class="text-sm leading-relaxed">
+                        国内の生活サポートから国際的なビジネス案件まで、国内外問わずワンストップで対応します。
+                        <br><br>
+                        多岐にわたる専門知識とグローバルネットワークが課題を解決に導きます。
+                    </p>
+                </div>
+
+                <!-- Strength 3: ニッチ分野の専門性 (Updated Copy) -->
+                <div class="bg-white/10 backdrop-blur-sm p-8 rounded-xl border border-[#D4AF37]/30 hover:border-[#D4AF37] transition duration-300">
+                    <div class="text-5xl mb-4">🔑</div>
+                    <h3 class="text-xl font-bold text-[#D4AF37] mb-3">ニッチ分野の専門性</h3>
+                    <p class="text-sm leading-relaxed">
+                        中古医療機器、NMNサプリメント、再生医療など、独自の商流と専門知識を有するユニークな事業領域。
+                        <br><br>
+                        他社には真似できない、付加価値の高いサービスを提供します。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Company Info -->
+    <!-- 背景をシンプルな白に戻し、bodyの背景で金色トーンを出す -->
+    <section id="company" class="py-16 bg-white shadow-inner">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row gap-12">
+                <!-- Table -->
+                <div class="lg:w-1/2">
+                    <h2 class="text-3xl font-bold teal-text mb-6">🏢 会社情報</h2>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse">
+                            <tbody>
+                                <tr class="border-b">
+                                    <th class="py-4 px-2 font-bold text-gray-600 bg-gray-50 w-1/3">会社名</th>
+                                    <td class="py-4 px-2">株式会社 運幸ジャパン<br><span class="text-sm text-gray-500">(UNKOU Japan Co., Ltd.)</span></td>
+                                </tr>
+                                <tr class="border-b">
+                                    <th class="py-4 px-2 font-bold text-gray-600 bg-gray-50">代表取締役</th>
+                                    <td class="py-4 px-2">山中 歩</td>
+                                </tr>
+                                <tr class="border-b">
+                                    <th class="py-4 px-2 font-bold text-gray-600 bg-gray-50">設立</th>
+                                    <td class="py-4 px-2">令和6年12月23日</td>
+                                </tr>
+                                <tr class="border-b">
+                                    <th class="py-4 px-2 font-bold text-gray-600 bg-gray-50">資本金</th>
+                                    <td class="py-4 px-2">500万円</td>
+                                </tr>
+                                <tr class="border-b">
+                                    <th class="py-4 px-2 font-bold text-gray-600 bg-gray-50">資格者番号</th>
+                                    <td class="py-4 px-2">全省庁統一資格者番号 第0000233096号<br>古物商許可番号 第307712516806号</td>
+                                </tr>
+                                <tr class="border-b">
+                                    <th class="py-4 px-2 font-bold text-gray-600 bg-gray-50">所在地</th>
+                                    <td class="py-4 px-2">〒110-0005<br>東京都台東区上野6－1－6<br>御徒町グリーンハイツ1005号</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Access / Map Simulation (Reduced Height: h-64) -->
+                <div class="lg:w-1/2">
+                    <h2 class="text-3xl font-bold teal-text mb-6">📍 アクセス</h2>
+                    <div class="bg-gray-200 w-full h-64 rounded-xl flex items-center justify-center relative overflow-hidden group">
+                        <!-- Simulated Map Background -->
+                        <div class="absolute inset-0 bg-[#e5e7eb] grid grid-cols-12 grid-rows-12 gap-1 opacity-50">
+                            <!-- Just visual noise for map texture -->
+                            <div class="col-span-12 row-span-1 bg-white"></div>
+                            <div class="col-span-1 row-span-12 bg-white"></div>
+                            <div class="col-span-12 row-start-6 h-2 bg-yellow-200"></div>
+                            <div class="col-start-6 row-span-12 w-2 bg-yellow-200"></div>
+                        </div>
+                        <div class="z-10 text-center">
+                            <div class="text-4xl mb-2 animate-bounce">📍</div>
+                            <p class="font-bold text-gray-700">御徒町グリーンハイツ1005号</p>
+                            <p class="text-sm text-gray-500">JR御徒町駅 徒歩圏内</p>
+                            <a href="https://www.google.com/maps/search/?api=1&query=東京都台東区上野6－1－6" target="_blank" class="inline-block mt-4 bg-white text-blue-600 px-4 py-2 rounded shadow text-sm hover:bg-gray-100 transition">
+                                Google Mapsで開く ↗
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / CTA -->
+    <footer class="bg-[#008080] text-white py-12">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-6">まずはご相談ください</h2>
+            <p class="mb-8 text-lg opacity-90">お客様の運と幸を全力でサポートいたします。</p>
+            
+            <div class="flex flex-col md:flex-row justify-center gap-6 mb-12">
+                <a href="mailto:helpful@unkou-japan.jp" class="bg-[#D4AF37] hover:bg-[#B4941F] text-white font-bold py-4 px-10 rounded-full shadow-lg transition transform hover:scale-105 flex items-center justify-center gap-2">
+                    <span class="text-xl">📧</span> お問い合わせフォーム
+                </a>
+                <a href="tel:+81366667996" class="bg-white text-[#008080] hover:bg-gray-100 font-bold py-4 px-10 rounded-full shadow-lg transition transform hover:scale-105 flex items-center justify-center gap-2">
+                    <span class="text-xl">📞</span> 03-6666-7996
+                </a>
+            </div>
+
+            <div class="border-t border-white/30 pt-8 text-sm opacity-75">
+                <p class="mb-2">
+                    <a href="#home" class="hover:underline mx-2">ホーム</a> | 
+                    <a href="#services" class="hover:underline mx-2">事業内容</a> | 
+                    <a href="#company" class="hover:underline mx-2">会社情報</a>
+                </p>
+                <p>&copy; 2024 株式会社運幸ジャパン (UNKOU Japan Co., Ltd.) All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // --- Data Definitions ---
+        const servicesData = [
+            { id: 1, category: 'domestic', icon: '🗑️', title: '不用品回収・遺品整理', desc: '丁寧な仕分けと回収を行います。心に寄り添う整理を心がけています。' },
+            { id: 2, category: 'domestic', icon: '🐀', title: '害虫・害獣駆除', desc: '迅速かつ安全な駆除対応で、快適な生活環境を取り戻します。' },
+            { id: 3, category: 'domestic', icon: '☀️', title: 'ソーラーパネルライト販売', desc: '環境に優しいエネルギーソリューションの提案。' },
+            { id: 4, category: 'domestic', icon: '🧪', title: '水質・アスベスト調査', desc: '専門的な検体業を通じ、安全な環境づくりをサポートします。' },
+            { id: 5, category: 'domestic', icon: '🤝', title: '人道支援活動', desc: '社会貢献活動として、支援が必要な場所へ手を差し伸べます。' },
+            
+            { id: 6, category: 'consulting', icon: '🏢', title: '不動産業 (売買)', desc: 'お客様の資産価値を最大化する不動産取引をサポート。' },
+            { id: 7, category: 'consulting', icon: '🕵️', title: '探偵業・各種M&A', desc: '秘密厳守での調査や、企業の合併・買収のコンサルティング。' },
+            { id: 8, category: 'consulting', icon: '🔗', title: '企業ジョイントコンサル', desc: '企業間の連携を強化し、新たなビジネスチャンスを創出。' },
+            
+            { id: 9, category: 'global', icon: '🏥', title: '中古医療機器輸出', desc: '高品質な日本の中古医療機器を世界へ届けます。' },
+            { id: 10, category: 'global', icon: '🚗', title: '自動車パーツ貿易', desc: '古タイヤ、中古車パーツの適正なリサイクルと輸出。' },
+            { id: 11, category: 'global', icon: '💊', title: 'NMNサプリメント販売', desc: '話題のNMNサプリメントの海外販売ルートを開拓。' },
+            { id: 12, category: 'global', icon: '🧬', title: '再生医療コンサル', desc: '幹細胞治療やエクソソームなど、最先端医療の販売支援。' }
+        ];
+
+        // --- Core Logic: Service Filtering ---
+        function filterServices(filter) {
+            const grid = document.getElementById('services-grid');
+            grid.innerHTML = ''; // Clear current
+
+            // Update Buttons
+            document.querySelectorAll('.service-filter-btn').forEach(btn => {
+                if ((filter === 'all' && btn.textContent.includes('全て')) || 
+                    (filter === 'domestic' && btn.textContent.includes('生活')) ||
+                    (filter === 'consulting' && btn.textContent.includes('経営')) ||
+                    (filter === 'global' && btn.textContent.includes('グローバル'))) {
+                    
+                    btn.classList.add('bg-[#008080]', 'text-white');
+                    btn.classList.remove('bg-white', 'text-[#008080]');
+                } else {
+                    btn.classList.remove('bg-[#008080]', 'text-white');
+                    btn.classList.add('bg-white', 'text-[#008080]');
+                }
+            });
+
+            // Filter Data
+            const filteredData = filter === 'all' 
+                ? servicesData 
+                : servicesData.filter(item => item.category === filter);
+
+            // Render Cards
+            filteredData.forEach(item => {
+                const card = document.createElement('div');
+                card.className = "bg-white p-6 rounded-lg shadow hover:shadow-lg transition border-t-4 border-[#008080] flex flex-col items-center text-center animate-fade-in";
+                card.innerHTML = `
+                    <div class="text-4xl mb-4 bg-gray-100 p-4 rounded-full w-20 h-20 flex items-center justify-center">${item.icon}</div>
+                    <h3 class="font-bold text-lg mb-2 text-gray-800">${item.title}</h3>
+                    <p class="text-sm text-gray-600">${item.desc}</p>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // --- Chart.js Initialization ---
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Render Initial Services
+            filterServices('all');
+
+            // 2. Render Concept Chart (REMOVED as requested)
+            // const ctx = document.getElementById('colorChart').getContext('2d');
+            // new Chart(ctx, { ... });
+
+            // 3. Language Selector "Dummy" Interaction
+            const langSelect = document.getElementById('lang-select');
+            langSelect.addEventListener('change', (e) => {
+                const lang = e.target.value;
+                const greetings = {
+                    'ja': 'お客様の運と幸を創造するパートナー',
+                    'en': 'Partner creating Luck and Happiness for you',
+                    'de': 'Partner, der Glück und Zufriedenheit für Sie schafft',
+                    'th': 'พันธมิตรที่สร้างโชคและความสุขให้กับคุณ',
+                    'kr': '고객의 운과 행복을 창조하는 파트너',
+                    'cn': '为您创造运气和幸福的合作伙伴'
+                };
+                
+                // Update Headline for demo purposes
+                const headline = document.querySelector('h1');
+                if(lang === 'ja') {
+                    headline.innerHTML = `お客様の<span class="text-[#FFD700]">運</span>と<span class="text-[#E0FFFF]">幸</span>を<br>創造するパートナー`;
+                } else {
+                    headline.innerHTML = `<span class="text-3xl">${greetings[lang]}</span>`;
+                }
+            });
+        });
+    </script>
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.4s ease-out forwards;
+        }
+    </style>
+</body>
+</html>
