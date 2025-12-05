@@ -7,24 +7,10 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-        /* Chart Container Styling (Placeholder for consistency, but chart elements are removed) */
-        .chart-container {
-            position: relative;
-            width: 100%;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            height: 300px;
-            max-height: 400px;
-        }
-        @media (min-width: 768px) {
-            .chart-container {
-                height: 350px;
-            }
-        }
+        /* Base Setup */
         body {
             font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
-            /* 背景画像の設定を削除し、単色背景に戻す */
+            /* 背景全体をご希望の単色（#E0F7FA）に設定 */
             background-color: #E0F7FA; 
             background-image: none; 
             background-attachment: scroll;
@@ -85,7 +71,7 @@
             background-color: rgba(0, 0, 0, 0.3);
         }
         
-        /* Section Background Handling: すべて透明背景から、白または淡い水色に戻す */
+        /* Section Background Handling */
         .section-transparent {
             background-color: #E0F7FA;
         }
@@ -98,7 +84,7 @@
             border: 1px solid #ddd; 
         }
 
-        /* テーブルの背景とヘッダーの色を白に戻す */
+        /* テーブルの背景 */
         .bg-gray-50 {
             background-color: #f9fafb !important;
         }
@@ -111,11 +97,9 @@
     <nav class="bg-white/95 shadow-md sticky top-0 z-50 backdrop-blur-sm">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
             <div class="flex items-center space-x-2">
-                <!-- 会社名: 株式会社/ジャパン=#00A3A3, 運幸=#D4AF37 -->
                 <span class="text-2xl font-bold teal-text" data-i18n="company_name">株式会社<span class="gold-text">運幸</span>ジャパン</span> 
             </div>
             <div class="hidden md:flex items-center space-x-6">
-                <!-- リンクは全て金色 -->
                 <a href="#home" class="gold-text hover:text-[#B4941F] transition font-bold" data-i18n="nav_home">ホーム</a>
                 <a href="#concept" class="gold-text hover:text-[#B4941F] transition font-bold" data-i18n="nav_concept">コンセプト</a>
                 <a href="#services" class="gold-text hover:text-[#B4941F] transition font-bold" data-i18n="nav_services">事業内容</a>
@@ -123,7 +107,7 @@
                 <a href="#company" class="gold-text hover:text-[#B4941F] transition font-bold" data-i18n="nav_company">会社情報</a>
             </div>
             <div class="flex flex-col items-end">
-                <span class="text-xs gold-text font-bold">全省庁統一資格者番号 第0000233096号</span>
+                <span class="text-xs gold-text font-bold" data-i18n="header_qual_no">全省庁統一資格者番号 第0000233096号</span>
                 <select id="lang-select" class="bg-gray-100 border border-gray-300 text-sm rounded px-2 py-1 mt-1 cursor-pointer hover:border-[#D4AF37]">
                     <option value="ja">日本語</option>
                     <option value="en">English</option>
@@ -139,22 +123,21 @@
     <!-- Hero Section (Slide Show) -->
     <section id="home" class="relative text-white py-20 lg:py-32">
         <div class="slide-container">
-            <img src="https://placehold.co/1200x800/00A3A3/ffffff?text=Domestic+Support" class="slide-image active" data-slide="1" alt="Image 1">
-            <img src="unkouhead.jpg" class="slide-image" data-slide="2" alt="Image 2">
-            <img src="https://placehold.co/1200x800/00A3A3/ffffff?text=Global+Business" class="slide-image" data-slide="3" alt="Image 3">
+            <img src="unkouhead.jpg" class="slide-image active" data-slide="1" alt="Image 1">
+            <img src="unkouhead2.jpg" class="slide-image" data-slide="2" alt="Image 2">
+            <img src="unkouhead3.jpg" class="slide-image" data-slide="3" alt="Image 3">
             
             <div class="slide-content">
                 <div class="container mx-auto px-4 text-center">
-                    <!-- メインメッセージ: 運・幸は金色(#D4AF37)、他は淡い水色(#E0F7FA) -->
                     <h1 class="text-4xl md:text-6xl font-bold mb-6 drop-shadow-lg" style="color: #E0F7FA;" data-i18n="key_message_main">
                         お客様の<span class="gold-text">運</span>と<span class="gold-text">幸</span>を<br>創造するパートナー
                     </h1>
                     <p class="text-2xl md:text-3xl mb-2 font-light text-white drop-shadow font-serif" data-i18n="key_message_sub1">
                         皆様の心に安らぎの光を
                     </p>
+                    <!-- key_message_sub2 と quote を統合して翻訳 -->
                     <p class="text-lg md:text-xl mb-8 font-light text-white/90" data-i18n="key_message_sub2">
-                        信頼と実績で、未来への架け橋を築きます。<br>
-                        <span class="text-sm mt-2 block opacity-90">「少しでも弊社と関わって頂けた方々に喜んで頂きたい一心でお仕事を頑張れています。」</span>
+                        信頼と実績で、未来への架け橋を築きます。<span class="text-sm mt-2 block opacity-90" data-i18n="key_message_quote">「少しでも弊社と関わって頂けた方々に喜んで頂きたい一心でお仕事を頑張れています。」</span>
                     </p>
                     <button onclick="document.getElementById('services').scrollIntoView({behavior: 'smooth'})" class="bg-[#D4AF37] hover:bg-[#B4941F] text-white font-bold py-3 px-8 rounded-full shadow-lg transition transform hover:scale-105" data-i18n="btn_view_services">
                         事業内容を見る 
@@ -179,7 +162,7 @@
                 <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
                     <!-- 水色カード -->
                     <div class="p-8 rounded-xl shadow border-l-8 border-[#00A3A3] bg-white relative hover:shadow-lg transition">
-                        <h4 class="text-2xl font-bold teal-text mb-4" data-i18n="concept_blue_title">水色 (Blue)</h4>
+                        <h4 class="text-2xl font-bold teal-text" data-i18n="concept_blue_title">水色 (Blue)</h4>
                         <p class="teal-text pl-4 border-l border-gray-200" data-i18n="concept_blue_desc">
                             清潔感、誠実、安心、未来志向。私たちがベースとする信頼の証です。
                         </p>
@@ -187,7 +170,7 @@
 
                     <!-- 金色カード -->
                     <div class="p-8 rounded-xl shadow border-l-8 border-[#D4AF37] bg-white relative hover:shadow-lg transition">
-                        <h4 class="text-2xl font-bold gold-text mb-4" data-i18n="concept_gold_title">金色 (Gold)</h4>
+                        <h4 class="text-2xl font-bold gold-text" data-i18n="concept_gold_title">金色 (Gold)</h4>
                         <p class="gold-text pl-4 border-l border-gray-200" data-i18n="concept_gold_desc">
                             信頼、品質、成功、高級感。お客様に届ける「運」と「幸」の輝きです。
                         </p>
@@ -270,27 +253,27 @@
                                 <tbody>
                                     <tr class="border-b">
                                         <th class="py-4 px-2 font-bold gold-text bg-gray-50 w-1/3" data-i18n="company_name_th">会社名</th>
-                                        <td class="py-4 px-2 gold-text">株式会社 運幸ジャパン<br><span class="text-sm gold-text">(UNKOU Japan Co., Ltd.)</span></td>
+                                        <td class="py-4 px-2 gold-text" data-i18n="company_name_val">株式会社 運幸ジャパン<br><span class="text-sm gold-text">(UNKOU Japan Co., Ltd.)</span></td>
                                     </tr>
                                     <tr class="border-b">
                                         <th class="py-4 px-2 font-bold gold-text bg-gray-50" data-i18n="company_rep_th">代表取締役</th>
-                                        <td class="py-4 px-2 gold-text">山中 歩</td>
+                                        <td class="py-4 px-2 gold-text" data-i18n="company_rep_val">山中 歩</td>
                                     </tr>
                                     <tr class="border-b">
-                                        <th class="py-4 px-2 font-bold gold-text bg-gray-50" data-i19n="company_established_th">設立</th>
-                                        <td class="py-4 px-2 gold-text">令和6年12月23日</td>
+                                        <th class="py-4 px-2 font-bold gold-text bg-gray-50" data-i18n="company_established_th">設立</th>
+                                        <td class="py-4 px-2 gold-text" data-i18n="company_established_val">令和6年12月23日</td>
                                     </tr>
                                     <tr class="border-b">
                                         <th class="py-4 px-2 font-bold gold-text bg-gray-50" data-i18n="company_capital_th">資本金</th>
-                                        <td class="py-4 px-2 gold-text">500万円</td>
+                                        <td class="py-4 px-2 gold-text" data-i18n="company_capital_val">500万円</td>
                                     </tr>
                                     <tr class="border-b">
                                         <th class="py-4 px-2 font-bold gold-text bg-gray-50" data-i18n="company_qual_th">資格者番号</th>
-                                        <td class="py-4 px-2 gold-text">全省庁統一資格者番号 第0000233096号<br>古物商許可番号 第307712516806号</td>
+                                        <td class="py-4 px-2 gold-text" data-i18n="company_qual_val">全省庁統一資格者番号 第0000233096号<br>古物商許可番号 第307712516806号</td>
                                     </tr>
                                     <tr class="border-b">
                                         <th class="py-4 px-2 font-bold gold-text bg-gray-50" data-i18n="company_address_th">所在地</th>
-                                        <td class="py-4 px-2 gold-text">〒110-0005<br>東京都台東区上野6－1－6<br>御徒町グリーンハイツ1005号</td>
+                                        <td class="py-4 px-2 gold-text" data-i18n="company_address_val">〒110-0005<br>東京都台東区上野6－1－6<br>御徒町グリーンハイツ1005号</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -305,9 +288,9 @@
                             </div>
                             <div class="z-10 text-center">
                                 <div class="text-4xl mb-2 gold-text font-bold">MAP</div> 
-                                <p class="font-bold gold-text">御徒町グリーンハイツ1005号</p>
-                                <p class="text-sm gold-text">JR御徒町駅 徒歩圏内</p>
-                                <a href="https://www.google.com/maps/search/?api=1&query=東京都台東区上野6－1－6" target="_blank" class="inline-block bg-white text-blue-600 px-4 py-2 rounded shadow text-sm hover:bg-gray-100 transition mt-4" data-i18n="btn_map_open">
+                                <p class="font-bold gold-text" data-i18n="access_address_name">御徒町グリーンハイツ1005号</p>
+                                <p class="text-sm gold-text" data-i18n="access_station_info">JR御徒町駅 徒歩圏内</p>
+                                <a href="https://www.google.com/maps/search/?api=1&query=東京都台東区上野6－1－6" target="_blank" class="inline-block mt-4 bg-white text-blue-600 px-4 py-2 rounded shadow text-sm hover:bg-gray-100 transition" data-i18n="btn_map_open">
                                     Google Mapsで開く ↗
                                 </a>
                             </div>
@@ -383,10 +366,12 @@
         const LANG_DATA = {
             'ja': {
                 'company_name': '株式会社<span class="gold-text">運幸</span>ジャパン',
+                'header_qual_no': '全省庁統一資格者番号 第0000233096号',
                 'nav_home': 'ホーム', 'nav_concept': 'コンセプト', 'nav_services': '事業内容', 'nav_strengths': '強み', 'nav_company': '会社情報',
                 'key_message_main': 'お客様の<span class="gold-text">運</span>と<span class="gold-text">幸</span>を<br>創造するパートナー',
                 'key_message_sub1': '皆様の心に安らぎの光を',
-                'key_message_sub2': '信頼と実績で、未来への架け橋を築きます。<br><span class="text-sm mt-2 block opacity-90">「少しでも弊社と関わって頂けた方々に喜んで頂きたい一心でお仕事を頑張れています。」</span>',
+                'key_message_sub2': '信頼と実績で、未来への架け橋を築きます。',
+                'key_message_quote': '「少しでも弊社と関わって頂けた方々に喜んで頂きたい一心でお仕事を頑張れています。」',
                 'btn_view_services': '事業内容を見る',
                 'section_concept_title': 'デザインコンセプトと哲学',
                 'section_concept_desc': '私たちのブランドカラーには意味があります。水色は「誠実・未来」を、金色のアクセントは「成功・幸運」を象徴しています。<br>このバランスこそが、私たちがお客様に提供する価値です。',
@@ -403,8 +388,17 @@
                 'strength1_title': '誠実な価格交渉', 'strength1_desc': '「他社様のお見積もりを拝見し、それよりも誠心誠意努力させていただきます。」<br><br>お客様の期待を超えるコストパフォーマンスに挑戦します。',
                 'strength2_title': '世界を繋ぐ総合力', 'strength2_desc': '国内の生活サポートから国際的なビジネス案件まで、国内外問わずワンストップで対応します。<br><br>多岐にわたる専門知識とグローバルネットワークが課題を解決に導きます。',
                 'strength3_title': 'ニッチ分野の専門性', 'strength3_desc': '中古医療機器、NMNサプリメント、再生医療など、独自の商流と専門知識を有するユニークな事業領域。<br><br>他社には真似できない、付加価値の高いサービスを提供します。',
-                'section_company_title': '会社情報', 'company_name_th': '会社名', 'company_rep_th': '代表取締役', 'company_established_th': '設立', 'company_capital_th': '資本金', 'company_qual_th': '資格者番号', 'company_address_th': '所在地',
+                'section_company_title': '会社情報', 
+                'company_name_th': '会社名', 'company_rep_th': '代表取締役', 'company_established_th': '設立', 'company_capital_th': '資本金', 'company_qual_th': '資格者番号', 'company_address_th': '所在地',
+                'company_name_val': '株式会社 運幸ジャパン<br><span class="text-sm gold-text">(UNKOU Japan Co., Ltd.)</span>',
+                'company_rep_val': '山中 歩',
+                'company_established_val': '令和6年12月23日',
+                'company_capital_val': '500万円',
+                'company_qual_val': '全省庁統一資格者番号 第0000233096号<br>古物商許可番号 第307712516806号',
+                'company_address_val': '〒110-0005<br>東京都台東区上野6－1－6<br>御徒町グリーンハイツ1005号',
                 'section_access_title': 'アクセス', 'btn_map_open': 'Google Mapsで開く ↗',
+                'access_address_name': '御徒町グリーンハイツ1005号',
+                'access_station_info': 'JR御徒町駅 徒歩圏内',
                 'section_special_title': '特別コンテンツ', 'tshirt_title': '株式会社運幸ジャパン オリジナルTシャツ販売', 'tshirt_desc': '遊び心あふれるオリジナルデザインTシャツを限定販売中です！日常に「運」と「幸」を。詳細は特設サイトをご覧ください。', 'tshirt_price': '価格: 3,980円 (税込)', 'btn_tshirt_site': '特設サイトへGO！',
                 'footer_cta_title': 'まずはご相談ください', 'footer_cta_desc': 'お客様の<span class="gold-text">運</span>と<span class="gold-text">幸</span>を全力でサポートいたします。',
                 'btn_contact_form': '📧 お問い合わせ', 'btn_contact_tel': '📞 03-6666-7996',
@@ -426,10 +420,12 @@
                 ]
             },
             'en': {
-                'company_name': 'UNKOU <span class="gold-text">Japan</span> Co., Ltd.', 'nav_home': 'Home', 'nav_concept': 'Concept', 'nav_services': 'Services', 'nav_strengths': 'Strengths', 'nav_company': 'Company Info',
+                'company_name': 'UNKOU <span class="gold-text">Japan</span> Co., Ltd.', 'header_qual_no': 'National Uniform Qualification No. 0000233096',
+                'nav_home': 'Home', 'nav_concept': 'Concept', 'nav_services': 'Services', 'nav_strengths': 'Strengths', 'nav_company': 'Company Info',
                 'key_message_main': 'A Partner Creating Your <span class="gold-text">Luck</span> and <span class="gold-text">Fortune</span>',
                 'key_message_sub1': 'Bringing light and peace to your hearts.',
-                'key_message_sub2': 'Building bridges to the future through trust and results.<br><span class="text-sm mt-2 block opacity-90">"We strive to succeed so that everyone we touch may be happy."</span>',
+                'key_message_sub2': 'Building bridges to the future through trust and results.',
+                'key_message_quote': '"We strive to succeed so that everyone we touch may be happy."',
                 'btn_view_services': 'View Services',
                 'section_concept_title': 'Design Concept & Philosophy', 'section_concept_desc': 'Our brand colors are meaningful. Blue represents integrity and future, while Gold symbolizes success and fortune.',
                 'concept_blue_title': 'Blue (Sky Blue)', 'concept_blue_desc': 'Cleanliness, integrity, security, and future-orientation.',
@@ -441,8 +437,17 @@
                 'strength1_title': 'Honest Price Negotiation', 'strength1_desc': 'We challenge ourselves to deliver cost performance that exceeds your expectations.',
                 'strength2_title': 'Global Comprehensive Power', 'strength2_desc': 'We offer one-stop solutions for domestic life support to international business projects.',
                 'strength3_title': 'Niche Specialization', 'strength3_desc': 'Unique business areas with proprietary channels and expertise.',
-                'section_company_title': 'Company Information', 'company_name_th': 'Company Name', 'company_rep_th': 'Representative', 'company_established_th': 'Established', 'company_capital_th': 'Capital', 'company_qual_th': 'Qualification', 'company_address_th': 'Address',
+                'section_company_title': 'Company Information', 
+                'company_name_th': 'Company Name', 'company_rep_th': 'Representative Director', 'company_established_th': 'Established', 'company_capital_th': 'Capital', 'company_qual_th': 'Qualification No.', 'company_address_th': 'Address',
+                'company_name_val': 'UNKOU Japan Co., Ltd.',
+                'company_rep_val': 'Ayumu Yamanaka',
+                'company_established_val': 'December 23, Reiwa 6',
+                'company_capital_val': '5 Million Yen',
+                'company_qual_val': 'National Uniform Qualification No. 0000233096<br>Antique Dealer Permit No. 307712516806',
+                'company_address_val': '1005 Okachimachi Green Heights, 6-1-6 Ueno, Taito-ku, Tokyo, 110-0005, Japan',
                 'section_access_title': 'Access', 'btn_map_open': 'Open in Google Maps ↗',
+                'access_address_name': 'Okachimachi Green Heights 1005',
+                'access_station_info': 'Walking distance from JR Okachimachi Station',
                 'section_special_title': 'Special Content', 'tshirt_title': 'UNKOU Japan Original T-Shirt Sale', 'tshirt_desc': 'Limited edition original T-shirts!', 'tshirt_price': 'Price: 3,980 JPY', 'btn_tshirt_site': 'Go to Special Site!',
                 'footer_cta_title': 'Contact us now', 'footer_cta_desc': 'We fully support your <span class="gold-text">Luck</span> and <span class="gold-text">Fortune</span>.',
                 'btn_contact_form': '📧 Contact', 'btn_contact_tel': '📞 +81-3-6666-7996',
@@ -461,6 +466,136 @@
                     { category: 'global', icon: '💊', title: 'NMN Supplement Sales', desc: 'Developing overseas sales routes.' },
                     { category: 'global', icon: '🍣', title: 'Fresh Tuna Direct Sales', desc: 'Directly sourced from Aomori fishermen.' },
                     { category: 'global', icon: '🧬', title: 'Regenerative Medicine Consulting', desc: 'Stem cell therapy and exosomes.' }
+                ]
+            },
+            'de': {
+                'company_name': 'UNKOU <span class="gold-text">Japan</span> Co., Ltd.', 'header_qual_no': 'Nationale Qualifikationsnr. 0000233096',
+                'nav_home': 'Startseite', 'nav_concept': 'Konzept', 'nav_services': 'Dienstleistungen', 'nav_strengths': 'Stärken', 'nav_company': 'Unternehmensinfo',
+                'key_message_main': 'Ein Partner für Ihr <span class="gold-text">Glück</span> und Ihren <span class="gold-text">Erfolg</span>', 'key_message_sub1': 'Ein Licht der Ruhe für Ihr Herz.', 'key_message_sub2': 'Wir bauen Brücken in die Zukunft durch Vertrauen und Ergebnisse.',
+                'btn_view_services': 'Dienstleistungen ansehen', 'section_concept_title': 'Designkonzept & Philosophie', 'filter_all': 'Alle anzeigen', 'filter_domestic': 'Inlandssupport', 'filter_consulting': 'Beratung & Vermögen', 'filter_global': 'Globales Geschäft',
+                'section_strengths_title': 'Unsere Stärken', 'section_company_title': 'Unternehmensinformationen', 'section_access_title': 'Zugang', 'btn_map_open': 'In Google Maps öffnen ↗', 'section_special_title': 'Sonderinhalt',
+                'tshirt_title': 'UNKOU Japan Original T-Shirt Verkauf', 'tshirt_price': 'Preis: 3,980 JPY (inkl. MwSt.)', 'btn_tshirt_site': 'Zur Sonderseite!', 'footer_cta_title': 'Kontaktieren Sie uns', 'btn_contact_form': '📧 Kontakt', 'btn_contact_tel': '📞 +81-3-6666-7996',
+                'company_name_th': 'Firma', 'company_rep_th': 'Geschäftsführer', 'company_established_th': 'Gründung', 'company_capital_th': 'Kapital', 'company_qual_th': 'Qualifikationsnr.', 'company_address_th': 'Standort',
+                'company_name_val': 'UNKOU Japan Co., Ltd.',
+                'company_rep_val': 'Ayumu Yamanaka',
+                'company_established_val': 'Dezember 23, Reiwa 6',
+                'company_capital_val': '5 Millionen Yen',
+                'company_qual_val': 'Nationale Qualifikationsnr. 0000233096<br>Antiquitätenhändler-Erlaubnis Nr. 307712516806',
+                'company_address_val': '1005 Okachimachi Green Heights, 6-1-6 Ueno, Taito-ku, Tokio, 110-0005, Japan',
+                'access_address_name': 'Okachimachi Green Heights 1005',
+                'access_station_info': 'Zu Fuß vom JR Bahnhof Okachimachi erreichbar',
+                'services_list': [
+                    { category: 'domestic', icon: '🗑️', title: 'Haushaltsauflösung & Nachlass', desc: 'Sorgfältige Sortierung und Entsorgung.' },
+                    { category: 'domestic', icon: '🐀', title: 'Schädlingsbekämpfung', desc: 'Schnelle und sichere Beseitigung.' },
+                    { category: 'domestic', icon: '☀️', title: 'Solarleuchten-Verkauf', desc: 'Angebote für umweltfreundliche Energielösungen.' },
+                    { category: 'domestic', icon: '🤝', title: 'Humanitäre Hilfe', desc: 'Soziale Beiträge und Unterstützung.' },
+                    { category: 'consulting', icon: '🏢', title: 'Immobilien (Kauf & Verkauf)', desc: 'Unterstützung bei Immobilientransaktionen.' },
+                    { category: 'consulting', icon: '🕵️', title: 'Detektivarbeit', desc: 'Vertrauliche Untersuchungsdienste zur Lösung von Kundenanliegen.' },
+                    { category: 'consulting', icon: '🤝', title: 'M&A (Kauf & Verkauf)', desc: 'Unterstützung von Kunden mit Fachwissen, von der Bewertung bis zur Akquisitionsberatung.' },
+                    { category: 'consulting', icon: '🔗', title: 'Unternehmensberatung', desc: 'Stärkung der Unternehmenszusammenarbeit.' },
+                    { category: 'global', icon: '🏥', title: 'Export von Medizinprodukten', desc: 'Lieferung von gebrauchten japanischen Medizinprodukten weltweit.' },
+                    { category: 'global', icon: '🚗', title: 'Autoteilehandel', desc: 'Fachgerechtes Recycling und Export von Teilen.' },
+                    { category: 'global', icon: '💊', title: 'NMN-Nahrungsergänzungsmittel', desc: 'Erschließung internationaler Vertriebswege.' },
+                    { category: 'global', icon: '🍣', title: 'Direktverkauf von frischem Thunfisch', desc: 'Direkt von Fischern in Aomori bezogen. Bietet frischesten und erschwinglichsten Thunfisch an. Reagiert auf die wachsende internationale Nachfrage.' },
+                    { category: 'global', icon: '🧬', title: 'Beratung zur Regenerativen Medizin', desc: 'Vertriebsunterstützung für Stammzelltherapie.' }
+                ]
+            },
+            'th': {
+                'company_name': 'UNKOU <span class="gold-text">Japan</span> Co., Ltd.', 'header_qual_no': 'หมายเลขคุณสมบัติระดับชาติ 0000233096',
+                'nav_home': 'หน้าหลัก', 'nav_concept': 'แนวคิด', 'nav_services': 'บริการ', 'nav_strengths': 'จุดแข็ง', 'nav_company': 'ข้อมูลบริษัท',
+                'key_message_main': 'พันธมิตรที่สร้าง <span class="gold-text">โชค</span> และ <span class="gold-text">ความสุข</span> ให้กับคุณ', 'key_message_sub1': 'นำแสงแห่งความสงบสุขมาสู่หัวใจของทุกคน', 'key_message_sub2': 'สร้างสะพานสู่อนาคตด้วยความไว้วางใจและผลลัพธ์',
+                'btn_view_services': 'ดูรายละเอียดบริการ', 'section_concept_title': 'แนวคิดการออกแบบและปรัชญา', 'filter_all': 'แสดงทั้งหมด', 'filter_domestic': 'สนับสนุนภายในประเทศ', 'filter_consulting': 'การให้คำปรึกษา', 'filter_global': 'ธุรกิจระดับโลก',
+                'section_strengths_title': 'จุดแข็งของเรา', 'section_company_title': 'ข้อมูลบริษัท', 'section_access_title': 'การเข้าถึง', 'btn_map_open': 'เปิดใน Google Maps ↗', 'section_special_title': 'เนื้อหาพิเศษ',
+                'tshirt_title': 'จำหน่ายเสื้อยืด UNKOU Japan Original', 'tshirt_price': 'ราคา: 3,980 เยน (รวมภาษี)', 'btn_tshirt_site': 'ไปที่เว็บไซต์พิเศษ!', 'footer_cta_title': 'โปรดติดต่อเราก่อน', 'btn_contact_form': '📧 ติดต่อ', 'btn_contact_tel': '📞 03-6666-7996',
+                'company_name_th': 'ชื่อบริษัท', 'company_rep_th': 'ตัวแทนกรรมการ', 'company_established_th': 'ก่อตั้ง', 'company_capital_th': 'ทุน', 'company_qual_th': 'หมายเลขคุณสมบัติ', 'company_address_th': 'ที่ตั้ง',
+                'company_name_val': 'UNKOU Japan Co., Ltd.',
+                'company_rep_val': 'Ayumu Yamanaka',
+                'company_established_val': '23 ธันวาคม Reiwa 6',
+                'company_capital_val': '5 ล้านเยน',
+                'company_qual_val': 'หมายเลขคุณสมบัติระดับชาติ 0000233096<br>หมายเลขใบอนุญาตผู้ค้าของเก่า 307712516806',
+                'company_address_val': '1005 Okachimachi Green Heights, 6-1-6 Ueno, Taito-ku, Tokyo, 110-0005, Japan',
+                'access_address_name': '1005 Okachimachi Green Heights',
+                'access_station_info': 'เดินจากสถานี JR Okachimachi',
+                'services_list': [
+                    { category: 'domestic', icon: '🗑️', title: 'กำจัดสิ่งของ/เคลียร์มรดก', desc: 'การคัดแยกและกำจัดอย่างระมัดระวัง' },
+                    { category: 'domestic', icon: '🐀', title: 'ควบคุมสัตว์รบกวน', desc: 'บริการกำจัดอย่างรวดเร็วและปลอดภัย' },
+                    { category: 'domestic', icon: '☀️', title: 'จำหน่ายไฟแผงโซลาร์เซลล์', desc: 'นำเสนอโซลูชั่นพลังงานที่เป็นมิตรต่อสิ่งแวดล้อม' },
+                    { category: 'domestic', icon: '🤝', title: 'กิจกรรมช่วยเหลือด้านมนุษยธรรม', desc: 'ความพยายามในการช่วยเหลือสังคม' },
+                    { category: 'consulting', icon: '🏢', title: 'อสังหาริมทรัพย์ (ซื้อ/ขาย)', desc: 'เพิ่มมูลค่าทรัพย์สินของลูกค้าสูงสุด' },
+                    { category: 'consulting', icon: '🕵️', title: 'งานนักสืบ', desc: 'บริการสอบสวนที่เป็นความลับเพื่อช่วยแก้ไขข้อกังวลของลูกค้า' },
+                    { category: 'consulting', icon: '🤝', title: 'M&A ต่างๆ (ซื้อ/ขาย)', desc: 'สนับสนุนลูกค้าด้วยความรู้เฉพาะทาง ตั้งแต่การประเมินมูลค่าไปจนถึงการให้คำปรึกษาการซื้อ/ขายกิจการ' },
+                    { category: 'consulting', icon: '🔗', title: 'การให้คำปรึกษาแบบร่วมทุน', desc: 'เสริมสร้างความร่วมมือเพื่อสร้างโอกาสทางธุรกิจใหม่' },
+                    { category: 'global', icon: '🏥', title: 'ส่งออกอุปกรณ์การแพทย์ใช้แล้ว', desc: 'จัดส่งอุปกรณ์การแพทย์ใช้แล้วคุณภาพสูงจากญี่ปุ่นทั่วโลก' },
+                    { category: 'global', icon: '🚗', title: 'การค้าอะไหล่รถยนต์', desc: 'การรีไซเคิลและการส่งออกชิ้นส่วนรถยนต์อย่างมีความรับผิดชอบ' },
+                    { category: 'global', icon: '💊', title: 'จำหน่ายอาหารเสริม NMN', desc: 'พัฒนาเส้นทางการขายในต่างประเทศสำหรับอาหารเสริม NMN ยอดนิยม' },
+                    { category: 'global', icon: '🍣', title: 'จำหน่ายทูน่าสดโดยตรง', desc: 'จัดหาโดยตรงจากชาวประมงอาโอโมริเพื่อทูน่าที่สดใหม่และราคาไม่แพงที่สุด ตอบสนองความต้องการที่เพิ่มขึ้นสำหรับซาซิมิและซูชิ' },
+                    { category: 'global', icon: '🧬', title: 'การให้คำปรึกษาด้านเวชศาสตร์ฟื้นฟู', desc: 'การสนับสนุนการขายสำหรับการรักษาทางการแพทย์ที่ทันสมัย' }
+                ]
+            },
+            'kr': {
+                'company_name': '운코 <span class="gold-text">재팬</span> 주식회사', 'header_qual_no': '국가 통합 자격 번호 0000233096',
+                'nav_home': '홈', 'nav_concept': '콘셉트', 'nav_services': '사업 내용', 'nav_strengths': '강점', 'nav_company': '회사 정보',
+                'key_message_main': '고객님의 <span class="gold-text">운</span>과 <span class="gold-text">행복</span>을 창조하는 파트너', 'key_message_sub1': '모두의 마음에 평온의 빛을', 'key_message_sub2': '신뢰와 실적으로 미래로의 다리를 만듭니다.',
+                'btn_view_services': '사업 내용 보기', 'section_concept_title': '디자인 콘셉트와 철학', 'filter_all': '전체 보기', 'filter_domestic': '생활 지원 (국내)', 'filter_consulting': '경영·자산 컨설팅', 'filter_global': '글로벌 비즈니스',
+                'section_strengths_title': '당사의 강점', 'section_company_title': '회사 정보', 'section_access_title': '오시는 길', 'btn_map_open': 'Google 지도에서 열기 ↗', 'section_special_title': '특별 콘텐츠',
+                'tshirt_title': '운코 재팬 오리지널 T 셔츠 판매', 'tshirt_price': '가격: 3,980엔 (세금 포함)', 'btn_tshirt_site': '특별 사이트로 이동!', 'footer_cta_title': '우선 상담해 주세요', 'btn_contact_form': '📧 문의', 'btn_contact_tel': '📞 03-6666-7996',
+                'company_name_th': '회사명', 'company_rep_th': '대표 이사', 'company_established_th': '설립', 'company_capital_th': '자본금', 'company_qual_th': '자격 번호', 'company_address_th': '소재지',
+                'company_name_val': 'UNKOU Japan Co., Ltd.',
+                'company_rep_val': '야마나카 아유무',
+                'company_established_val': '레이와 6년 12월 23일',
+                'company_capital_val': '500만 엔',
+                'company_qual_val': '국가 통합 자격 번호 0000233096<br>고물상 허가 번호 307712516806',
+                'company_address_val': '〒110-0005<br>도쿄도 다이토구 우에노 6－1－6<br>오카치마치 그린 하이츠 1005호',
+                'access_address_name': '오카치마치 그린 하이츠 1005호',
+                'access_station_info': 'JR 오카치마치역 도보 거리',
+                'services_list': [
+                    { category: 'domestic', icon: '🗑️', title: '불용품 회수·유품 정리', desc: '정성스러운 분류 및 회수를 진행합니다. 마음에 다가가는 정리를 지향합니다.' },
+                    { category: 'domestic', icon: '🐀', title: '해충·해수 구제', desc: '신속하고 안전한 구제 대응으로 쾌적한 생활 환경을 되찾아 드립니다.' },
+                    { category: 'domestic', icon: '☀️', title: '태양광 패널 라이트 판매', desc: '친환경 에너지 솔루션을 제안합니다.' },
+                    { category: 'domestic', icon: '🧪', title: '수질·석면 조사', desc: '전문적인 검체를 통해 안전한 환경 구축을 지원합니다.' },
+                    { category: 'domestic', icon: '🤝', title: '인도적 지원 활동', desc: '사회 공헌 활동으로서 도움이 필요한 곳에 손을 내밉니다.' },
+                    { category: 'consulting', icon: '🏢', title: '부동산 (매매)', desc: '고객 자산 가치를 극대화하는 부동산 거래를 지원합니다.' },
+                    { category: 'consulting', icon: '🕵️', title: '탐정업', desc: '비밀 엄수 조사 대응으로 고객의 우려 해결에 기여합니다.' },
+                    { category: 'consulting', icon: '🤝', title: '각종 M&A (매매)', desc: '기업 가치 산정부터 인수·매각 컨설팅까지, 전문 지식으로 지원합니다.' },
+                    { category: 'consulting', icon: '🔗', title: '기업 조인트 컨설팅', desc: '기업 간의 연계를 강화하고 새로운 비즈니스 기회를 창출합니다.' },
+                    { category: 'global', icon: '🏥', title: '중고 의료 기기 수출', desc: '고품질의 일본 중고 의료 기기를 세계에 전달합니다.' },
+                    { category: 'global', icon: '🚗', title: '자동차 부품 무역', desc: '폐타이어、중고차 부품の적절한 재활용 및 수출.' },
+                    { category: 'global', icon: '💊', title: 'NMN 보조제 판매', desc: '화제의 NMN 보조제의 해외 판매 루트를 개척합니다.' },
+                    { category: 'global', icon: '🍣', title: '생선 참치 직판 사업', desc: '아오모리현 어부와 직접 협상하여 신선하고 저렴한 참치를 제공합니다. 증가하는 사시미 및 초밥에 대한 국제 수요에도 대응합니다。' },
+                    { category: 'global', icon: '🧬', title: '재생 의료 컨설팅', desc: '줄기세포 치료, 엑소좀 등 첨단 의료 판매를 지원합니다。' }
+                ]
+            },
+            'cn': {
+                'company_name': '运幸 <span class="gold-text">日本</span> 株式会社', 'header_qual_no': '国家统一资格编号 0000233096',
+                'nav_home': '首页', 'nav_concept': '理念', 'nav_services': '业务内容', 'nav_strengths': '公司优势', 'nav_company': '公司信息',
+                'key_message_main': '创造您 <span class="gold-text">运气</span> 和 <span class="gold-text">幸福</span> 的合作伙伴', 'key_message_sub1': '为所有人的心带来安宁之光', 'key_message_sub2': '以信任和实绩搭建通往未来的桥梁。',
+                'btn_view_services': '查看业务内容', 'section_concept_title': '设计理念与哲学', 'filter_all': '全部显示', 'filter_domestic': '生活支持 (国内)', 'filter_consulting': '经营·资产咨询', 'filter_global': '全球业务',
+                'section_strengths_title': '我们的优势', 'section_company_title': '公司信息', 'section_access_title': '交通方式', 'btn_map_open': '在 Google 地图中打开 ↗', 'section_special_title': '特别内容',
+                'tshirt_title': '运幸日本原创T恤销售', 'tshirt_price': '价格: 3,980日元 (含税)', 'btn_tshirt_site': '前往特别网站!', 'footer_cta_title': '请先咨询', 'btn_contact_form': '📧 咨询', 'btn_contact_tel': '📞 03-6666-7996',
+                'company_name_th': '公司名称', 'company_rep_th': '代表董事', 'company_established_th': '成立', 'company_capital_th': '资本金', 'company_qual_th': '资格编号', 'company_address_th': '地址',
+                'company_name_val': 'UNKOU Japan Co., Ltd.',
+                'company_rep_val': '山中 步',
+                'company_established_val': '令和6年12月23日',
+                'company_capital_val': '500万日元',
+                'company_qual_val': '国家统一资格编号 0000233096<br>古董商许可证编号 307712516806',
+                'company_address_val': '〒110-0005<br>东京都台东区上野6－1－6<br>御徒町绿色高地1005号',
+                'access_address_name': '御徒町绿色高地1005号',
+                'access_station_info': '距离 JR 御徒町站步行可达',
+                'services_list': [
+                    { category: 'domestic', icon: '🗑️', title: '废弃物回收/遗物整理', desc: '细致的分类和回收。我们用心处理清算事宜。' },
+                    { category: 'domestic', icon: '🐀', title: '害虫/害兽驱除', desc: '迅速安全的驱除应对，恢复舒适的生活环境。' },
+                    { category: 'domestic', icon: '☀️', title: '太阳能板灯销售', desc: '提供环保能源解决方案。' },
+                    { category: 'domestic', icon: '🧪', title: '水质/石棉调查', desc: '通过专业采样，支持安全环境建设。' },
+                    { category: 'domestic', icon: '🤝', title: '人道主义支援活动', desc: '作为社会贡献活动，向有需要的地方伸出援手。' },
+                    { category: 'consulting', icon: '🏢', title: '房地产业务 (买卖)', desc: '支持最大化客户资产价值的房地产交易。' },
+                    { category: 'consulting', icon: '🕵️', title: '侦探业务', desc: '保密调查服务，有助于解决客户疑虑。' },
+                    { category: 'consulting', icon: '🤝', title: '各种M&A (买卖)', desc: '提供从企业价值评估到收购/出售咨询的专业支持。' },
+                    { category: 'consulting', icon: '🔗', title: '企业联合咨询', desc: '强化企业间合作，创造新的商业机会。' },
+                    { category: 'global', icon: '🏥', title: '中古医疗设备出口', desc: '将高品质的日本中古医疗设备送往世界。' },
+                    { category: 'global', icon: '🚗', title: '汽车零件贸易', desc: '废旧轮胎、二手车零件的妥善回收和出口。' },
+                    { category: 'global', icon: '💊', title: 'NMN保健品销售', desc: '开拓热门NMN保健品の海外销售渠道。' },
+                    { category: 'global', icon: '🍣', title: '生鲜金枪鱼直销业务', desc: '直接与青森县下田渔民协商，提供最新鲜、最实惠的金枪鱼。满足日益增长的生鱼片和寿司的国际需求。' },
+                    { category: 'global', icon: '🧬', title: '再生医療咨询', desc: '支持干细胞治疗、外泌体等尖端医疗销售。' }
                 ]
             }
         };
@@ -501,18 +636,29 @@
 
         function updateLanguage(lang) {
             const data = LANG_DATA[lang] || LANG_DATA['ja'];
+            
+            // 静的テキストとHTMLコンテンツの更新
             document.querySelectorAll('[data-i18n]').forEach(el => {
                 const key = el.getAttribute('data-i18n');
-                if (data[key]) el.innerHTML = data[key];
+                
+                // 会社名、キーメッセージ、および動的データセル（*_val, access_*）
+                if (key === 'company_name' || key === 'key_message_main' || key === 'footer_cta_desc' || key.endsWith('_val') || key.startsWith('access_')) {
+                    if (data[key]) el.innerHTML = data[key];
+                } else {
+                    // テーブルヘッダーやボタンなど、HTMLを含まないもの
+                    if (data[key]) el.textContent = data[key];
+                }
             });
+
+            // サービスカードを最新の言語データに基づいて再描画
             filterServices(currentFilter, lang);
         }
 
         let currentSlide = 0;
         const slides = [
-            'https://placehold.co/1200x800/00A3A3/ffffff?text=Domestic+Support',
             'unkouhead.jpg',
-            'https://placehold.co/1200x800/00A3A3/ffffff?text=Global+Business'
+            'unkouhead2.jpg',
+            'unkouhead3.jpg'
         ];
 
         function nextSlide() {
@@ -520,6 +666,9 @@
             images[currentSlide].classList.remove('active');
             currentSlide = (currentSlide + 1) % slides.length;
             images[currentSlide].classList.add('active');
+            images.forEach((img, index) => {
+                img.src = slides[index];
+            });
         }
 
         document.addEventListener('DOMContentLoaded', () => {
