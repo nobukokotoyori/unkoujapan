@@ -93,7 +93,7 @@
         .qr-container {
             display: flex;
             flex-direction: column;
-            align-items: center; /* 中央揃えに修正 */
+            align-items: center; /* 中央寄せ */
             justify-content: center;
             margin-top: 1rem;
             padding-top: 1rem;
@@ -107,6 +107,7 @@
             line-height: 0;
         }
     </style>
+    <!-- Chosen Palette: Gold (#D4AF37) for accents/luck and Turquoise Blue (#00A3A3 for text/buttons, #E0F7FA for backgrounds) for trust/main background. -->
 </head>
 <body class="text-gray-800">
 
@@ -172,7 +173,7 @@
                 <div class="text-center mb-12">
                     <h2 class="text-3xl font-bold teal-text mb-4" data-i18n="section_concept_title">デザインコンセプトと哲学</h2>
                     <p class="max-w-2xl mx-auto gold-text" data-i18n="section_concept_desc">
-                        私たちのブランドカラーには意味があります。水色は「誠実・未来」を、金色のアクセントは「成功・幸運」を象徴しています。
+                        私たちのブランドカラーには意味があります。水色は「誠実・未来」を、金色のアクセントは「成功・幸運」を象徴しています。このバランスこそが、私たちがお客様に提供する価値です。
                     </p>
                 </div>
 
@@ -210,7 +211,7 @@
             <div class="content-card p-8">
                 <div class="text-center mb-10">
                     <h2 class="text-3xl font-bold teal-text mb-4" data-i18n="section_services_title">事業内容</h2>
-                    <p class="gold-text" data-i18n="section_services_desc">多岐にわたる専門分野で、お客様のニーズにお応えします。</p>
+                    <p class="gold-text" data-i18n="section_services_desc">多岐にわたる専門分野で、お客様のニーズにお応えします。カテゴリーをクリックして詳細をご覧ください。</p>
                 </div>
 
                 <div class="flex flex-wrap justify-center gap-4 mb-8">
@@ -239,19 +240,19 @@
                 <div class="bg-white/10 backdrop-blur-sm p-8 rounded-xl border border-[#D4AF37]/30 hover:border-[#D4AF37] transition duration-300">
                     <h3 class="text-xl font-bold text-[#D4AF37] mb-3" data-i18n="strength1_title">誠実な価格交渉</h3>
                     <p class="text-sm leading-relaxed text-gray-300" data-i18n="strength1_desc">
-                        「他社様のお見積もりを拝見し、それよりも誠心誠意努力させていただきます。」
+                        「他社様のお見積もりを拝見し、それよりも誠心誠意努力させていただきます。」お客様の期待を超えるコストパフォーマンスに挑戦します。
                     </p>
                 </div>
                 <div class="bg-white/10 backdrop-blur-sm p-8 rounded-xl border border-[#D4AF37]/30 hover:border-[#D4AF37] transition duration-300">
                     <h3 class="text-xl font-bold text-[#D4AF37] mb-3" data-i18n="strength2_title">世界を繋ぐ総合力</h3>
                     <p class="text-sm leading-relaxed text-gray-300" data-i18n="strength2_desc">
-                        国内外問わずワンストップで対応できるネットワーク。
+                        国内の生活サポートから国際的なビジネス案件まで、国内外問わずワンストップで対応します。多岐にわたる専門知識とグローバルネットワークが課題を解決に導きます。
                     </p>
                 </div>
                 <div class="bg-white/10 backdrop-blur-sm p-8 rounded-xl border border-[#D4AF37]/30 hover:border-[#D4AF37] transition duration-300">
                     <h3 class="text-xl font-bold text-[#D4AF37] mb-3" data-i18n="strength3_title">ニッチ分野の専門性</h3>
                     <p class="text-sm leading-relaxed text-gray-300" data-i18n="strength3_desc">
-                        独自の商流と専門知識を有するユニークな事業領域。
+                        中古医療機器、NMNサプリメント、再生医療など、独自の商流と専門知識を有するユニークな事業領域。他社には真似できない、付加価値の高いサービスを提供します。
                     </p>
                 </div>
             </div>
@@ -395,10 +396,10 @@
                 'key_message_main': 'お客様の<span class="gold-text">運</span>と<span class="gold-text">幸</span>を<br>創造するパートナー',
                 'key_message_sub1': '皆様の心に安らぎの光を',
                 'key_message_sub2': '信頼と実績で、未来への架け橋を築きます。',
-                'key_message_quote': '「少しでも弊社と関わって頂けた方々に喜んで頂きたい一心でお仕事を頑張れています。」',
+                'key_message_quote': '「他社様のお見積もりを拝見し、それよりも誠心誠意努力させていただきます。」', // <br><br>削除済み
                 'btn_view_services': '事業内容を見る',
                 'section_concept_title': 'デザインコンセプトと哲学',
-                'section_concept_desc': '私たちのブランドカラーには意味があります。水色は「誠実・未来」を、金色のアクセントは「成功・幸運」を象徴しています。<br>このバランスこそが、私たちがお客様に提供する価値です。',
+                'section_concept_desc': '私たちのブランドカラーには意味があります。水色は「誠実・未来」を、金色のアクセントは「成功・幸運」を象徴しています。このバランスこそが、私たちがお客様に提供する価値です。', // <br>削除済み
                 'concept_blue_title': '水色 (Blue)',
                 'concept_blue_desc': '清潔感、誠実、安心、未来志向。私たちがベースとする信頼の証です。',
                 'concept_gold_title': '金色 (Gold)',
@@ -406,12 +407,15 @@
                 'concept_global_title': 'グローバルネットワーク',
                 'concept_global_desc': '弊社は世界中に多くの信頼できるパートナーを有しており、国境を越えた多様なご依頼やビジネスチャンスに柔軟に対応できる体制を構築しています。',
                 'section_services_title': '事業内容',
-                'section_services_desc': '多岐にわたる専門分野で、お客様のニーズにお応えします。<br>カテゴリーをクリックして詳細をご覧ください。',
+                'section_services_desc': '多岐にわたる専門分野で、お客様のニーズにお応えします。カテゴリーをクリックして詳細をご覧ください。', // <br>削除済み
                 'filter_all': '全て表示', 'filter_domestic': '生活サポート (国内)', 'filter_consulting': '経営・資産コンサル', 'filter_global': 'グローバルビジネス',
                 'section_strengths_title': '弊社の強み', 'section_strengths_desc': 'なぜ運幸ジャパンが選ばれるのか。私たちの3つの約束。',
-                'strength1_title': '誠実な価格交渉', 'strength1_desc': '「他社様のお見積もりを拝見し、それよりも誠心誠意努力させていただきます。」<br><br>お客様の期待を超えるコストパフォーマンスに挑戦します。',
-                'strength2_title': '世界を繋ぐ総合力', 'strength2_desc': '国内の生活サポートから国際的なビジネス案件まで、国内外問わずワンストップで対応します。<br><br>多岐にわたる専門知識とグローバルネットワークが課題を解決に導きます。',
-                'strength3_title': 'ニッチ分野の専門性', 'strength3_desc': '中古医療機器、NMNサプリメント、再生医療など、独自の商流と専門知識を有するユニークな事業領域。<br><br>他社には真似できない、付加価値の高いサービスを提供します。',
+                'strength1_title': '誠実な価格交渉', 
+                'strength1_desc': '「他社様のお見積もりを拝見し、それよりも誠心誠意努力させていただきます。」お客様の期待を超えるコストパフォーマンスに挑戦します。', // <br><br>削除済み
+                'strength2_title': '世界を繋ぐ総合力', 
+                'strength2_desc': '国内の生活サポートから国際的なビジネス案件まで、国内外問わずワンストップで対応します。多岐にわたる専門知識とグローバルネットワークが課題を解決に導きます。', // <br><br>削除済み
+                'strength3_title': 'ニッチ分野の専門性', 
+                'strength3_desc': '中古医療機器、NMNサプリメント、再生医療など、独自の商流と専門知識を有するユニークな事業領域。他社には真似できない、付加価値の高いサービスを提供します。', // <br><br>削除済み
                 'section_company_title': '会社情報', 
                 'company_name_th': '会社名', 'company_rep_th': '代表取締役', 'company_established_th': '設立', 'company_capital_th': '資本金', 'company_qual_th': '資格者番号', 'company_address_th': '所在地',
                 'company_name_val': '株式会社 運幸ジャパン<br><span class="text-sm gold-text">(UNKOU Japan Co., Ltd.)</span>',
@@ -452,16 +456,16 @@
                 'key_message_sub2': 'Building bridges to the future through trust and results.',
                 'key_message_quote': '"We strive to succeed so that everyone we touch may be happy."',
                 'btn_view_services': 'View Services',
-                'section_concept_title': 'Design Concept & Philosophy', 'section_concept_desc': 'Our brand colors are meaningful. Blue represents integrity and future, while Gold symbolizes success and fortune.',
-                'concept_blue_title': 'Blue (Sky Blue)', 'concept_blue_desc': 'Cleanliness, integrity, security, and future-orientation.',
-                'concept_gold_title': 'Gold (Gold)', 'concept_gold_desc': 'Trust, quality, success, and luxury.',
+                'section_concept_title': 'Design Concept & Philosophy', 'section_concept_desc': 'Our brand colors are meaningful. Blue represents integrity and future, while Gold symbolizes success and fortune. This balance is the value we provide to our customers.',
+                'concept_blue_title': 'Blue (Sky Blue)', 'concept_blue_desc': 'Cleanliness, integrity, security, and future-orientation. The foundation of the trust we provide.',
+                'concept_gold_title': 'Gold (Gold)', 'concept_gold_desc': 'Trust, quality, success, and luxury. The sparkle of luck and fortune we deliver to our customers.',
                 'concept_global_title': 'Global Network', 'concept_global_desc': 'We have many reliable partners worldwide.',
-                'section_services_title': 'Our Services', 'section_services_desc': 'We meet your needs across a wide range of specialized fields.',
+                'section_services_title': 'Our Services', 'section_services_desc': 'We meet your needs across a wide range of specialized fields. Click on a category for more details.',
                 'filter_all': 'Show All', 'filter_domestic': 'Domestic Support', 'filter_consulting': 'Consulting & Assets', 'filter_global': 'Global Business',
                 'section_strengths_title': 'Our Strengths', 'section_strengths_desc': 'Why choose UNKOU Japan?',
-                'strength1_title': 'Honest Price Negotiation', 'strength1_desc': 'We challenge ourselves to deliver cost performance that exceeds your expectations.',
-                'strength2_title': 'Global Comprehensive Power', 'strength2_desc': 'We offer one-stop solutions for domestic life support to international business projects.',
-                'strength3_title': 'Niche Specialization', 'strength3_desc': 'Unique business areas with proprietary channels and expertise.',
+                'strength1_title': 'Honest Price Negotiation', 'strength1_desc': '\"If you show us quotes from other companies, we will strive to offer better terms.\" We challenge ourselves to deliver cost performance that exceeds your expectations.',
+                'strength2_title': 'Global Comprehensive Power', 'strength2_desc': 'We offer one-stop solutions for domestic life support to international business projects. Our expertise and global network lead solutions to challenges.',
+                'strength3_title': 'Niche Specialization', 'strength3_desc': 'Unique business areas with proprietary channels and expertise. We provide highly valuable services unmatched by others.',
                 'section_company_title': 'Company Information', 
                 'company_name_th': 'Company Name', 'company_rep_th': 'Representative Director', 'company_established_th': 'Established', 'company_capital_th': 'Capital', 'company_qual_th': 'Qualification No.', 'company_address_th': 'Address',
                 'company_name_val': 'UNKOU Japan Co., Ltd.',
@@ -509,7 +513,7 @@
                 'company_established_val': 'Dezember 23, Reiwa 6',
                 'company_capital_val': '5 Millionen Yen',
                 'company_qual_val': 'Nationale Qualifikationsnr.<br>0000233096<br><br>Antiquitätenhändler-Erlaubnis Nr.<br>307712516806',
-                'company_address_val': '1005 Okachimachi Green Heights, 6-1-6 Ueno, Taito-ku, Tokio, 110-0005, Japan',
+                'company_address_val': '1005 Okachimachi Green Heights, 6-1-6 Ueno, Taito-ku, Tokio, 110-0005, Germany',
                 'access_address_name': 'Okachimachi Green Heights 1005',
                 'access_station_info': 'Zu Fuß vom JR Bahnhof Okachimachi erreichbar',
                 'services_list': [
