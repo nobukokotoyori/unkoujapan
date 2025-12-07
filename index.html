@@ -627,7 +627,7 @@
                     { category: 'global', icon: '🚗', title: '汽车零件贸易', desc: '废旧轮胎、二手车零件の妥善回收和出口。' },
                     { category: 'global', icon: '💊', title: 'NMN保健品销售', desc: '开拓热门NMN保健品の海外销售渠道。' },
                     { category: 'global', icon: '🍣', title: '生鲜金枪鱼直销业务', desc: '直接与青森县下田渔民协商，提供最新鲜、最实惠的金枪鱼。满足日益增长的生鱼片和寿司的国际需求。' },
-                    { category: 'global', icon: '🧬', title: '再生医療咨询', desc: '支持干细胞治疗、外泌体等尖端医疗销售。' }
+                    { category: 'global', icon: '🧬', title: '再生医療咨询', desc: '支持干细胞治疗、外泌体等尖端医療销售。' }
                 ]
             }
         };
@@ -676,7 +676,7 @@
                 if (data[key]) {
                     // HTMLタグを含む要素（会社名、キーメッセージ、*_val, access_*）
                     if (key === 'company_name' || key === 'key_message_main' || key === 'footer_cta_desc' || key.endsWith('_val') || key.startsWith('access_') || key === 'header_qual_no' || key === 'company_qual_val' || key === 'key_message_quote') {
-                        el.innerHTML = data[key];
+                         el.innerHTML = data[key];
                     } 
                     // その他の要素（ボタン、thなど）
                     else {
