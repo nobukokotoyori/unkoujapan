@@ -88,25 +88,8 @@
         .bg-gray-50 {
             background-color: #f9fafb !important;
         }
-
-        /* QRコードコンテナ */
-        .qr-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            margin-top: 1rem;
-            padding-top: 1rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.3);
-        }
-        .qr-link {
-            display: block;
-            background-color: white;
-            padding: 0.5rem;
-            border-radius: 0.5rem;
-            line-height: 0; /* 画像の周りの余白を削除 */
-        }
     </style>
+    <!-- Chosen Palette: Gold (#D4AF37) for accents/luck and Turquoise Blue (#00A3A3 for text/buttons, #E0F7FA for backgrounds) for trust/main background. -->
 </head>
 <body class="text-gray-800">
 
@@ -124,7 +107,8 @@
                 <a href="#company" class="gold-text hover:text-[#B4941F] transition font-bold" data-i18n="nav_company">会社情報</a>
             </div>
             <div class="flex flex-col items-end">
-                <span class="text-xs gold-text font-bold" data-i18n="header_qual_no">全省庁統一資格者番号 第0000233096号</span>
+                <!-- ヘッダーの資格者番号に改行を適用 -->
+                <span class="text-xs gold-text font-bold text-right" data-i18n="header_qual_no">全省庁統一資格者番号<br>第0000233096号</span>
                 <select id="lang-select" class="bg-gray-100 border border-gray-300 text-sm rounded px-2 py-1 mt-1 cursor-pointer hover:border-[#D4AF37]">
                     <option value="ja">日本語</option>
                     <option value="en">English</option>
@@ -152,6 +136,7 @@
                     <p class="text-2xl md:text-3xl mb-2 font-light text-white drop-shadow font-serif" data-i18n="key_message_sub1">
                         皆様の心に安らぎの光を
                     </p>
+                    <!-- key_message_sub2 と quote を統合して翻訳 -->
                     <p class="text-lg md:text-xl mb-8 font-light text-white/90" data-i18n="key_message_sub2">
                         信頼と実績で、未来への架け橋を築きます。<span class="text-sm mt-2 block opacity-90" data-i18n="key_message_quote">「少しでも弊社と関わって頂けた方々に喜んで頂きたい一心でお仕事を頑張れています。」</span>
                     </p>
@@ -285,7 +270,7 @@
                                     </tr>
                                     <tr class="border-b">
                                         <th class="py-4 px-2 font-bold gold-text bg-gray-50" data-i18n="company_qual_th">資格者番号</th>
-                                        <td class="py-4 px-2 gold-text" data-i18n="company_qual_val">全省庁統一資格者番号 第0000233096号<br>古物商許可番号 第307712516806号</td>
+                                        <td class="py-4 px-2 gold-text" data-i18n="company_qual_val">全省庁統一資格者番号<br>第0000233096号<br><br>古物商許可番号<br>第307712516806号</td>
                                     </tr>
                                     <tr class="border-b">
                                         <th class="py-4 px-2 font-bold gold-text bg-gray-50" data-i18n="company_address_th">所在地</th>
@@ -368,7 +353,6 @@
 
             <div class="qr-container">
                 <p class="text-sm font-bold mb-2" data-i18n="footer_line_follow">LINE公式アカウントで相談・お問い合わせ</p>
-                <!-- LINE QRコードの画像とリンク -->
                 <a href="https://lin.ee/oEpxiJf" target="_blank" class="qr-link">
                     <img src="unkouqr.jpg" alt="LINE公式アカウントQRコード" style="width: 120px; height: 120px;">
                 </a>
@@ -390,7 +374,7 @@
         const LANG_DATA = {
             'ja': {
                 'company_name': '株式会社<span class="gold-text">運幸</span>ジャパン',
-                'header_qual_no': '全省庁統一資格者番号 第0000233096号',
+                'header_qual_no': '全省庁統一資格者番号<br>第0000233096号',
                 'nav_home': 'ホーム', 'nav_concept': 'コンセプト', 'nav_services': '事業内容', 'nav_strengths': '強み', 'nav_company': '会社情報',
                 'key_message_main': 'お客様の<span class="gold-text">運</span>と<span class="gold-text">幸</span>を<br>創造するパートナー',
                 'key_message_sub1': '皆様の心に安らぎの光を',
@@ -418,7 +402,7 @@
                 'company_rep_val': '山中 歩',
                 'company_established_val': '令和6年12月23日',
                 'company_capital_val': '500万円',
-                'company_qual_val': '全省庁統一資格者番号 第0000233096号<br>古物商許可番号 第307712516806号',
+                'company_qual_val': '全省庁統一資格者番号<br>第0000233096号<br><br>古物商許可番号<br>第307712516806号',
                 'company_address_val': '〒110-0005<br>東京都台東区上野6－1－6<br>御徒町グリーンハイツ1005号',
                 'section_access_title': 'アクセス', 'btn_map_open': 'Google Mapsで開く ↗',
                 'access_address_name': '御徒町グリーンハイツ1005号',
@@ -445,7 +429,7 @@
                 ]
             },
             'en': {
-                'company_name': 'UNKOU <span class="gold-text">Japan</span> Co., Ltd.', 'header_qual_no': 'National Uniform Qualification No. 0000233096',
+                'company_name': 'UNKOU <span class="gold-text">Japan</span> Co., Ltd.', 'header_qual_no': 'National Uniform Qualification No.<br>0000233096',
                 'nav_home': 'Home', 'nav_concept': 'Concept', 'nav_services': 'Services', 'nav_strengths': 'Strengths', 'nav_company': 'Company Info',
                 'key_message_main': 'A Partner Creating Your <span class="gold-text">Luck</span> and <span class="gold-text">Fortune</span>',
                 'key_message_sub1': 'Bringing light and peace to your hearts.',
@@ -468,7 +452,7 @@
                 'company_rep_val': 'Ayumu Yamanaka',
                 'company_established_val': 'December 23, Reiwa 6',
                 'company_capital_val': '5 Million Yen',
-                'company_qual_val': 'National Uniform Qualification No. 0000233096<br>Antique Dealer Permit No. 307712516806',
+                'company_qual_val': 'National Uniform Qualification No.<br>0000233096<br><br>Antique Dealer Permit No.<br>307712516806',
                 'company_address_val': '1005 Okachimachi Green Heights, 6-1-6 Ueno, Taito-ku, Tokyo, 110-0005, Japan',
                 'section_access_title': 'Access', 'btn_map_open': 'Open in Google Maps ↗',
                 'access_address_name': 'Okachimachi Green Heights 1005',
@@ -495,7 +479,7 @@
                 ]
             },
             'de': {
-                'company_name': 'UNKOU <span class="gold-text">Japan</span> Co., Ltd.', 'header_qual_no': 'Nationale Qualifikationsnr. 0000233096',
+                'company_name': 'UNKOU <span class="gold-text">Japan</span> Co., Ltd.', 'header_qual_no': 'Nationale Qualifikationsnr.<br>0000233096',
                 'nav_home': 'Startseite', 'nav_concept': 'Konzept', 'nav_services': 'Dienstleistungen', 'nav_strengths': 'Stärken', 'nav_company': 'Unternehmensinfo',
                 'key_message_main': 'Ein Partner für Ihr <span class="gold-text">Glück</span> und Ihren <span class="gold-text">Erfolg</span>', 'key_message_sub1': 'Ein Licht der Ruhe für Ihr Herz.', 'key_message_sub2': 'Wir bauen Brücken in die Zukunft durch Vertrauen und Ergebnisse.',
                 'key_message_quote': '"Wir sind bestrebt, alle unsere Kunden glücklich zu machen."',
@@ -508,7 +492,7 @@
                 'company_rep_val': 'Ayumu Yamanaka',
                 'company_established_val': 'Dezember 23, Reiwa 6',
                 'company_capital_val': '5 Millionen Yen',
-                'company_qual_val': 'Nationale Qualifikationsnr. 0000233096<br>Antiquitätenhändler-Erlaubnis Nr. 307712516806',
+                'company_qual_val': 'Nationale Qualifikationsnr.<br>0000233096<br><br>Antiquitätenhändler-Erlaubnis Nr.<br>307712516806',
                 'company_address_val': '1005 Okachimachi Green Heights, 6-1-6 Ueno, Taito-ku, Tokio, 110-0005, Japan',
                 'access_address_name': 'Okachimachi Green Heights 1005',
                 'access_station_info': 'Zu Fuß vom JR Bahnhof Okachimachi erreichbar',
@@ -529,7 +513,7 @@
                 ]
             },
             'th': {
-                'company_name': 'UNKOU <span class="gold-text">Japan</span> Co., Ltd.', 'header_qual_no': 'หมายเลขคุณสมบัติระดับชาติ 0000233096',
+                'company_name': 'UNKOU <span class="gold-text">Japan</span> Co., Ltd.', 'header_qual_no': 'หมายเลขคุณสมบัติระดับชาติ<br>0000233096',
                 'nav_home': 'หน้าหลัก', 'nav_concept': 'แนวคิด', 'nav_services': 'บริการ', 'nav_strengths': 'จุดแข็ง', 'nav_company': 'ข้อมูลบริษัท',
                 'key_message_main': 'พันธมิตรที่สร้าง <span class="gold-text">โชค</span> และ <span class="gold-text">ความสุข</span> ให้กับคุณ', 'key_message_sub1': 'นำแสงแห่งความสงบสุขมาสู่หัวใจของทุกคน', 'key_message_sub2': 'สร้างสะพานสู่อนาคตด้วยความไว้วางใจและผลลัพธ์',
                 'key_message_quote': '"เราพยายามอย่างเต็มที่เพื่อให้ทุกคนที่เราติดต่อด้วยมีความสุข"',
@@ -542,7 +526,7 @@
                 'company_rep_val': 'Ayumu Yamanaka',
                 'company_established_val': '23 ธันวาคม Reiwa 6',
                 'company_capital_val': '5 ล้านเยน',
-                'company_qual_val': 'หมายเลขคุณสมบัติระดับชาติ 0000233096<br>หมายเลขใบอนุญาตผู้ค้าของเก่า 307712516806',
+                'company_qual_val': 'หมายเลขคุณสมบัติระดับชาติ<br>0000233096<br><br>หมายเลขใบอนุญาตผู้ค้าของเก่า<br>307712516806',
                 'company_address_val': '1005 Okachimachi Green Heights, 6-1-6 Ueno, Taito-ku, Tokyo, 110-0005, Japan',
                 'access_address_name': '1005 Okachimachi Green Heights',
                 'access_station_info': 'เดินจากสถานี JR Okachimachi',
@@ -563,7 +547,7 @@
                 ]
             },
             'kr': {
-                'company_name': '운코 <span class="gold-text">재팬</span> 주식회사', 'header_qual_no': '국가 통합 자격 번호 0000233096',
+                'company_name': '운코 <span class="gold-text">재팬</span> 주식회사', 'header_qual_no': '국가 통합 자격 번호<br>0000233096',
                 'nav_home': '홈', 'nav_concept': '콘셉트', 'nav_services': '사업 내용', 'nav_strengths': '강점', 'nav_company': '회사 정보',
                 'key_message_main': '고객님의 <span class="gold-text">운</span>과 <span class="gold-text">행복</span>을 창조하는 파트너', 'key_message_sub1': '모두의 마음에 평온의 빛을', 'key_message_sub2': '신뢰와 실적으로 미래로의 다리를 만듭니다.',
                 'key_message_quote': '「저희와 인연을 맺은 모든 분들께 기쁨을 드리고 싶은 마음으로 열심히 일하고 있습니다.」',
@@ -576,7 +560,7 @@
                 'company_rep_val': '야마나카 아유무',
                 'company_established_val': '레이와 6년 12월 23일',
                 'company_capital_val': '500만 엔',
-                'company_qual_val': '국가 통합 자격 번호 0000233096<br>고물상 허가 번호 307712516806',
+                'company_qual_val': '국가 통합 자격 번호<br>0000233096<br><br>고물상 허가 번호<br>307712516806',
                 'company_address_val': '〒110-0005<br>도쿄도 다이토구 우에노 6－1－6<br>오카치마치 그린 하이츠 1005호',
                 'access_address_name': '오카치마치 그린 하이츠 1005호',
                 'access_station_info': 'JR 오카치마치역 도보 거리',
@@ -598,7 +582,7 @@
                 ]
             },
             'cn': {
-                'company_name': '运幸 <span class="gold-text">日本</span> 株式会社', 'header_qual_no': '国家统一资格编号 0000233096',
+                'company_name': '运幸 <span class="gold-text">日本</span> 株式会社', 'header_qual_no': '国家统一资格编号<br>0000233096',
                 'nav_home': '首页', 'nav_concept': '理念', 'nav_services': '业务内容', 'nav_strengths': '公司优势', 'nav_company': '公司信息',
                 'key_message_main': '创造您 <span class="gold-text">运气</span> 和 <span class="gold-text">幸福</span> 的合作伙伴', 'key_message_sub1': '为所有人的心带来安宁之光', 'key_message_sub2': '以信任和实绩搭建通往未来的桥梁。',
                 'key_message_quote': '「我们一心一意地努力工作，希望所有与我们接触的人都能感到高兴。」',
@@ -611,7 +595,7 @@
                 'company_rep_val': '山中 步',
                 'company_established_val': '令和6年12月23日',
                 'company_capital_val': '500万日元',
-                'company_qual_val': '国家统一资格编号 0000233096<br>古董商许可证编号 307712516806',
+                'company_qual_val': '国家统一资格编号<br>0000233096<br><br>古董商许可证编号<br>307712516806',
                 'company_address_val': '〒110-0005<br>东京都台东区上野6－1－6<br>御徒町绿色高地1005号',
                 'access_address_name': '御徒町绿色高地1005号',
                 'access_station_info': '距离 JR 御徒町站步行可达',
@@ -619,7 +603,6 @@
                     { category: 'domestic', icon: '🗑️', title: '废弃物回收/遗物整理', desc: '细致的分类和回收。我们用心处理清算事宜。' },
                     { category: 'domestic', icon: '🐀', title: '害虫/害兽驱除', desc: '迅速安全的驱除应对，恢复舒适的生活环境。' },
                     { category: 'domestic', icon: '☀️', title: '太阳能板灯销售', desc: '提供环保能源解决方案。' },
-                    { category: 'domestic', icon: '🧪', title: '水质/石棉调查', desc: '通过专业采样，支持安全环境建设。' },
                     { category: 'domestic', icon: '🤝', title: '人道主义支援活动', desc: '作为社会贡献活动，向有需要的地方伸出援手。' },
                     { category: 'consulting', icon: '🏢', title: '房地产业务 (买卖)', desc: '支持最大化客户资产价值的房地产交易。' },
                     { category: 'consulting', icon: '🕵️', title: '侦探业务', desc: '保密调查服务，有助于解决客户疑虑。' },
@@ -675,18 +658,15 @@
             document.querySelectorAll('[data-i18n]').forEach(el => {
                 const key = el.getAttribute('data-i18n');
                 
-                // 会社名、キーメッセージ、および動的データセル（*_val, access_*）
-                if (key === 'company_name' || key === 'key_message_main' || key === 'footer_cta_desc' || key.endsWith('_val') || key.startsWith('access_')) {
-                    if (data[key]) el.innerHTML = data[key];
-                } 
-                // key_message_quote はspanタグで囲まれているため、特別に処理
-                else if (key === 'key_message_quote') {
-                    const quoteContent = data[key] || LANG_DATA['ja'][key];
-                    el.innerHTML = `<span class="text-sm mt-2 block opacity-90">${quoteContent}</span>`;
-                }
-                // テーブルヘッダーやボタンなど、HTMLを含まないもの
-                else if (data[key]) {
-                    el.textContent = data[key];
+                if (data[key]) {
+                    // HTMLタグを含む要素（会社名、キーメッセージ、*_val, access_*）
+                    if (key === 'company_name' || key === 'key_message_main' || key === 'footer_cta_desc' || key.endsWith('_val') || key.startsWith('access_') || key === 'header_qual_no' || key === 'company_qual_val' || key === 'key_message_quote') {
+                        el.innerHTML = data[key];
+                    } 
+                    // その他の要素（ボタン、thなど）
+                    else {
+                        el.textContent = data[key];
+                    }
                 }
             });
 
