@@ -88,8 +88,25 @@
         .bg-gray-50 {
             background-color: #f9fafb !important;
         }
+
+        /* QRコードコンテナ */
+        .qr-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* 中央揃えに修正 */
+            justify-content: center;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .qr-link {
+            display: block;
+            background-color: white;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            line-height: 0;
+        }
     </style>
-    <!-- Chosen Palette: Gold (#D4AF37) for accents/luck and Turquoise Blue (#00A3A3 for text/buttons, #E0F7FA for backgrounds) for trust/main background. -->
 </head>
 <body class="text-gray-800">
 
@@ -107,7 +124,6 @@
                 <a href="#company" class="gold-text hover:text-[#B4941F] transition font-bold" data-i18n="nav_company">会社情報</a>
             </div>
             <div class="flex flex-col items-end">
-                <!-- ヘッダーの資格者番号に改行を適用 -->
                 <span class="text-xs gold-text font-bold text-right" data-i18n="header_qual_no">全省庁統一資格者番号<br>第0000233096号</span>
                 <select id="lang-select" class="bg-gray-100 border border-gray-300 text-sm rounded px-2 py-1 mt-1 cursor-pointer hover:border-[#D4AF37]">
                     <option value="ja">日本語</option>
@@ -568,7 +584,6 @@
                     { category: 'domestic', icon: '🗑️', title: '불용품 회수·유품 정리', desc: '정성스러운 분류 및 회수를 진행합니다. 마음에 다가가는 정리를 지향합니다.' },
                     { category: 'domestic', icon: '🐀', title: '해충·해수 구제', desc: '신속하고 안전한 구제 대응으로 쾌적한 생활 환경을 되찾아 드립니다.' },
                     { category: 'domestic', icon: '☀️', title: '태양광 패널 라이트 판매', desc: '친환경 에너지 솔루션을 제안합니다.' },
-                    { category: 'domestic', icon: '🧪', title: '수질·석면 조사', desc: '전문적인 검체를 통해 안전한 환경 구축을 지원합니다.' },
                     { category: 'domestic', icon: '🤝', title: '인도적 지원 활동', desc: '사회 공헌 활동으로서 도움이 필요한 곳에 손을 내밉니다.' },
                     { category: 'consulting', icon: '🏢', title: '부동산 (매매)', desc: '고객 자산 가치를 극대화하는 부동산 거래를 지원합니다.' },
                     { category: 'consulting', icon: '🕵️', title: '탐정업', desc: '비밀 엄수 조사 대응으로 고객의 우려 해결에 기여합니다.' },
@@ -609,7 +624,7 @@
                     { category: 'consulting', icon: '🤝', title: '各种M&A (买卖)', desc: '提供从企业价值评估到收购/出售咨询的专业支持。' },
                     { category: 'consulting', icon: '🔗', title: '企业联合咨询', desc: '强化企业间合作，创造新的商业机会。' },
                     { category: 'global', icon: '🏥', title: '中古医疗设备出口', desc: '将高品质的日本中古医疗设备送往世界。' },
-                    { category: 'global', icon: '🚗', title: '汽车零件贸易', desc: '废旧轮胎、二手车零件的妥善回收和出口。' },
+                    { category: 'global', icon: '🚗', title: '汽车零件贸易', desc: '废旧轮胎、二手车零件の妥善回收和出口。' },
                     { category: 'global', icon: '💊', title: 'NMN保健品销售', desc: '开拓热门NMN保健品の海外销售渠道。' },
                     { category: 'global', icon: '🍣', title: '生鲜金枪鱼直销业务', desc: '直接与青森县下田渔民协商，提供最新鲜、最实惠的金枪鱼。满足日益增长的生鱼片和寿司的国际需求。' },
                     { category: 'global', icon: '🧬', title: '再生医療咨询', desc: '支持干细胞治疗、外泌体等尖端医疗销售。' }
