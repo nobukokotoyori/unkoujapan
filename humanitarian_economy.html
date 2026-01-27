@@ -29,6 +29,16 @@
             padding-left: 1rem;
         }
 
+        .report-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s;
+        }
+        .report-card:hover {
+            border-color: #D4AF37;
+            background: white;
+        }
+
         .video-container {
             position: relative;
             padding-bottom: 56.25%;
@@ -71,7 +81,7 @@
                 <a href="https://unkou-japan.jp/" class="text-xl font-bold teal-text">
                     株式会社<span class="gold-text">運幸</span>ジャパン
                 </a>
-                <span class="text-[10px] gold-text font-bold" data-i18n="header_qual_no">全省庁統一資格者番号 第0000233096号</span>
+                <span class="text-[10px] gold-text font-bold" data-i18n="header_qual_no">全省庁統一資格者番号<br>第0000233096号</span>
             </div>
             <select id="lang-select" class="bg-gray-50 border border-gold text-xs rounded px-2 py-1 outline-none">
                 <option value="ja">日本語</option>
@@ -85,104 +95,136 @@
     </nav>
 
     <!-- Main Consolidated Section -->
-    <section class="main-section py-12 md:py-16 text-center">
+    <section class="main-section py-10 md:py-16 text-center">
         <div class="container mx-auto px-4">
             <div class="max-w-5xl mx-auto">
-                <div class="mb-12">
-                    <h1 class="text-3xl md:text-6xl font-bold mb-6 teal-text leading-tight" data-i18n="main_title">
+                <div class="mb-10">
+                    <h1 class="text-3xl md:text-5xl font-bold mb-6 teal-text leading-tight" data-i18n="main_title">
                         運と幸を世界へ。<br><span class="gold-text underline decoration-gold/30">人道経済</span>の新しいカタチ
                     </h1>
-                    <p class="text-lg md:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed" data-i18n="main_sub">
+                    <p class="text-base md:text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed" data-i18n="main_sub">
                         長年の多業種経験から基づく私たちの多角的な事業を通じ、幸運を味方にしながら財を成していく人を増やし、仲間みんなでその輝きを世界の人道支援・国内の次世代支援へ。
                     </p>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 text-left">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10 text-left">
                     <div class="pillar-card">
-                        <h3 class="text-xl font-bold gold-text mb-2" data-i18n="pillar_1_title">海外人道支援</h3>
+                        <h3 class="text-lg font-bold gold-text mb-1" data-i18n="pillar_1_title">海外人道支援</h3>
                         <p class="text-sm text-gray-600" data-i18n="pillar_1_desc">利益を世界中の運気へと変え、困難な地域に直接的な幸福を運びます。</p>
                     </div>
                     <div class="pillar-card">
-                        <h3 class="text-xl font-bold gold-text mb-2" data-i18n="pillar_2_title">国内若者支援</h3>
+                        <h3 class="text-lg font-bold gold-text mb-1" data-i18n="pillar_2_title">国内若者支援</h3>
                         <p class="text-sm text-gray-600" data-i18n="pillar_2_desc">日本の未来を担う若者たちを支え、夢を実現できる環境を創出します。</p>
                     </div>
                     <div class="pillar-card">
-                        <h3 class="text-xl font-bold gold-text mb-2" data-i18n="pillar_3_title">起業家支援</h3>
+                        <h3 class="text-lg font-bold gold-text mb-1" data-i18n="pillar_3_title">起業家支援</h3>
                         <p class="text-sm text-gray-600" data-i18n="pillar_3_desc">志あるリーダーを育成し、経済の健全な循環を日本から加速させます。</p>
                     </div>
                 </div>
 
-                <div class="bg-gray-50 p-6 rounded-xl text-center italic text-gray-700 border-l-4 border-teal-500" data-i18n="mission_quote">
+                <div class="bg-gray-50 p-5 rounded-xl text-center italic text-gray-700 border-l-4 border-teal-500 text-sm md:text-base" data-i18n="mission_quote">
                     「多くの仲間と共に、大切な方々の周りの方々まで支え、運と幸をもたらしていく。それが運幸ジャパンの使命です」
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Partner & Activity Report Section -->
-    <section class="py-12 bg-white">
+    <!-- Activity Report Section -->
+    <section class="py-12 bg-white border-b border-gray-100">
         <div class="container mx-auto px-4">
-            <div class="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div>
-                    <h2 class="text-2xl md:text-4xl font-bold teal-text mb-6" data-i18n="report_head">支援活動報告 & 連携</h2>
-                    <p class="text-gray-600 mb-8 leading-relaxed" data-i18n="report_text">
-                        私たちは <strong>UZUSHIO Holdings</strong> と共に、2025年より継続的な人道支援を行っています。現地での活動は、単なる資金援助に留まらず、直接その土地の人々と関わり、真に必要な「幸」を届けることにこだわっています。
-                    </p>
+            <div class="max-w-6xl mx-auto text-center">
+                <h2 class="text-2xl md:text-4xl font-bold teal-text mb-4" data-i18n="report_head">支援活動報告 & グローバル連携</h2>
+                <p class="text-gray-600 text-sm md:text-base mb-12" data-i18n="report_sub">UZUSHIO Project 2025 / KABILIN (Legacy) Initiatives</p>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mb-16 text-left">
+                    <!-- Activities Column (Chronological Order) -->
                     <div class="space-y-4">
-                        <a href="https://uzuworld.com/" target="_blank" class="block w-full text-center border-2 border-gold gold-text font-bold py-3 rounded-lg hover:bg-gold hover:text-white transition">
-                            UZUSHIO Holdings 連携詳細 ↗
-                        </a>
+                        <div class="report-card p-5 rounded-xl">
+                            <h4 class="font-bold gold-text text-base mb-1" data-i18n="act_1_title">Humanitarian Aid (フィリピン) / 2025.06</h4>
+                            <p class="text-sm text-gray-600 leading-relaxed" data-i18n="act_1_desc">ボホール島での炊き出しや、セブ島の学校への教育機材寄贈を実施。1100名以上の子供たちの未来を支えています。</p>
+                        </div>
+                        <div class="report-card p-5 rounded-xl border-l-4 border-red-500 bg-red-50/30">
+                            <h4 class="font-bold text-red-700 text-base mb-1" data-i18n="flood_title">セブ洪水緊急支援（Liloan） / 2025.11</h4>
+                            <p class="text-sm text-gray-700 leading-relaxed" data-i18n="flood_desc">洪水時、甚大な被害を受けたリロアンへ急行。道ばたで助けを求める被災者の方々へ、水、食事、日本からの寄付品を直接手渡しました。</p>
+                        </div>
+                        <div class="report-card p-5 rounded-xl border-l-4 border-blue-500">
+                            <h4 class="font-bold text-blue-700 text-base mb-1" data-i18n="legacy_title">海洋保護プロジェクト「KABILIN」 / 2025.11</h4>
+                            <p class="text-sm text-gray-600 leading-relaxed" data-i18n="legacy_desc">珊瑚礁再生やマングローブ保護を推進。美しい海という遺産を次世代へ手渡す活動です。</p>
+                        </div>
+                        <!-- Christmas integrated at the bottom -->
+                        <div class="report-card p-5 rounded-xl border-l-4 border-gold bg-gold/5">
+                            <h4 class="font-bold gold-text text-base mb-1" data-i18n="act_christmas_title">Christmas Charity / 2025.12</h4>
+                            <p class="text-sm text-gray-600 leading-relaxed mb-3" data-i18n="act_christmas_desc">フィリピンの子供たちへクリスマスプレゼントと温かい食事を届けるチャリティイベントを開催。笑顔溢れる時間を共有しました。</p>
+                            <a href="https://uzuworld.com/" target="_blank" class="inline-block text-xs font-bold text-gold hover:underline" data-i18n="link_christmas">
+                                12月のクリスマスの様子 ↗
+                            </a>
+                        </div>
                     </div>
-                </div>
-                <div>
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/eLyIDxTTiHM" frameborder="0" allowfullscreen></iframe>
+                    <!-- Media/Sustainable Plan Column -->
+                    <div class="space-y-6">
+                        <div class="video-container">
+                            <iframe src="https://www.youtube.com/embed/eLyIDxTTiHM" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                        <div class="bg-gray-50 p-6 rounded-xl border border-gold/30">
+                            <h4 class="font-bold teal-text mb-3" data-i18n="sustainable_title">持続可能な社会への計画</h4>
+                            <ul class="text-xs md:text-sm text-gray-600 space-y-2 list-disc pl-4" data-i18n="sustainable_list">
+                                <li>サンゴ礁の再生とダメージを受けたサンゴの救出・集約</li>
+                                <li>エコツーリズムを通じた現地の教育と雇用創出</li>
+                                <li>Fish Cage設置による地域住民への生計支援</li>
+                                <li>州知事や市長と連携した公的な支援体制の構築</li>
+                            </ul>
+                        </div>
                     </div>
-                    <p class="text-xs text-gray-400 mt-2 text-center" data-i18n="video_caption">2025年 現地支援活動ドキュメント</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Recruitment Section -->
-    <section class="py-16 gold-gradient text-white">
+    <section class="py-12 gold-gradient text-white">
         <div class="container mx-auto px-4 text-center">
-            <h2 class="text-3xl md:text-5xl font-bold mb-6" data-i18n="recruit_head">
+            <h2 class="text-2xl md:text-4xl font-bold mb-4" data-i18n="recruit_head">
                 日本・世界で一緒に人道支援、社会貢献したい人へ。<br>株式会社運幸ジャパンで一緒に働こう！
             </h2>
-            <p class="text-lg mb-10 opacity-90 leading-relaxed max-w-4xl mx-auto" data-i18n="recruit_text">
+            <p class="text-base mb-8 opacity-90 leading-relaxed max-w-4xl mx-auto" data-i18n="recruit_text">
                 あなたの志を、大きな循環の一部にしませんか？海外での活躍の場も提供します。経験がない方でも豊富な知識と経験を持つチームがあなたを導きます。私たちは「運」と「幸」を運ぶ仲間を募集しています。
             </p>
-            <a href="https://lin.ee/oEpxiJf" target="_blank" class="inline-block bg-white teal-text font-bold py-4 px-12 rounded-full text-xl hover:bg-gray-100 transition shadow-lg">
-                JOIN OUR TEAM
-            </a>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="https://lin.ee/oEpxiJf" target="_blank" class="inline-block bg-white teal-text font-bold py-3 px-10 rounded-full text-lg hover:bg-gray-100 transition shadow-lg">
+                    JOIN OUR TEAM (LINE)
+                </a>
+                <!-- ボタンのリンク先を PDF に、テキストを GLOBAL PARTNERSHIP に変更 -->
+                <a href="https://uzuworld.com/worldpartner.pdf" target="_blank" class="inline-block border-2 border-white text-white font-bold py-3 px-10 rounded-full text-lg hover:bg-white hover:text-gold transition shadow-lg" data-i18n="link_partnership_btn">
+                    GLOBAL PARTNERSHIP
+                </a>
+            </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-[#00A3A3] text-white pt-16 pb-8">
-        <div class="container mx-auto px-4 text-center">
-            <h2 class="text-2xl md:text-3xl font-bold mb-4" data-i18n="footer_cta_title">まずはご相談ください</h2>
-            <p class="mb-10 opacity-90" data-i18n="footer_cta_desc">お客様の運と幸を全力でサポートいたします。</p>
+    <footer class="bg-[#00A3A3] text-white pt-12 pb-6 text-center">
+        <div class="container mx-auto px-4">
+            <h2 class="text-xl md:text-3xl font-bold mb-3" data-i18n="footer_cta_title">まずはご相談ください</h2>
+            <p class="mb-8 text-sm opacity-90" data-i18n="footer_cta_desc">お客様の運と幸を全力でサポートいたします。</p>
             
-            <div class="flex flex-col md:flex-row justify-center items-center gap-6 mb-12">
-                <a href="mailto:helpful@unkou-japan.jp" class="w-full md:w-auto btn-gold font-bold py-4 px-10 rounded-full flex items-center justify-center gap-2">
+            <div class="flex flex-col md:flex-row justify-center items-center gap-4 mb-10">
+                <a href="mailto:helpful@unkou-japan.jp" class="w-full md:w-auto btn-gold font-bold py-3 px-8 rounded-full text-sm flex items-center justify-center gap-2">
                     📧 お問い合わせ
                 </a>
-                <a href="tel:0366667996" class="w-full md:w-auto bg-white teal-text font-bold py-4 px-10 rounded-full flex items-center justify-center gap-2 hover:bg-gray-100 transition">
+                <a href="tel:0366667996" class="w-full md:w-auto bg-white teal-text font-bold py-3 px-8 rounded-full text-sm flex items-center justify-center gap-2 hover:bg-gray-100 transition">
                     📞 03-6666-7996
                 </a>
             </div>
 
-            <div class="qr-container mb-12">
-                <p class="text-sm font-bold mb-3" data-i18n="footer_line_follow">LINE公式アカウントで相談・お問い合わせ</p>
+            <div class="qr-container mb-10">
+                <p class="text-xs font-bold mb-2" data-i18n="footer_line_follow">LINE公式アカウントで相談・お問い合わせ</p>
                 <a href="https://lin.ee/oEpxiJf" target="_blank" class="qr-link bg-white p-2 rounded-lg">
                     <img src="unkouqr.jpg" alt="LINE QR" class="w-24 h-24 mx-auto">
                 </a>
             </div>
 
-            <div class="border-t border-white/20 pt-8 text-xs opacity-70">
-                <p class="mb-4">
+            <div class="border-t border-white/20 pt-6 text-[10px] opacity-60">
+                <p class="mb-3">
                     <a href="https://unkou-japan.jp/" class="hover:underline mx-2">ホーム</a> | 
                     <a href="https://unkou-japan.jp/#services" class="hover:underline mx-2">事業内容</a> | 
                     <a href="https://unkou-japan.jp/#company" class="hover:underline mx-2">会社情報</a>
@@ -195,16 +237,23 @@
     <script>
         const LANG_DATA = {
             'ja': {
-                'header_qual_no': '全省庁統一資格者番号 第0000233096号',
+                'header_qual_no': '全省庁統一資格者番号<br>第0000233096号',
                 'main_title': '運と幸を世界へ。<br><span class="gold-text underline decoration-gold/30">人道経済</span>の新しいカタチ',
                 'main_sub': '長年の多業種経験から基づく私たちの多角的な事業を通じ、幸運を味方にしながら財を成していく人を増やし、仲間みんなでその輝きを世界の人道支援・国内の次世代支援へ。',
                 'pillar_1_title': '海外人道支援', 'pillar_1_desc': '利益を世界中の運気へと変え、困難な地域に直接的な幸福を運びます。',
                 'pillar_2_title': '国内若者支援', 'pillar_2_desc': '日本の未来を担う若者たちを支え、夢を実現できる環境を創出します。',
                 'pillar_3_title': '起業家支援', 'pillar_3_desc': '志あるリーダーを育成し、経済の健全な循環を日本から加速させます。',
                 'mission_quote': '「多くの仲間と共に、大切な方々の周りの方々まで支え、運と幸をもたらしていく。それが運幸ジャパンの使命です」',
-                'report_head': '支援活動報告 & 連携',
-                'report_text': '私たちは UZUSHIO Holdings と共に、2025年より継続的な人道支援を行っています。現地での活動は、単なる資金援助に留まらず、直接その土地の人々と関わり、真に必要な「幸」を届けることにこだわっています。',
-                'video_caption': '2025年 現地支援活動ドキュメント',
+                'report_head': '支援活動報告 & グローバル連携',
+                'report_sub': 'UZUSHIO Project 2025 / KABILIN (Legacy) Initiatives',
+                'act_christmas_title': 'Christmas Charity / 2025.12', 'act_christmas_desc': 'フィリピンの子供たちへクリスマスプレゼントと温かい食事を届けるチャリティイベントを開催。笑顔溢れる時間を共有しました。',
+                'act_1_title': 'Humanitarian Aid (フィリピン) / 2025.06', 'act_1_desc': 'ボホール島での炊き出しや、セブ島の学校への教育機材寄贈を実施。1100名以上の子供たちの未来を支えています。',
+                'flood_title': 'セブ洪水緊急支援（Liloan） / 2025.11', 'flood_desc': '洪水時、甚大な被害を受けたリロアンへ急行。被災者の方々へ水や食事、寄付品を直接手渡しました。',
+                'legacy_title': '海洋保護プロジェクト「KABILIN」 / 2025.11', 'legacy_desc': '珊瑚礁再生やマングローブ保護を推進。美しい海という遺産を次世代へ手渡す活動です。',
+                'sustainable_title': '持続可能な社会への計画',
+                'sustainable_list': '<li>サンゴ礁の再生とダメージを受けたサンゴの救出・集約</li><li>エコツーリズムを通じた現地の教育と雇用創出</li><li>Fish Cage設置による地域住民への生計支援</li><li>州知事や市長と連携した公的な支援体制の構築</li>',
+                'link_christmas': '12月のクリスマスの様子 ↗',
+                'link_partnership_btn': 'GLOBAL PARTNERSHIP',
                 'recruit_head': '日本・世界で一緒に人道支援、社会貢献したい人へ。<br>株式会社運幸ジャパンで一緒に働こう！',
                 'recruit_text': 'あなたの志を、大きな循環の一部にしませんか？海外での活躍の場も提供します。経験がない方でも豊富な知識と経験を持つチームがあなたを導きます。私たちは「運」と「幸」を運ぶ仲間を募集しています。',
                 'footer_cta_title': 'まずはご相談ください', 'footer_cta_desc': 'お客様の運と幸を全力でサポートいたします。',
@@ -212,52 +261,59 @@
             },
             'en': {
                 'main_title': 'Luck and Fortune to the World.<br><span class="gold-text">Humanitarian Economy</span>',
-                'main_sub': 'Through our diversified businesses based on years of multi-industry experience, we aim to increase the number of people who build wealth while having luck on their side, and together as a team, direct that brilliance toward global humanitarian aid and domestic support for the next generation.',
+                'main_sub': 'Through our diversified businesses built on years of experience, we help more people build wealth while having luck on their side, and together, we direct that brilliance toward global humanitarian aid and domestic support.',
                 'pillar_1_title': 'Global Aid', 'pillar_1_desc': 'Transforming profits into global luck, delivering direct happiness to regions in need.',
                 'pillar_2_title': 'Youth Support', 'pillar_2_desc': 'Supporting Japan\'s future by creating environments where dreams can be achieved.',
                 'pillar_3_title': 'Entrepreneur Support', 'pillar_3_desc': 'Fostering ambitious leaders to accelerate a healthy economic cycle from Japan.',
-                'recruit_head': 'Support humanitarian aid in Japan and the world.<br>Join UNKOU Japan Today!',
-                'report_head': 'Activity Report & Alliance',
-                'recruit_text': 'Turn your passion into action within a global cycle. Even without experience, our highly experienced team will guide you. We also provide opportunities to be active overseas. Join us in bringing luck and fortune to the world.',
-                'footer_cta_title': 'Contact us now', 'footer_cta_desc': 'We fully support your Luck and Fortune.',
-                'footer_line_follow': 'Connect with us on LINE',
-                'video_caption': '2025 Local Support Document'
+                'mission_quote': '"Creating a large cycle that supports our partners and everyone around them. That is the mission of UNKOU Japan."',
+                'report_head': 'Project Report & Global Alliance',
+                'act_christmas_title': 'Christmas Charity / Dec 2025', 'act_christmas_desc': 'Held a charity event to deliver Christmas presents and warm meals to children in the Philippines.',
+                'link_christmas': 'Details of Christmas in Dec ↗',
+                'link_partnership_btn': 'GLOBAL PARTNERSHIP',
+                'act_1_title': 'Humanitarian Aid / June 2025', 'act_1_desc': 'Provided meals and donated school supplies to schools in Cebu and Bohol, supporting over 1100 children.',
+                'flood_title': 'Cebu Flood Relief / Nov 2025', 'flood_desc': 'Rushed to Liloan during the floods to provide direct aid to victims.',
+                'legacy_title': 'Marine Conservation "KABILIN" / Nov 2025', 'legacy_desc': 'Preserving the ocean as a "Legacy" for the next generation through reef restoration.',
+                'sustainable_title': 'Sustainable Plan',
+                'sustainable_list': '<li>Coral reef restoration</li><li>Job creation via eco-tourism</li><li>Livelihood support</li><li>Public partnerships</li>',
+                'recruit_head': 'Join UNKOU Japan Today!',
+                'recruit_text': 'Turn your passion into action. Even without experience, our team will guide you. We also provide opportunities to be active overseas.',
+                'footer_line_follow': 'Connect with us on LINE'
             },
             'de': {
                 'main_title': 'Glück für die Welt.<br><span class="gold-text">Humanitäre Wirtschaft</span>',
-                'main_sub': 'Durch unsere vielfältigen Geschäfte, die auf jahrelanger Erfahrung basieren, möchten wir Wohlstand schaffen und diesen Glanz gemeinsam für globale Hilfe nutzen.',
-                'pillar_1_title': 'Globale Hilfe', 'pillar_2_title': 'Jugendförderung', 'pillar_3_title': 'Unternehmerhilfe',
-                'recruit_head': 'Helfen Sie in Japan und der Welt? Arbeiten Sie bei UNKOU Japan!',
                 'report_head': 'Bericht & Allianz',
-                'recruit_text': 'Werden Sie Teil eines großen Kreislaufs. Unser erfahrenes Team wird Sie auch ohne Vorkenntnisse anleiten. Wir bieten auch Möglichkeiten für internationale Einsätze an.',
-                'video_caption': 'Dokument zur Unterstützung vor Ort 2025'
+                'act_christmas_title': 'Weihnachtshilfe / Dez 2025',
+                'link_christmas': 'Weihnachten im Dez ↗',
+                'link_partnership_btn': 'GLOBAL PARTNERSHIP',
+                'recruit_head': 'Arbeiten Sie bei UNKOU Japan!',
+                'recruit_text': 'Werden Sie Teil eines großen Kreislaufs. Unser Team wird Sie anleiten.'
             },
             'th': {
                 'main_title': 'ส่งมอบโชคและความสุขสู่โลก<br><span class="gold-text">เศรษฐกิจเพื่อมนุษยธรรม</span>',
-                'main_sub': 'เพิ่มจำนวนผู้สร้างความมั่งคั่งผ่านธุรกิจที่หลากหลาย และร่วมกันส่งต่อความรุ่งโรจน์นั้นสู่การช่วยเหลือมนุษยธรรมทั่วโลกและคนรุ่นใหม่ในประเทศ',
-                'pillar_1_title': 'ช่วยเหลือต่างประเทศ', 'pillar_2_title': 'สนับสนุนเยาวชน', 'pillar_3_title': 'สนับสนุนผู้ประกอบการ',
-                'recruit_head': 'ร่วมงานกับเราที่ UNKOU Japan เพื่อช่วยเหลือสังคมในญี่ปุ่นและทั่วโลก!',
                 'report_head': 'รายงานกิจกรรมและพันธมิตร',
-                'recruit_text': 'มาร่วมเป็นส่วนหนึ่งของวงจรที่ยิ่งใหญ่ แม้ไม่มีประสบการณ์ ทีมงานที่เชี่ยวชาญของเราจะคอยให้คำแนะนำคุณเอง เรามอบโอกาสในการทำงานในระดับสากล',
-                'video_caption': 'รายงานกิจกรรมปี 2025'
+                'act_christmas_title': 'การกุศลคริสต์มาส / ธ.ค. 2025',
+                'link_christmas': 'ภาพกิจกรรมคริสต์มาส ↗',
+                'link_partnership_btn': 'GLOBAL PARTNERSHIP',
+                'recruit_head': 'ร่วมงานกับเราที่ UNKOU Japan!',
+                'recruit_text': 'มาร่วมเป็นส่วนหนึ่งของวงจรที่ยิ่งใหญ่ ทีมงานของเราจะคอยแนะนำคุณ'
             },
             'kr': {
-                'main_title': '운과 행복을 세계로.<br><span class="gold-text">인도적 경제</span>의 새로운 형태',
-                'main_sub': '다각적인 사업을 통해 부를 창출하는 사람들을 늘리고, 모든 동료와 함께 그 빛을 세계 인도적 지원과 국내 차세대 지원으로 환원합니다.',
-                'pillar_1_title': '해외 인도적 지원', 'pillar_2_title': '국내 청년 지원', 'pillar_3_title': '기업가 지원',
-                'recruit_head': '일본과 세계에서 인도적 지원에 열정이 있다면? 운코 재팬과 함께하세요!',
+                'main_title': '운과 행복을 세계로.<br><span class="gold-text">인도적 경제</span>',
                 'report_head': '활동 보고 및 제휴',
-                'recruit_text': '당신의 뜻을 큰 순환의 일부로 만들지 않겠습니까? 경험이 없더라도 풍부한 지식을 가진 팀이 당신을 이끌어 드립니다. 해외 활약의 기회도 제공합니다.',
-                'video_caption': '2025년 현지 지원 다큐メンタリー'
+                'act_christmas_title': '크리스마스 자선 / 2025.12',
+                'link_christmas': '12월 크리스마스 현황 ↗',
+                'link_partnership_btn': 'GLOBAL PARTNERSHIP',
+                'recruit_head': '운코 재팬과 함께하세요!',
+                'recruit_text': '당신의 뜻을 큰 순환의 일부로 만드세요. 저희 팀이 당신을 이끌어 드립니다.'
             },
             'cn': {
                 'main_title': '将运气与幸福带给世界。<br><span class="gold-text">人道主义经济</span>',
-                'main_sub': '让更多人通过多元化事业创造财富，并与全体伙伴一起将这份光芒投向全球人道救援和国内下一代资助。',
-                'pillar_1_title': '海外人道救援', 'pillar_2_title': '国内青年资助', 'pillar_3_title': '企业家扶持',
-                'recruit_head': '希望在日本及全球参与社会公益？加入运幸日本！',
                 'report_head': '活动报告与合作',
-                'recruit_text': '让您的志向成为大循环的一部分。即使没有经验，我们经验丰富的团队也会为您提供指导。我们提供在海外大显身手的机会。',
-                'video_caption': '2025年实地援助纪录'
+                'act_christmas_title': '圣诞慈善 / 2025.12',
+                'link_christmas': '12月圣诞活动详情 ↗',
+                'link_partnership_btn': 'GLOBAL PARTNERSHIP',
+                'recruit_head': '加入运幸日本！',
+                'recruit_text': '让您的志向成为大循环の一部。我们的团队会为您提供指导。'
             }
         };
 
