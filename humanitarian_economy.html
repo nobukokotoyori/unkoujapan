@@ -85,7 +85,7 @@
             border: 2px solid white;
         }
 
-        /* 希望のメッセージ用マーカー装飾 (太字ではない目立たせ方) */
+        /* 希望のメッセージ用マーカー装飾 */
         .hope-highlight {
             display: inline-block;
             background: linear-gradient(transparent 65%, rgba(212, 175, 55, 0.35) 0%);
@@ -120,8 +120,9 @@
     <section class="main-section py-12 md:py-20 text-center">
         <div class="container mx-auto px-4">
             <div class="max-w-5xl mx-auto">
+                <!-- 冒頭メッセージ更新：あなたのご依頼で助かる人が増える -->
                 <div class="impact-banner" data-i18n="impact_message">
-                    同じ依頼をするなら、誰かを救える選択を。
+                    あなたのご依頼で、救われる人が増えていく。
                 </div>
 
                 <div class="mb-12">
@@ -130,16 +131,15 @@
                     </h1>
                     
                     <p class="text-lg md:text-2xl text-gray-700 max-w-4xl mx-auto leading-relaxed border-y border-gold/20 py-8 font-medium" data-i18n="main_sub_highlight">
-                        「他社へのご依頼はひとつの取引として完結しますが、弊社へのご依頼は、いま助けを必要としている誰かの命を救う力へと変わります。」
+                        「他社へのご依頼はひとつの取引として完結しますが、弊社へのご依頼は、いま助けを必要としている誰かを救い、笑顔を増やす力へと変わります。」
                     </p>
                     
                     <div class="mt-10">
                         <p class="text-base md:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed" data-i18n="main_sub">
                             長年の多業種経験から基づく私たちの多角的な事業を通じ、幸運を味方にしながら財を成していく人を増やし、仲間みんなでその輝きを世界の人道支援・国内の次世代支援へ。
                         </p>
-                        <!-- ここが目立つ金色のライン付きメッセージ -->
                         <div class="hope-highlight text-xl md:text-3xl teal-text" data-i18n="hope_statement">
-                            ご依頼から生まれる利益は、そのまま世界の希望へと変わります。
+                            あなたのご依頼で、たくさんの笑顔を作りましょう。
                         </div>
                     </div>
                 </div>
@@ -271,11 +271,11 @@
         const LANG_DATA = {
             'ja': {
                 'header_qual_no': '全省庁統一資格者番号<br>第0000233096号',
-                'impact_message': '同じ依頼をするなら、誰かを救える選択を。',
+                'impact_message': 'あなたのご依頼で、救われる人が増えていく。',
                 'main_title': '運と幸を世界へ。<br><span class="gold-text underline decoration-gold/30">人道経済</span>の新しいカタチ',
-                'main_sub_highlight': '「他社へのご依頼はひとつの取引として完結しますが、弊社へのご依頼は、いま助けを必要としている誰かの命を救う力へと変わります。」',
+                'main_sub_highlight': '「他社へのご依頼はひとつの取引として完結しますが、弊社へのご依頼は、いま助けを必要としている誰かを救い、笑顔を増やす力へと変わります。」',
                 'main_sub': '長年の多業種経験から基づく私たちの多角的な事業を通じ、幸運を味方にしながら財を成していく人を増やし、仲間みんなでその輝きを世界の人道支援・国内の次世代支援へ。',
-                'hope_statement': 'ご依頼から生まれる利益は、そのまま世界の希望へと変わります。',
+                'hope_statement': 'あなたのご依頼で、たくさんの笑顔を作りましょう。',
                 'pillar_1_title': '海外人道支援', 'pillar_1_desc': '利益を世界中の運気へと変え、困難な地域に直接的な幸福を運びます。',
                 'pillar_2_title': '国内若者支援', 'pillar_2_desc': '日本の未来を担う若者たちを支え、夢を実現できる環境を創出します。',
                 'pillar_3_title': '起業家支援', 'pillar_3_desc': '志あるリーダーを育成し、経済の健全な循環を日本から加速させます。',
@@ -296,63 +296,36 @@
                 'footer_line_follow': 'LINE公式アカウントで相談・お問い合わせ'
             },
             'en': {
-                'impact_message': 'If results are the same, choose the option that saves lives.',
+                'impact_message': 'Your request increases the number of people being saved.',
                 'main_title': 'Luck and Fortune to the World.<br><span class="gold-text">Humanitarian Economy</span>',
-                'main_sub_highlight': '"Requests to others end as simple transactions; requests to us transform into the power to save lives in immediate need."',
-                'main_sub': 'Through diversified businesses built on years of experience, we help more people build wealth while having luck on their side, directing that brilliance toward aid.',
-                'hope_statement': 'The profits from your requests turn directly into hope for the world.',
-                'pillar_1_title': 'Global Aid', 'pillar_2_title': 'Youth Support', 'pillar_3_title': 'Entrepreneur Support',
-                'report_head': 'Project Report & Global Alliance',
-                'act_christmas_title': 'Christmas Charity / Dec 2025', 'act_christmas_desc': 'Delivering meals and presents to children in the Philippines.',
-                'link_christmas': 'Christmas in Dec ↗', 'link_partnership_btn': 'GLOBAL PARTNERSHIP',
-                'act_1_title': 'Humanitarian Aid / June 2025', 'act_1_desc': 'Supporting over 1100 children with meals and school supplies.',
-                'flood_title': 'Cebu Flood Relief / Nov 2025', 'flood_desc': 'Directly providing water and food to flood victims in Liloan.',
-                'legacy_title': 'Marine Conservation / Nov 2025', 'legacy_desc': 'Preserving the ocean as a "Legacy" for the next generation.',
-                'sustainable_title': 'Sustainable Plan',
-                'sustainable_list': '<li>Coral reef restoration</li><li>Job creation via eco-tourism</li><li>Livelihood support</li><li>Public partnerships</li>',
+                'main_sub_highlight': '"While requests to others end as transactions, requests to us multiply the lives saved and smiles created for those in need."',
+                'hope_statement': 'Let\'s create countless smiles through your request.',
                 'recruit_head': 'Join UNKOU Japan Today!',
-                'recruit_text': 'Turn your passion into action. Even without experience, our team will guide you.',
                 'footer_line_follow': 'Connect with us on LINE'
             },
             'de': {
-                'impact_message': 'Ihre Wahl rettet Leben.',
+                'impact_message': 'Mit Ihrem Auftrag wächst die Zahl der geretteten Menschen.',
                 'main_title': 'Glück für die Welt.<br><span class="gold-text">Humanitäre Wirtschaft</span>',
-                'main_sub_highlight': '"Andere bieten Dienstleistungen an; wir verwandeln Ihren Auftrag in Hilfe für Menschen in Not."',
-                'hope_statement': 'Gewinne aus Ihren Aufträgen werden direkt zur Hoffnung für die Welt.',
-                'report_head': 'Bericht & Allianz',
-                'link_partnership_btn': 'GLOBAL PARTNERSHIP',
-                'recruit_head': 'Arbeiten Sie bei UNKOU Japan!',
-                'recruit_text': 'Werden Sie Teil eines großen Kreislaufs.'
+                'hope_statement': 'Lassen Sie uns durch Ihren Auftrag viele Gesichter zum Lächeln bringen.',
+                'main_sub_highlight': '"Andere schließen Geschäfte ab; wir verwandeln Ihren Auftrag in Hilfe, die Leben rettet und Lächeln schenkt."'
             },
             'th': {
-                'impact_message': 'เลือกสั่งกับเรา เพื่อช่วยชีวิตเพื่อนมนุษย์',
+                'impact_message': 'คำสั่งซื้อของคุณช่วยเพิ่มจำนวนผู้ที่ได้รับความช่วยเหลือ',
                 'main_title': 'ส่งมอบโชคและความสุขสู่โลก<br><span class="gold-text">เศรษฐกิจเพื่อมนุษยธรรม</span>',
-                'main_sub_highlight': '"การสั่งซื้อกับที่อื่นคือการทำธุรกิจ แต่กับเราคือการมอบต่อลมหายใจให้ผู้ที่ต้องการความช่วยเหลือ"',
-                'hope_statement': 'กำไรจากคำสั่งซื้อของคุณจะเปลี่ยนเป็นความหวังของโลกโดยตรง',
-                'report_head': 'รายงานกิจกรรมและพันธมิตร',
-                'link_partnership_btn': 'GLOBAL PARTNERSHIP',
-                'recruit_head': 'ร่วมงานกับเราที่ UNKOU Japan!',
-                'recruit_text': 'มาร่วมเป็นส่วนหนึ่งของวงจรที่ยิ่งใหญ่'
+                'hope_statement': 'มาสร้างรอยยิ้มมากมายผ่านคำสั่งซื้อของคุณกันเถอะ',
+                'main_sub_highlight': '"การสั่งซื้อกับที่อื่นคือการทำธุรกิจ แต่กับเราคือการเพิ่มรอยยิ้มและต่อลมหายใจให้ผู้คน"'
             },
             'kr': {
-                'impact_message': '당신의 선택이 누군가에게는 구원이 됩니다.',
+                'impact_message': '당신의 의뢰로 구원받는 사람들이 늘어납니다.',
                 'main_title': '운과 행복을 세계로.<br><span class="gold-text">인도적 경제</span>',
-                'main_sub_highlight': '"타사로의 의뢰는 단순 거래로 끝나지만, 당사로의 의뢰는 누군가의 소중한 생명을 구하는 힘이 됩니다."',
-                'hope_statement': '의뢰를 통해 발생하는 수익은 그대로 세상의 희망이 됩니다.',
-                'report_head': '활동 보고 및 제휴',
-                'link_partnership_btn': 'GLOBAL PARTNERSHIP',
-                'recruit_head': '운코 재팬과 함께하세요!',
-                'recruit_text': '당신의 뜻을 큰 순환의 일부로 만드세요.'
+                'hope_statement': '당신의 의뢰로 많은 사람들의 미소를 만들어 갑시다.',
+                'main_sub_highlight': '"타사로의 의뢰는 단순 거래로 끝나지만, 당사로의 의뢰는 더 많은 생명을 구하고 미소를 전하는 힘이 됩니다."'
             },
             'cn': {
-                'impact_message': '同样的委托，更有意义的选择。',
+                'impact_message': '您的每一份委托，都在增加被救助的人数。',
                 'main_title': '将运气与幸福带给世界。<br><span class="gold-text">人道主义经济</span>',
-                'main_sub_highlight': '"在别处是单纯的交易，在这里您的每一份委托都能拯救急需援助的生命。"',
-                'hope_statement': '您的委托带来的利润将直接转化为世界的希望。',
-                'report_head': '活动报告与合作',
-                'link_partnership_btn': 'GLOBAL PARTNERSHIP',
-                'recruit_head': '加入运幸日本！',
-                'recruit_text': '让您的志向成为大循环の一部。'
+                'hope_statement': '让您的委托，创造更多的笑脸。',
+                'main_sub_highlight': '"在别处是单纯的交易，在这里您的每一份委托都能救助更多生命，传递更多笑容。"'
             }
         };
 
