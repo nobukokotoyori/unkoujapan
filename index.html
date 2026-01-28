@@ -7,95 +7,23 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-        body {
-            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
-            background-color: #E0F7FA; 
-            background-image: none; 
-            background-attachment: scroll;
-        }
-
+        body { font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif; background-color: #E0F7FA; }
         .gold-text { color: #D4AF37; }
-        .gold-bg { background-color: #D4AF37; }
         .teal-text { color: #00A3A3; } 
         .teal-bg { background-color: #00A3A3; } 
-        .teal-border { border-color: #00A3A3; } 
-        
         ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #f1f1f1; }
         ::-webkit-scrollbar-thumb { background: #D4AF37; border-radius: 4px; }
-
-        .shadow-3xl { box-shadow: 0 35px 60px -15px rgba(0, 0, 0, 0.3); }
-
-        .slide-container {
-            position: relative;
-            height: 85vh; 
-            min-height: 550px;
-            overflow: hidden;
-        }
-        .slide-image {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0;
-            transition: opacity 1.5s ease-in-out;
-        }
+        .slide-container { position: relative; height: 85vh; min-height: 550px; overflow: hidden; }
+        .slide-image { position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1.5s ease-in-out; }
         .slide-image.active { opacity: 1; }
-        .slide-content {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            z-index: 10;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: rgba(0, 0, 0, 0.4);
-        }
-        
+        .slide-content { position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 10; display: flex; align-items: center; justify-content: center; background-color: rgba(0, 0, 0, 0.4); }
         .section-transparent { background-color: #E0F7FA; }
-        .content-card {
-            background-color: white; 
-            border-radius: 1rem;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-            border: 1px solid #ddd; 
-            transition: all 0.3s ease;
-        }
-        .content-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-        }
-
-        .bg-gray-50 { background-color: #f9fafb !important; }
-
-        .company-table th {
-            background-color: #f9fafb;
-            color: #00A3A3;
-            width: 35%;
-            padding: 1rem;
-            border-bottom: 1px solid #eee;
-        }
-        .company-table td {
-            padding: 1rem;
-            border-bottom: 1px solid #eee;
-            color: #D4AF37;
-            font-weight: 500;
-        }
-
-        /* アクセス情報の調整 */
-        .access-box {
-            background-color: #f3f4f6;
-            padding: 2rem;
-            border-radius: 0.75rem;
-            border: 1px solid #e5e7eb;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            min-height: 350px;
-            height: 100%;
-        }
+        .content-card { background-color: white; border-radius: 1rem; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); border: 1px solid #ddd; transition: all 0.3s ease; }
+        .content-card:hover { transform: translateY(-5px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); }
+        .company-table th { background-color: #f9fafb; color: #00A3A3; width: 35%; padding: 1rem; border-bottom: 1px solid #eee; }
+        .company-table td { padding: 1rem; border-bottom: 1px solid #eee; color: #D4AF37; font-weight: 500; }
+        /* アクセスボックスの高さ自動調整 */
+        .access-box { background-color: #f3f4f6; padding: 2rem; border-radius: 0.75rem; border: 1px solid #e5e7eb; display: flex; flex-direction: column; justify-content: center; align-items: center; min-height: 380px; height: 100%; }
     </style>
 </head>
 <body class="text-gray-800">
@@ -104,7 +32,7 @@
     <nav class="bg-white/95 shadow-md sticky top-0 z-50 backdrop-blur-sm text-sm">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
             <div class="flex flex-col">
-                <a href="#home" class="text-2xl font-bold teal-text">
+                <a href="#home" class="text-2xl font-bold teal-text" data-i18n="company_name_nav">
                     株式会社<span class="gold-text">運幸</span>ジャパン
                 </a>
             </div>
@@ -116,8 +44,8 @@
                 <a href="#footer" class="gold-text hover:text-[#B4941F] transition font-bold" data-i18n="nav_contact">お問い合わせ</a>
             </div>
             <div class="flex flex-col items-end">
-                <span class="text-xs gold-text font-bold text-right leading-tight" data-i18n="header_qual_no">全省庁統一資格者番号<br>第0000233096号</span>
-                <select id="lang-select" class="bg-gray-100 border border-gray-300 text-[10px] rounded px-1 py-0.5 mt-1 cursor-pointer hover:border-[#D4AF37]">
+                <span class="text-[10px] md:text-xs gold-text font-bold text-right leading-tight" data-i18n="header_qual_no">全省庁統一資格者番号<br>第0000233096号</span>
+                <select id="lang-select" class="bg-gray-100 border border-gray-300 text-[10px] rounded px-1 py-0.5 mt-1 cursor-pointer">
                     <option value="ja">日本語</option>
                     <option value="en">English</option>
                     <option value="de">Deutsch</option>
@@ -132,10 +60,8 @@
     <!-- Hero Section -->
     <section id="home" class="relative text-white">
         <div class="slide-container">
-            <img src="unkouhead.jpg" class="slide-image active" data-slide="1" alt="メインビジュアル 1">
-            <img src="unkouhead2.jpg" class="slide-image" data-slide="2" alt="メインビジュアル 2">
-            <img src="unkouhead3.jpg" class="slide-image" data-slide="3" alt="メインビジュアル 3">
-            
+            <img src="unkouhead.jpg" class="slide-image active" data-slide="1" alt="Main visual 1">
+            <img src="unkouhead2.jpg" class="slide-image" data-slide="2" alt="Main visual 2">
             <div class="slide-content">
                 <div class="container mx-auto px-4 text-center">
                     <h1 class="text-4xl md:text-8xl font-bold mb-8 drop-shadow-lg" style="color: #E0F7FA;" data-i18n="key_message_main">
@@ -144,7 +70,6 @@
                     <p class="text-2xl md:text-4xl mb-12 font-light text-white drop-shadow font-serif" data-i18n="key_message_sub1">
                         皆様の心に安らぎの光を
                     </p>
-                    
                     <button onclick="document.getElementById('services').scrollIntoView({behavior: 'smooth'})" class="bg-[#D4AF37] hover:bg-[#B4941F] text-white font-bold py-5 px-16 rounded-full shadow-2xl transition transform hover:scale-105 text-lg" data-i18n="btn_view_services">
                         事業内容を見る 
                     </button>
@@ -153,23 +78,19 @@
         </div>
     </section>
 
-    <!-- Services Ecosystem -->
+    <!-- Services Section -->
     <section id="services" class="py-16 section-transparent"> 
         <div class="container mx-auto px-4">
             <div class="content-card p-8 text-center">
-                <div class="mb-10">
-                    <h2 class="text-3xl font-bold teal-text mb-4" data-i18n="section_services_title">事業内容</h2>
-                    <p class="gold-text" data-i18n="section_services_desc">多岐にわたる専門分野で、お客様のニーズにお応えします。</p>
-                </div>
+                <h2 class="text-3xl font-bold teal-text mb-4" data-i18n="section_services_title">事業内容</h2>
+                <p class="gold-text mb-10" data-i18n="section_services_desc">多岐にわたる専門分野で、お客様のニーズにお応えします。</p>
                 <div class="flex flex-wrap justify-center gap-4 mb-12">
-                    <button onclick="filterServices('all')" class="service-filter-btn active bg-white border-2 border-[#00A3A3] text-[#00A3A3] px-6 py-2 rounded-full font-bold transition">全て表示</button>
-                    <button onclick="filterServices('domestic')" class="service-filter-btn bg-white border-2 border-[#00A3A3] text-[#00A3A3] px-6 py-2 rounded-full font-bold transition">生活サポート</button>
-                    <button onclick="filterServices('consulting')" class="service-filter-btn bg-white border-2 border-[#00A3A3] text-[#00A3A3] px-6 py-2 rounded-full font-bold transition">経営・資産コンサル</button>
-                    <button onclick="filterServices('global')" class="service-filter-btn bg-white border-2 border-[#00A3A3] text-[#00A3A3] px-6 py-2 rounded-full font-bold transition">グローバルビジネス</button>
+                    <button onclick="filterServices('all')" class="service-filter-btn active bg-white border-2 border-[#00A3A3] text-[#00A3A3] px-6 py-2 rounded-full font-bold transition" data-filter-name="all" data-i18n="filter_all">全て表示</button>
+                    <button onclick="filterServices('domestic')" class="service-filter-btn bg-white border-2 border-[#00A3A3] text-[#00A3A3] px-6 py-2 rounded-full font-bold transition" data-filter-name="domestic" data-i18n="filter_domestic">生活サポート</button>
+                    <button onclick="filterServices('consulting')" class="service-filter-btn bg-white border-2 border-[#00A3A3] text-[#00A3A3] px-6 py-2 rounded-full font-bold transition" data-filter-name="consulting" data-i18n="filter_consulting">経営コンサル</button>
+                    <button onclick="filterServices('global')" class="service-filter-btn bg-white border-2 border-[#00A3A3] text-[#00A3A3] px-6 py-2 rounded-full font-bold transition" data-filter-name="global" data-i18n="filter_global">グローバル</button>
                 </div>
-                <div id="services-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 text-left">
-                    <!-- Populated by JS -->
-                </div>
+                <div id="services-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 text-left"></div>
             </div>
         </div>
     </section>
@@ -180,13 +101,12 @@
             <h2 class="text-3xl font-bold teal-text mb-6" data-i18n="humanitarian_teaser_title">人道経済への取り組み</h2>
             <p class="max-w-4xl mx-auto gold-text text-lg mb-8 leading-relaxed" data-i18n="humanitarian_teaser_desc">
                 長年の多業種経験に基づく多角的な事業で財を成し、仲間と共にその輝きを世界の人道支援・国内の次世代支援へ。
-                <strong>想いを形にするための活動を続けています。</strong>
             </p>
             <div class="bg-gray-50 p-6 rounded-xl border-l-4 border-gold mb-10 max-w-2xl mx-auto text-left">
                 <p class="text-sm font-bold gold-text" data-i18n="teaser_charity_notice">【最新の取り組み】</p>
                 <p class="text-sm teal-text mt-1" data-i18n="teaser_charity_desc">3月SAKURA BLOOM2026企画進行中。1万人に笑顔を届ける仲間を募っています。</p>
             </div>
-            <a href="https://uzuworld.com/" target="_blank" class="inline-block bg-[#00A3A3] hover:bg-[#008282] text-white font-bold py-4 px-12 rounded-full shadow-xl transition transform hover:scale-105" data-i18n="btn_view_humanitarian">
+            <a href="https://unkou-japan.jp/humanitarian_economy" target="_blank" class="inline-block bg-[#00A3A3] hover:bg-[#008282] text-white font-bold py-4 px-12 rounded-full shadow-xl transition transform hover:scale-105" data-i18n="btn_view_humanitarian">
                 活動の詳細を見る ↗
             </a>
         </div>
@@ -195,22 +115,19 @@
     <!-- Strengths -->
     <section id="strengths" class="py-16 section-transparent">
         <div class="container mx-auto px-4 text-center">
-            <div class="mb-12">
-                <h2 class="text-3xl font-bold teal-text mb-4" data-i18n="section_strengths_title">弊社の強み</h2>
-                <p class="gold-text text-lg" data-i18n="section_strengths_desc">なぜ運幸ジャパンが選ばれるのか。私たちの3つの約束。</p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+            <h2 class="text-3xl font-bold teal-text mb-4" data-i18n="section_strengths_title">弊社の強み</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left mt-12">
                 <div class="content-card p-8 border-t-4 border-[#D4AF37]">
                     <h3 class="text-xl font-bold teal-text mb-3" data-i18n="strength1_title">誠実な価格交渉</h3>
-                    <p class="text-sm leading-relaxed gold-text" data-i18n="strength1_desc">他社様のお見積もりを拝見し、それよりも誠心誠意努力させていただきます。お客様の期待を超えるコストパフォーマンスに挑戦します。</p>
+                    <p class="text-sm leading-relaxed gold-text" data-i18n="strength1_desc">他社様のお見積もりを拝見し、それよりも誠心誠意努力させていただきます。</p>
                 </div>
                 <div class="content-card p-8 border-t-4 border-[#D4AF37]">
                     <h3 class="text-xl font-bold teal-text mb-3" data-i18n="strength2_title">世界を繋ぐ総合力</h3>
-                    <p class="text-sm leading-relaxed gold-text" data-i18n="strength2_desc">国内の生活サポートから国際的なビジネス案件までワンストップで対応。広範なグローバルネットワークが課題を解決に導きます。</p>
+                    <p class="text-sm leading-relaxed gold-text" data-i18n="strength2_desc">国内から国際案件までワンストップで対応。課題を解決に導きます。</p>
                 </div>
                 <div class="content-card p-8 border-t-4 border-[#D4AF37]">
                     <h3 class="text-xl font-bold teal-text mb-3" data-i18n="strength3_title">ニッチ分野の専門性</h3>
-                    <p class="text-sm leading-relaxed gold-text" data-i18n="strength3_desc">中古医療機器、NMN、再生医療など、独自の商流と専門知識。他社には真似できない、付加価値の高いサービスを提供します。</p>
+                    <p class="text-sm leading-relaxed gold-text" data-i18n="strength3_desc">中古医療機器、NMN、再生医療など、独自の商流と専門知識を提供します。</p>
                 </div>
             </div>
         </div>
@@ -221,31 +138,25 @@
         <div class="container mx-auto px-4">
             <div class="content-card p-8">
                 <div class="flex flex-col lg:flex-row gap-12">
-                    <!-- 左側：会社情報 -->
                     <div class="lg:w-1/2">
                         <h2 class="text-3xl font-bold teal-text mb-8" data-i18n="section_company_title">会社情報</h2>
-                        <div class="overflow-x-auto">
-                            <table class="w-full text-left border-collapse company-table">
-                                <tbody>
-                                    <tr><th data-i18n="co_name">会社名</th><td data-i18n="co_name_val">株式会社 運幸ジャパン (UNKOU Japan Co., Ltd.)</td></tr>
-                                    <tr><th data-i18n="co_rep">代表取締役</th><td data-i18n="co_rep_val">山中 歩</td></tr>
-                                    <tr><th data-i18n="co_est">設立</th><td data-i18n="co_est_val">令和6年12月23日</td></tr>
-                                    <tr><th data-i18n="co_cap">資本金</th><td data-i18n="co_cap_val">500万円</td></tr>
-                                    <tr><th data-i18n="co_qual">資格番号</th><td class="text-xs" data-i18n="co_qual_val">全省庁統一：第0000233096号<br>古物商：第307712516806号</td></tr>
-                                    <tr><th data-i18n="co_addr">所在地</th><td class="text-xs" data-i18n="co_addr_val">〒110-0005 東京都台東区上野6－1－6<br>御徒町グリーンハイツ1005号</td></tr>
-                                </tbody>
-                            </table>
-                        </div>
+                        <table class="w-full text-left border-collapse company-table">
+                            <tbody>
+                                <tr><th data-i18n="co_name">会社名</th><td data-i18n="co_name_val">株式会社 運幸ジャパン (UNKOU Japan Co., Ltd.)</td></tr>
+                                <tr><th data-i18n="co_rep">代表取締役</th><td data-i18n="co_rep_val">山中 歩</td></tr>
+                                <tr><th data-i18n="co_est">設立</th><td data-i18n="co_est_val">令和6年12月23日</td></tr>
+                                <tr><th data-i18n="co_cap">資本金</th><td data-i18n="co_cap_val">500万円</td></tr>
+                                <tr><th data-i18n="co_qual">資格番号</th><td class="text-xs" data-i18n="co_qual_val">全省庁統一：第0000233096号<br>古物商：第307712516806号<br>遺品整理士：第 IS 62039号</td></tr>
+                                <tr><th data-i18n="co_addr">所在地</th><td class="text-xs" data-i18n="co_addr_val">〒110-0005 東京都台東区上野6－1－6<br>御徒町グリーンハイツ1005号</td></tr>
+                            </tbody>
+                        </table>
                     </div>
-                    <!-- 右側：アクセス（レイアウトはみ出し調整済み） -->
                     <div class="lg:w-1/2 flex flex-col">
                         <h2 class="text-3xl font-bold teal-text mb-8" data-i18n="section_access_title">アクセス</h2>
                         <div class="access-box text-center">
                             <div class="text-5xl mb-6">📍</div>
                             <p class="font-bold teal-text text-xl mb-4" data-i18n="access_station">JR御徒町駅 徒歩圏内</p>
-                            <p class="text-sm md:text-base text-gray-600 mb-8 leading-relaxed max-w-sm mx-auto" data-i18n="access_guide">
-                                上野・御徒町エリアの拠点を中心に、国内外のご依頼に対応しています。
-                            </p>
+                            <p class="text-sm md:text-base text-gray-600 mb-8 leading-relaxed max-w-sm mx-auto" data-i18n="access_guide">上野・御徒町エリアの拠点を中心に、国内外のご依頼に対応しています。</p>
                             <a href="https://www.google.com/maps/search/?api=1&query=東京都台東区上野6－1－6" target="_blank" class="inline-block bg-[#00A3A3] text-white px-10 py-4 rounded-full font-bold shadow-lg hover:bg-[#008282] transition" data-i18n="btn_map">Google Mapsで開く ↗</a>
                         </div>
                     </div>
@@ -255,50 +166,41 @@
     </section>
 
     <!-- Footer -->
-    <footer id="footer" class="bg-[#00A3A3] text-white py-16">
-        <div class="container mx-auto px-4 text-center">
-            <h2 class="text-3xl font-bold mb-6" data-i18n="footer_cta_title">まずはご相談ください</h2>
-            <p class="mb-10 text-lg opacity-90" data-i18n="footer_cta_desc">お客様の運と幸を全力でサポートいたします。</p>
-            <div class="flex flex-col md:flex-row justify-center gap-6 mb-12">
-                <a href="mailto:helpful@unkou-japan.jp" class="bg-[#D4AF37] hover:bg-[#B4941F] text-white font-bold py-4 px-12 rounded-full shadow-xl transition flex items-center justify-center gap-2">📧 お問い合わせ</a>
-                <a href="tel:+81366667996" class="bg-white teal-text hover:bg-gray-100 font-bold py-4 px-12 rounded-full shadow-xl transition flex items-center justify-center gap-2">📞 03-6666-7996</a>
-            </div>
-            <div class="flex flex-col items-center justify-center mb-8">
-                <p class="text-sm font-bold mb-4">LINE公式アカウント</p>
-                <a href="https://lin.ee/oEpxiJf" target="_blank" class="bg-white p-3 rounded-2xl inline-block shadow-lg">
-                    <img src="unkouqr.jpg" alt="LINE QR" style="width: 130px; height: 130px;">
-                </a>
-            </div>
-            <div class="border-t border-white/20 pt-8 text-sm opacity-75 mt-8">
-                <p>&copy; 2024 株式会社運幸ジャパン (UNKOU Japan Co., Ltd.) All Rights Reserved.</p>
-            </div>
+    <footer id="footer" class="bg-[#00A3A3] text-white py-16 text-center">
+        <h2 class="text-3xl font-bold mb-6" data-i18n="footer_cta_title">まずはご相談ください</h2>
+        <div class="flex flex-col md:flex-row justify-center gap-6 mb-12">
+            <a href="mailto:helpful@unkou-japan.jp" class="bg-[#D4AF37] hover:bg-[#B4941F] text-white font-bold py-4 px-12 rounded-full" data-i18n="btn_contact_email">📧 お問い合わせ</a>
+            <a href="tel:+81366667996" class="bg-white teal-text hover:bg-gray-100 font-bold py-4 px-12 rounded-full shadow-xl">📞 03-6666-7996</a>
         </div>
+        <p class="text-sm font-bold mb-4" data-i18n="footer_line_follow">LINE公式アカウント</p>
+        <a href="https://lin.ee/oEpxiJf" target="_blank" class="bg-white p-3 rounded-2xl inline-block shadow-lg">
+            <img src="unkouqr.jpg" alt="LINE QR" style="width: 130px; height: 130px;">
+        </a>
+        <div class="border-t border-white/20 pt-8 text-sm opacity-75 mt-8">&copy; 2024 株式会社運幸ジャパン All Rights Reserved.</div>
     </footer>
 
     <script>
         const LANG_DATA = {
             'ja': {
-                'company_name': '株式会社<span class="gold-text">運幸</span>ジャパン',
+                'company_name_nav': '株式会社<span class="gold-text">運幸</span>ジャパン',
                 'header_qual_no': '全省庁統一資格者番号<br>第0000233096号',
                 'nav_home': 'ホーム', 'nav_services': '事業内容', 'nav_strengths': '弊社の強み', 'nav_company': '会社情報', 'nav_contact': 'お問い合わせ',
                 'key_message_main': 'お客様の<span class="gold-text">運</span>と<span class="gold-text">幸</span>を<br>創造するパートナー',
                 'key_message_sub1': '皆様の心に安らぎの光を',
-                'humanitarian_teaser_title': '人道経済への取り組み',
-                'humanitarian_teaser_desc': '長年の多業種経験に基づく多角的な事業で財を成し、仲間と共にその輝きを世界の人道支援・国内の次世代支援へ。<strong>想いを形にするための活動を続けています。</strong>',
-                'teaser_charity_notice': '【最新の取り組み】',
-                'teaser_charity_desc': '3月SAKURA BLOOM2026企画進行中。1万人に笑顔を届ける仲間を募っています。',
-                'btn_view_humanitarian': '活動の詳細を見る ↗',
-                'section_services_title': '事業内容',
-                'section_strengths_title': '弊社の強み', 'section_strengths_desc': 'なぜ運幸ジャパンが選ばれるのか。私たちの3つの約束。',
+                'btn_view_services': '事業内容を見る', 'section_services_title': '事業内容', 'section_services_desc': '多岐にわたる専門分野で、お客様のニーズにお応えします。',
+                'filter_all': '全て表示', 'filter_domestic': '生活サポート', 'filter_consulting': '経営コンサル', 'filter_global': 'グローバル',
+                'humanitarian_teaser_title': '人道経済への取り組み', 'humanitarian_teaser_desc': '長年の多業種経験に基づく多角的な事業で財を成し、仲間と共にその輝きを世界の人道支援・国内の次世代支援へ。',
+                'teaser_charity_notice': '【最新の取り組み】', 'teaser_charity_desc': '3月SAKURA BLOOM2026企画進行中。1万人に笑顔を届ける仲間を募っています。',
+                'btn_view_humanitarian': '活動の詳細を見る ↗', 'section_strengths_title': '弊社の強み',
                 'strength1_title': '誠実な価格交渉', 'strength1_desc': '他社様のお見積もりを拝見し、それよりも誠心誠意努力させていただきます。',
-                'strength2_title': '世界を繋ぐ総合力', 'strength2_desc': '国内から国際案件までワンストップで対応。広範なネットワークで解決。',
-                'strength3_title': 'ニッチ分野の専門性', 'strength3_desc': '医療、NMN、特殊貿易など独自の商流。他社にはない価値を提供。',
+                'strength2_title': '世界を繋ぐ総合力', 'strength2_desc': '国内から国際案件までワンストップで対応。課題を解決に導きます。',
+                'strength3_title': 'ニッチ分野の専門性', 'strength3_desc': '医療機器、NMN、特殊貿易など独自の商流。他社にはない価値を提供。',
                 'section_company_title': '会社情報', 'co_name': '会社名', 'co_rep': '代表取締役', 'co_est': '設立', 'co_cap': '資本金', 'co_qual': '資格番号', 'co_addr': '所在地',
-                'co_name_val': '株式会社 運幸ジャパン (UNKOU Japan Co., Ltd.)', 'co_rep_val': '山中 歩', 'co_est_val': '令和6年12月23日', 'co_cap_val': '500万円', 'co_qual_val': '全省庁：第0000233096号<br>古物商：第307712516806号', 'co_addr_val': '〒110-0005 東京都台東区上野6－1－6<br>御徒町グリーンハイツ1005号',
+                'co_name_val': '株式会社 運幸ジャパン (UNKOU Japan Co., Ltd.)', 'co_rep_val': '山中 歩', 'co_est_val': '令和6年12月23日', 'co_cap_val': '500万円', 'co_qual_val': '全省庁：第0000233096号<br>古物商：第307712516806号<br>遺品整理士：第 IS 62039号', 'co_addr_val': '〒110-0005 東京都台東区上野6－1－6<br>御徒町グリーンハイツ1005号',
                 'section_access_title': 'アクセス', 'access_station': 'JR御徒町駅 徒歩圏内', 'access_guide': '上野・御徒町エリアの拠点を中心に、国内外のご依頼に対応しています。', 'btn_map': 'Google Mapsで開く ↗',
-                'footer_cta_title': 'まずはご相談ください', 'footer_cta_desc': 'お客様の運と幸を全力でサポートいたします。',
+                'footer_cta_title': 'まずはご相談ください', 'footer_line_follow': 'LINE公式アカウント', 'btn_contact_email': 'お問い合わせ',
                 'services_list': [
-                    { category: 'domestic', icon: '🗑️', title: '不用品回収・遺品整理', desc: '丁寧な仕分けと回収、心に寄り添う整理を。' },
+                    { category: 'domestic', icon: '🗑️', title: '不用品回収・遺品整理', desc: '丁寧な仕分けと回収、心に寄り添う整理を。<br>遺品整理士：第 IS 62039号' },
                     { category: 'domestic', icon: '🐀', title: '害虫・害獣駆除', desc: '迅速かつ安全な駆除対応で、快適な環境を。' },
                     { category: 'domestic', icon: '☀️', title: 'ソーラーパネルライト', desc: '環境に優しい次世代エネルギーソリューション。' },
                     { category: 'domestic', icon: '🧪', title: '水質・アスベスト調査', desc: '専門的な検体業を通じ、安全な環境づくり。' },
@@ -315,36 +217,104 @@
                 ]
             },
             'en': {
+                'company_name_nav': 'UNKOU Japan Co., Ltd.',
+                'header_qual_no': 'Gov. Unified Qualification No.<br>0000233096',
                 'nav_home': 'Home', 'nav_services': 'Services', 'nav_strengths': 'Strengths', 'nav_company': 'Company', 'nav_contact': 'Contact',
-                'access_guide': 'Based in the Ueno/Okachimachi area, we handle requests domestically and globally.',
-                'teaser_charity_desc': 'March SAKURA BLOOM 2026 project in progress. Seeking partners for 10,000 smiles.'
+                'key_message_main': 'Your Partner for <span class="gold-text">Luck</span> and <span class="gold-text">Fortune</span>',
+                'key_message_sub1': 'Bringing light to your heart',
+                'btn_view_services': 'View Services', 'section_services_title': 'Our Services', 'section_services_desc': 'Responding to customer needs in a wide range of specialized fields.',
+                'filter_all': 'All', 'filter_domestic': 'Support', 'filter_consulting': 'Consulting', 'filter_global': 'Global',
+                'humanitarian_teaser_title': 'Humanitarian Initiatives', 'humanitarian_teaser_desc': 'Building wealth through diverse businesses to support global and next-generation aid.',
+                'teaser_charity_notice': '[Latest Initiative]', 'teaser_charity_desc': 'March SAKURA BLOOM 2026 project in progress. Seeking partners for 10,000 smiles.',
+                'btn_view_humanitarian': 'View Details ↗', 'section_strengths_title': 'Our Strengths',
+                'strength1_title': 'Honest Pricing', 'strength1_desc': 'We review other quotes and work sincerely to offer a better deal.',
+                'strength2_title': 'Global Synergy', 'strength2_desc': 'One-stop support from local daily needs to global business cases.',
+                'strength3_title': 'Niche Expertise', 'strength3_desc': 'Unique networks in medical devices, NMN, and regenerative medicine.',
+                'section_company_title': 'Company Info', 'co_name': 'Name', 'co_rep': 'Representative', 'co_est': 'Established', 'co_cap': 'Capital', 'co_qual': 'Qualifications', 'co_addr': 'Location',
+                'co_name_val': 'UNKOU Japan Co., Ltd.', 'co_rep_val': 'Ayumu Yamanaka', 'co_est_val': 'Dec 23, 2024', 'co_cap_val': '5 Million JPY', 'co_qual_val': 'Unified: #0000233096<br>Secondhand: #307712516806<br>Estate Org: #IS 62039', 'co_addr_val': 'Room 1005, 6-1-6 Ueno, Taito-ku, Tokyo',
+                'section_access_title': 'Access', 'access_station': 'Walk from JR Okachimachi Station', 'access_guide': 'Serving clients domestically and globally from our Ueno base.', 'btn_map': 'Open Google Maps ↗',
+                'footer_cta_title': 'Contact Us First', 'footer_line_follow': 'LINE Official Account', 'btn_contact_email': 'Email Us',
+                'services_list': [
+                    { category: 'domestic', icon: '🗑️', title: 'Estate Disposal', desc: 'Careful sorting and removal services.<br>Organizer No. IS 62039' },
+                    { category: 'domestic', icon: '🐀', title: 'Pest Control', desc: 'Swift and safe extermination for a clean environment.' },
+                    { category: 'domestic', icon: '☀️', title: 'Solar Solutions', desc: 'Eco-friendly next-gen energy solutions.' },
+                    { category: 'domestic', icon: '🧪', title: 'Testing Services', desc: 'Professional water quality and asbestos testing.' },
+                    { category: 'domestic', icon: '🤝', title: 'Humanitarian', desc: 'Our mission to bring smiles to the world.' },
+                    { category: 'consulting', icon: '🏢', title: 'Real Estate', desc: 'Maximizing property value via strategic trade.' },
+                    { category: 'consulting', icon: '🕵️', title: 'Investigation', desc: 'Confidential services to solve your concerns.' },
+                    { category: 'consulting', icon: '🤝', title: 'M&A Support', desc: 'Specialized valuation and acquisition support.' },
+                    { category: 'consulting', icon: '🔗', title: 'Joint Consulting', desc: 'Strengthening corporate ties for new value.' },
+                    { category: 'global', icon: '🏥', title: 'Medical Export', desc: 'Exporting high-quality used Japanese devices.' },
+                    { category: 'global', icon: '🚗', title: 'Auto Parts', desc: 'Proper recycling and global export of parts.' },
+                    { category: 'global', icon: '💊', title: 'NMN Supplements', desc: 'Opening global sales routes for health products.' },
+                    { category: 'global', icon: '🍣', title: 'Fresh Tuna', desc: 'Fresh direct from Aomori at competitive prices.' },
+                    { category: 'global', icon: '🧬', title: 'Regen. Med.', desc: 'Sales consulting for advanced stem cell therapy.' }
+                ]
             },
-            'de': { 'nav_home': 'Startseite', 'nav_services': 'Leistungen', 'nav_strengths': 'Stärken', 'nav_company': 'Unternehmen', 'nav_contact': 'Kontakt' },
-            'th': { 'nav_home': 'หน้าแรก', 'nav_services': 'ธุรกิจของเรา', 'nav_strengths': 'จุดแข็งของเรา', 'nav_company': 'ข้อมูลบริษัท', 'nav_contact': 'ติดต่อสอบถาม' },
-            'kr': { 'nav_home': '홈', 'nav_services': '사업내용', 'nav_strengths': '우리의 강점', 'nav_company': '회사정보', 'nav_contact': '문의하기' },
-            'cn': { 'nav_home': '首页', 'nav_services': '业务内容', 'nav_strengths': '公司优势', 'nav_company': '公司信息', 'nav_contact': '联系我们' }
+            'de': {
+                'company_name_nav': 'UNKOU Japan Co., Ltd.', 'nav_home': 'Startseite', 'nav_services': 'Leistungen', 'nav_strengths': 'Stärken', 'nav_company': 'Unternehmen', 'nav_contact': 'Kontakt',
+                'header_qual_no': 'Zertifizierungsnummer<br>Nr. 0000233096',
+                'key_message_main': 'Ihr Partner für <span class="gold-text">Glück</span> und <span class="gold-text">Erfolg</span>',
+                'teaser_charity_desc': 'Projekt März SAKURA BLOOM 2026 läuft. Wir suchen Partner für 10.000 Lächeln.',
+                'section_company_title': 'Unternehmensinfo', 'footer_cta_title': 'Kontaktieren Sie uns',
+                'services_list': [
+                    { category: 'domestic', icon: '🗑️', title: 'Entrümpelung', desc: 'Sorgfältige Sortierung und Nachlassregelung.' },
+                    { category: 'global', icon: '🏥', title: 'Medizintechnik', desc: 'Export hochwertiger japanischer Geräte.' },
+                    { category: 'global', icon: '🍣', title: 'Thunfisch-Direkt', desc: 'Frische aus Aomori direkt und günstig.' }
+                ]
+            },
+            'th': {
+                'company_name_nav': 'บจก. อุนโค เจแปน', 'nav_home': 'หน้าแรก', 'nav_services': 'บริการ', 'nav_strengths': 'จุดแข็ง', 'nav_company': 'ข้อมูลบริษัท', 'nav_contact': 'ติดต่อ',
+                'header_qual_no': 'หมายเลขรับรองรัฐบาล<br>0000233096',
+                'key_message_main': 'พันธมิตรเพื่อสร้าง <span class="gold-text">โชค</span> และ <span class="gold-text">ความสุข</span>',
+                'teaser_charity_desc': 'โครงการ SAKURA BLOOM มีนาคม 2026 กำลังดำเนินการ รับสมัครพันธมิตรเพื่อรอยยิ้ม 10,000 คน',
+                'section_company_title': 'ข้อมูลบริษัท', 'footer_cta_title': 'ติดต่อสอบถาม',
+                'services_list': [
+                    { category: 'domestic', icon: '🗑️', title: 'จัดการของเสีย', desc: 'คัดแยกและจัดระเบียบทรัพย์สินอย่างมืออาชีพ' },
+                    { category: 'global', icon: '🏥', title: 'ส่งออกเครื่องมือแพทย์', desc: 'เครื่องมือแพทย์มือสองคุณภาพสูงจากญี่ปุ่น' },
+                    { category: 'global', icon: '🍣', title: 'ธุรกิจทูน่าสด', desc: 'ส่งตรงความสดจากอาโอโมริในราคาย่อมเยา' }
+                ]
+            },
+            'kr': {
+                'company_name_nav': '주식회사 운코 재팬', 'nav_home': '홈', 'nav_services': '사업내용', 'nav_strengths': '강점', 'nav_company': '회사정보', 'nav_contact': '문의',
+                'header_qual_no': '전성청 통일 자격자 번호<br>제0000233096호',
+                'key_message_main': '고객님의 <span class="gold-text">운</span>과 <span class="gold-text">행복</span>을 창조하는 파트너',
+                'teaser_charity_desc': '3월 SAKURA BLOOM 2026 기획 진행 중. 1만 명에게 미소를 전할 동료를 모집합니다.',
+                'section_company_title': '회사정보', 'footer_cta_title': '문의하기',
+                'services_list': [
+                    { category: 'domestic', icon: '🗑️', title: '불용품/유품 정리', desc: '정성어린 분류와 수거를 도와드립니다.' },
+                    { category: 'global', icon: '🏥', title: '중고 의료기기', desc: '일본의 고품질 의료기기를 세계로.' },
+                    { category: 'global', icon: '🍣', title: '참치 직판', desc: '아오모리 직송의 신선함을 저렴하게 공급.' }
+                ]
+            },
+            'cn': {
+                'company_name_nav': '运幸日本株式会社', 'nav_home': '首页', 'nav_services': '业务内容', 'nav_strengths': '核心优势', 'nav_company': '公司信息', 'nav_contact': '咨询',
+                'header_qual_no': '全省厅统一资格证号码<br>0000233096',
+                'key_message_main': '为您创造 <span class="gold-text">运气</span> 与 <span class="gold-text">幸福</span> 的伙伴',
+                'teaser_charity_desc': '3月 SAKURA BLOOM 2026 项目进行中。诚邀伙伴共同为1万人带去笑容。',
+                'section_company_title': '公司信息', 'footer_cta_title': '欢迎咨询',
+                'services_list': [
+                    { category: 'domestic', icon: '🗑️', title: '废品/遗物整理', desc: '细致分类与回收，用心整理。' },
+                    { category: 'global', icon: '🏥', title: '二手医疗器械', desc: '将日本的高品质器械销往世界。' },
+                    { category: 'global', icon: '🍣', title: '生鲜金槍魚', desc: '青森直送，价廉物美。' }
+                ]
+            }
         };
 
         let currentFilter = 'all';
-
         function filterServices(filter = currentFilter, lang = document.getElementById('lang-select').value) {
             currentFilter = filter;
             const grid = document.getElementById('services-grid');
             if(!grid) return;
             grid.innerHTML = '';
-            const langData = LANG_DATA[lang] || LANG_DATA['ja'];
-            const servicesList = langData.services_list || LANG_DATA['ja'].services_list;
-            
-            const filteredData = filter === 'all' ? servicesList : servicesList.filter(item => item.category === filter);
-
-            filteredData.forEach(item => {
+            const data = LANG_DATA[lang] || LANG_DATA['ja'];
+            const list = data.services_list || LANG_DATA['ja'].services_list;
+            const filtered = filter === 'all' ? list : list.filter(i => i.category === filter);
+            filtered.forEach(item => {
                 const card = document.createElement('div');
                 card.className = "content-card p-6 border-t-4 border-[#00A3A3] flex flex-col items-center text-center cursor-pointer";
-                card.innerHTML = `
-                    <div class="text-4xl mb-4 bg-gray-50 p-4 rounded-full w-20 h-20 flex items-center justify-center">${item.icon}</div> 
-                    <h3 class="font-bold text-lg mb-2 gold-text">${item.title}</h3>
-                    <p class="text-sm gold-text">${item.desc}</p>
-                `;
+                if (item.link) card.onclick = () => window.location.href = item.link;
+                card.innerHTML = `<div class="text-4xl mb-4 bg-gray-50 p-4 rounded-full w-20 h-20 flex items-center justify-center">${item.icon}</div><h3 class="font-bold text-lg mb-2 gold-text">${item.title}</h3><p class="text-sm gold-text">${item.desc}</p>`;
                 grid.appendChild(card);
             });
         }
@@ -358,20 +328,17 @@
             filterServices(currentFilter, lang);
         }
 
-        let currentSlide = 0;
-        const slides = ['unkouhead.jpg', 'unkouhead2.jpg', 'unkouhead3.jpg'];
-        function nextSlide() {
-            const images = document.querySelectorAll('.slide-image');
-            if(images.length === 0) return;
-            images[currentSlide].classList.remove('active');
-            currentSlide = (currentSlide + 1) % images.length;
-            images[currentSlide].classList.add('active');
-        }
-
+        document.getElementById('lang-select').addEventListener('change', (e) => updateLanguage(e.target.value));
         document.addEventListener('DOMContentLoaded', () => {
             updateLanguage('ja');
-            document.getElementById('lang-select').addEventListener('change', (e) => updateLanguage(e.target.value));
-            setInterval(nextSlide, 3500);
+            let currentSlide = 0;
+            setInterval(() => {
+                const images = document.querySelectorAll('.slide-image');
+                if(!images.length) return;
+                images[currentSlide].classList.remove('active');
+                currentSlide = (currentSlide + 1) % images.length;
+                images[currentSlide].classList.add('active');
+            }, 3500);
         });
     </script>
 </body>
