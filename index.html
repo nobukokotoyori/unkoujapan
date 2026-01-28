@@ -82,6 +82,20 @@
             color: #D4AF37;
             font-weight: 500;
         }
+
+        /* アクセス情報の調整 */
+        .access-box {
+            background-color: #f3f4f6;
+            padding: 2rem;
+            border-radius: 0.75rem;
+            border: 1px solid #e5e7eb;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 350px;
+            height: 100%;
+        }
     </style>
 </head>
 <body class="text-gray-800">
@@ -124,7 +138,6 @@
             
             <div class="slide-content">
                 <div class="container mx-auto px-4 text-center">
-                    <!-- メッセージを整理し、メインコピーを強調 -->
                     <h1 class="text-4xl md:text-8xl font-bold mb-8 drop-shadow-lg" style="color: #E0F7FA;" data-i18n="key_message_main">
                         お客様の<span class="gold-text">運</span>と<span class="gold-text">幸</span>を<br>創造するパートナー
                     </h1>
@@ -203,11 +216,12 @@
         </div>
     </section>
 
-    <!-- Company Info -->
+    <!-- Company Info & Access -->
     <section id="company" class="py-16 section-transparent">
         <div class="container mx-auto px-4">
             <div class="content-card p-8">
                 <div class="flex flex-col lg:flex-row gap-12">
+                    <!-- 左側：会社情報 -->
                     <div class="lg:w-1/2">
                         <h2 class="text-3xl font-bold teal-text mb-8" data-i18n="section_company_title">会社情報</h2>
                         <div class="overflow-x-auto">
@@ -223,12 +237,15 @@
                             </table>
                         </div>
                     </div>
-                    <div class="lg:w-1/2">
+                    <!-- 右側：アクセス（レイアウトはみ出し調整済み） -->
+                    <div class="lg:w-1/2 flex flex-col">
                         <h2 class="text-3xl font-bold teal-text mb-8" data-i18n="section_access_title">アクセス</h2>
-                        <div class="bg-gray-100 p-8 rounded-xl text-center border border-gray-200 h-full flex flex-col justify-center">
+                        <div class="access-box text-center">
                             <div class="text-5xl mb-6">📍</div>
-                            <p class="font-bold teal-text text-lg mb-2" data-i18n="access_station">JR御徒町駅 徒歩圏内</p>
-                            <p class="text-sm text-gray-600 mb-8" data-i18n="access_guide">上野・御徒町エリアの拠点を中心に、国内外のご依頼に対応しています。</p>
+                            <p class="font-bold teal-text text-xl mb-4" data-i18n="access_station">JR御徒町駅 徒歩圏内</p>
+                            <p class="text-sm md:text-base text-gray-600 mb-8 leading-relaxed max-w-sm mx-auto" data-i18n="access_guide">
+                                上野・御徒町エリアの拠点を中心に、国内外のご依頼に対応しています。
+                            </p>
                             <a href="https://www.google.com/maps/search/?api=1&query=東京都台東区上野6－1－6" target="_blank" class="inline-block bg-[#00A3A3] text-white px-10 py-4 rounded-full font-bold shadow-lg hover:bg-[#008282] transition" data-i18n="btn_map">Google Mapsで開く ↗</a>
                         </div>
                     </div>
@@ -278,7 +295,7 @@
                 'strength3_title': 'ニッチ分野の専門性', 'strength3_desc': '医療、NMN、特殊貿易など独自の商流。他社にはない価値を提供。',
                 'section_company_title': '会社情報', 'co_name': '会社名', 'co_rep': '代表取締役', 'co_est': '設立', 'co_cap': '資本金', 'co_qual': '資格番号', 'co_addr': '所在地',
                 'co_name_val': '株式会社 運幸ジャパン (UNKOU Japan Co., Ltd.)', 'co_rep_val': '山中 歩', 'co_est_val': '令和6年12月23日', 'co_cap_val': '500万円', 'co_qual_val': '全省庁：第0000233096号<br>古物商：第307712516806号', 'co_addr_val': '〒110-0005 東京都台東区上野6－1－6<br>御徒町グリーンハイツ1005号',
-                'section_access_title': 'アクセス', 'access_station': 'JR御徒町駅 徒歩圏内', 'btn_map': 'Google Mapsで開く ↗',
+                'section_access_title': 'アクセス', 'access_station': 'JR御徒町駅 徒歩圏内', 'access_guide': '上野・御徒町エリアの拠点を中心に、国内外のご依頼に対応しています。', 'btn_map': 'Google Mapsで開く ↗',
                 'footer_cta_title': 'まずはご相談ください', 'footer_cta_desc': 'お客様の運と幸を全力でサポートいたします。',
                 'services_list': [
                     { category: 'domestic', icon: '🗑️', title: '不用品回収・遺品整理', desc: '丁寧な仕分けと回収、心に寄り添う整理を。' },
@@ -299,22 +316,13 @@
             },
             'en': {
                 'nav_home': 'Home', 'nav_services': 'Services', 'nav_strengths': 'Strengths', 'nav_company': 'Company', 'nav_contact': 'Contact',
-                'key_message_main': 'Your Partner for <span class="gold-text">Luck</span> and <span class="gold-text">Fortune</span>',
-                'key_message_sub1': 'Bringing light to your heart',
-                'teaser_charity_desc': 'March SAKURA BLOOM 2026 project in progress. Seeking partners to bring smiles to 10,000 people.'
+                'access_guide': 'Based in the Ueno/Okachimachi area, we handle requests domestically and globally.',
+                'teaser_charity_desc': 'March SAKURA BLOOM 2026 project in progress. Seeking partners for 10,000 smiles.'
             },
-            'de': {
-                'nav_home': 'Startseite', 'nav_services': 'Leistungen', 'nav_strengths': 'Stärken', 'nav_company': 'Unternehmen', 'nav_contact': 'Kontakt'
-            },
-            'th': {
-                'nav_home': 'หน้าแรก', 'nav_services': 'ธุรกิจของเรา', 'nav_strengths': 'จุดแข็งของเรา', 'nav_company': 'ข้อมูลบริษัท', 'nav_contact': 'ติดต่อสอบถาม'
-            },
-            'kr': {
-                'nav_home': '홈', 'nav_services': '사업내용', 'nav_strengths': '우리의 강점', 'nav_company': '회사정보', 'nav_contact': '문의하기'
-            },
-            'cn': {
-                'nav_home': '首页', 'nav_services': '业务内容', 'nav_strengths': '公司优势', 'nav_company': '公司信息', 'nav_contact': '联系我们'
-            }
+            'de': { 'nav_home': 'Startseite', 'nav_services': 'Leistungen', 'nav_strengths': 'Stärken', 'nav_company': 'Unternehmen', 'nav_contact': 'Kontakt' },
+            'th': { 'nav_home': 'หน้าแรก', 'nav_services': 'ธุรกิจของเรา', 'nav_strengths': 'จุดแข็งของเรา', 'nav_company': 'ข้อมูลบริษัท', 'nav_contact': 'ติดต่อสอบถาม' },
+            'kr': { 'nav_home': '홈', 'nav_services': '사업내용', 'nav_strengths': '우리의 강점', 'nav_company': '회사정보', 'nav_contact': '문의하기' },
+            'cn': { 'nav_home': '首页', 'nav_services': '业务内容', 'nav_strengths': '公司优势', 'nav_company': '公司信息', 'nav_contact': '联系我们' }
         };
 
         let currentFilter = 'all';
