@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MACOMO by MACCO | The Great Harmonizer</title>
+    
+    <!-- Tailwind CSS (with JIT enabled by default via CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['"Shippori Mincho"', '"Cormorant Garamond"', 'serif'],
+                        sans: ['"Helvetica Neue"', 'Arial', 'sans-serif'],
+                    },
+                    colors: {
+                        macomo: {
+                            dark: '#2c3e30',
+                            light: '#5d7c65',
+                            accent: '#d4af37',
+                            bg: '#Fdfbf7',
+                            footer: '#1a261d'
+                        }
+                    },
+                    letterSpacing: {
+                        widest: '.2em',
+                        superwide: '.3em',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Fade In Animation */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 1000ms ease-out, transform 1000ms ease-out;
+            will-change: opacity, transform;
+        }
+        
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Group Hover Scale */
+        .group:hover .group-hover\:scale-x-100 {
+            transform: scaleX(1);
+        }
+        
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #Fdfbf7; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2c3e30; 
+            border-radius: 4px;
+        }
+
+        /* Nav Link Active State */
+        .nav-link.active {
+            color: #d4af37;
+            opacity: 1;
+        }
+
+        /* Language Switcher Active State */
+        .lang-btn.active {
+            font-weight: bold;
+            opacity: 1;
+            text-decoration: underline;
+            text-underline-offset: 4px;
+            text-decoration-color: #d4af37;
+        }
+
+        /* Mobile Menu Animation */
+        #mobile-menu {
+            transition: opacity 0.3s ease-in-out, visibility 0.3s;
+        }
+        #mobile-menu.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+        #mobile-menu.active {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
+    </style>
+</head>
+<body class="font-serif bg-macomo-bg text-macomo-dark overflow-x-hidden w-full antialiased">
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-500 pt-10 pb-6 text-white">
+        <div class="w-full px-4 md:px-8 flex justify-between items-center relative z-50">
+            <!-- Logo -->
+            <div class="text-xl font-bold tracking-widest uppercase cursor-pointer hover:opacity-80 transition-opacity flex-shrink-0" onclick="window.scrollTo(0,0)">
+                MACOMO <span class="font-light text-xs ml-1 opacity-80 font-sans">by MACCO</span>
+            </div>
+            
+            <!-- Desktop Menu -->
+            <div class="hidden lg:flex space-x-8">
+                <a href="#philosophy" class="nav-link text-sm tracking-widest hover:text-macomo-accent transition-colors opacity-90" data-i18n="nav.philosophy">PHILOSOPHY</a>
+                <a href="#history" class="nav-link text-sm tracking-widest hover:text-macomo-accent transition-colors opacity-90" data-i18n="nav.history">HISTORY</a>
+                <a href="#harmony" class="nav-link text-sm tracking-widest hover:text-macomo-accent transition-colors opacity-90" data-i18n="nav.harmony">HARMONY</a>
+                <a href="#founder" class="nav-link text-sm tracking-widest hover:text-macomo-accent transition-colors opacity-90" data-i18n="nav.founder">FOUNDER</a>
+            </div>
+
+            <!-- Right Side Controls (Lang & Shop & Hamburger) -->
+            <div class="flex items-center gap-4 md:gap-6">
+                <!-- Desktop Language & Shop -->
+                <div class="hidden lg:flex items-center gap-6">
+                    <div class="flex text-[10px] tracking-widest font-sans gap-2 opacity-90">
+                        <button onclick="setLanguage('ja')" class="lang-btn hover:text-macomo-accent transition-colors active" id="btn-ja">JAPANESE</button>
+                        <span class="opacity-50 font-light">|</span>
+                        <button onclick="setLanguage('en')" class="lang-btn hover:text-macomo-accent transition-colors opacity-60" id="btn-en">ENGLISH</button>
+                        <span class="opacity-50 font-light">|</span>
+                        <button onclick="setLanguage('fr')" class="lang-btn hover:text-macomo-accent transition-colors opacity-60" id="btn-fr">FRENCH</button>
+                    </div>
+                    
+                    <button class="px-6 py-2 border border-white text-xs tracking-widest hover:bg-white hover:text-macomo-dark transition-colors duration-300" data-i18n="nav.shop">
+                        GLOBAL SHOP
+                    </button>
+                </div>
+
+                <!-- Mobile Hamburger Button -->
+                <button id="menu-btn" class="lg:hidden p-2 text-white focus:outline-none z-50">
+                    <i data-lucide="menu" class="w-8 h-8"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu" class="fixed inset-0 bg-macomo-dark/95 backdrop-blur-xl z-40 flex flex-col items-center justify-center hidden">
+            <!-- Mobile Menu Links -->
+            <div class="flex flex-col items-center space-y-8 text-xl font-light tracking-widest">
+                <a href="#philosophy" class="mobile-link hover:text-macomo-accent transition-colors" onclick="toggleMenu()" data-i18n="nav.philosophy">PHILOSOPHY</a>
+                <a href="#history" class="mobile-link hover:text-macomo-accent transition-colors" onclick="toggleMenu()" data-i18n="nav.history">HISTORY</a>
+                <a href="#harmony" class="mobile-link hover:text-macomo-accent transition-colors" onclick="toggleMenu()" data-i18n="nav.harmony">HARMONY</a>
+                <a href="#founder" class="mobile-link hover:text-macomo-accent transition-colors" onclick="toggleMenu()" data-i18n="nav.founder">FOUNDER</a>
+                <a href="#" class="mobile-link text-macomo-accent border-b border-macomo-accent pb-1 mt-4" data-i18n="nav.shop">GLOBAL SHOP</a>
+            </div>
+
+            <!-- Mobile Language Selector -->
+            <div class="mt-16 flex text-xs tracking-widest font-sans gap-4 opacity-80">
+                <button onclick="setLanguage('ja')" class="lang-btn hover:text-macomo-accent transition-colors active" id="btn-mob-ja">JP</button>
+                <span class="opacity-30">|</span>
+                <button onclick="setLanguage('en')" class="lang-btn hover:text-macomo-accent transition-colors opacity-60" id="btn-mob-en">EN</button>
+                <span class="opacity-30">|</span>
+                <button onclick="setLanguage('fr')" class="lang-btn hover:text-macomo-accent transition-colors opacity-60" id="btn-mob-fr">FR</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <!-- Changed background color to match macomo.jpg tone for mobile view padding areas -->
+    <!-- Changed layout to flex-col for mobile centering/top alignment -->
+    <section class="relative h-screen flex flex-col md:flex-row items-start md:items-center justify-center overflow-hidden bg-[#5d7c65]">
+        <div class="absolute inset-0 z-0">
+            <!-- 
+                Mobile: object-contain object-bottom -> Show full logo, place at bottom 
+                Desktop: object-cover object-center -> Cover full screen
+            -->
+            <img 
+                src="macomo.jpg" 
+                alt="MACOMO Brand Image" 
+                class="w-full h-full object-contain object-bottom md:object-cover md:object-center animate-[pulse_10s_ease-in-out_infinite]"
+            />
+            <div class="absolute inset-0 bg-gradient-to-b from-macomo-dark/60 via-macomo-dark/20 to-transparent md:from-macomo-dark/40 md:via-macomo-dark/20 md:to-macomo-dark/80"></div>
+        </div>
+
+        <!-- 
+            Mobile: padding-top added (pt-40) to move text up, items-start to align top
+            Desktop: items-center (default centering)
+        -->
+        <div class="relative z-10 text-center text-white px-4 max-w-5xl mx-auto w-full pt-40 md:pt-0">
+            <div class="fade-in-section delay-[200ms]">
+                <p class="text-sm md:text-base tracking-superwide uppercase mb-4 opacity-90 font-sans" data-i18n="hero.subtitle">
+                    The Japanese Healing Plant
+                </p>
+            </div>
+            
+            <div class="fade-in-section delay-[400ms]">
+                <h1 class="text-3xl md:text-5xl lg:text-6xl font-medium leading-tight mb-8 drop-shadow-lg" data-i18n="hero.title">
+                    人と地球を癒し、<br/>世界を調和へ導く植物<br>
+                    <span class="text-5xl md:text-7xl lg:text-8xl mt-4 block">真菰</span>
+                </h1>
+            </div>
+
+            <div class="fade-in-section delay-[600ms]">
+                <p class="text-lg md:text-xl font-light tracking-wide italic opacity-90 mb-12 font-serif" data-i18n="hero.desc">
+                    Illuminating the Truth, Purifying the World.
+                </p>
+            </div>
+
+            <div class="fade-in-section delay-[800ms]">
+                <div class="animate-bounce mt-10 md:mt-20">
+                    <span class="block w-[1px] h-20 bg-white mx-auto"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Philosophy Section -->
+    <section id="philosophy" class="py-24 px-6 md:px-12 bg-macomo-bg relative section-spy">
+        <div class="max-w-5xl mx-auto">
+            <div class="fade-in-section">
+                <div class="flex flex-col md:flex-row items-center md:items-start gap-12 lg:gap-20">
+                    <div class="md:w-1/2 relative group">
+                        <div class="absolute -top-4 -left-4 w-full h-full border border-macomo-dark/10 z-0 transition-transform duration-700 group-hover:translate-x-2 group-hover:translate-y-2"></div>
+                        <!-- Reverted image to original peaceful water -->
+                        <img 
+                            src="https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=80" 
+                            alt="Peaceful water" 
+                            class="relative z-10 w-full h-[500px] object-cover shadow-xl grayscale-[20%] transition-all duration-1000 group-hover:grayscale-0"
+                        />
+                    </div>
+                    <div class="md:w-1/2 flex flex-col justify-center h-full pt-10 md:pt-0">
+                        <h2 class="text-3xl lg:text-3xl font-medium mb-8 leading-relaxed text-macomo-dark" data-i18n="philo.title">
+                            ― 真を照らし、世界を浄化する真菰 ―
+                        </h2>
+                        <div class="space-y-6 text-base leading-loose text-gray-700 font-light">
+                            <p data-i18n="philo.text1">
+                                世界が混乱し、心と身体のバランスを崩す人が増えている今。<br>私たちは外側に答えを求め、戦い続けてきました。
+                            </p>
+                            <p data-i18n="philo.text2">
+                                しかし今、本当に必要なのは「強さ」ではなく、<br>本来の自分へ還る <strong class="font-medium text-macomo-dark">「調和の力」</strong> です。
+                            </p>
+                            <p data-i18n="philo.text3">
+                                真菰は、日本古来から<br>
+                                浄化・再生・調和を象徴してきた植物。<br>
+                                「神の草」とも呼ばれ、<br>
+                                他の菌と対立せず、調和する菌を持つ<br>
+                                唯一の存在です。
+                            </p>
+                            <div class="mt-8 pl-6 border-l-2 border-macomo-accent">
+                                <p class="text-macomo-dark font-medium italic text-lg font-serif" data-i18n="philo.quote">
+                                    私たちが本来の自分へ還るために<br>
+                                    静かに思い出させてくれる植物。<br>
+                                    それが真菰です。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Plant / History Section -->
+    <section id="history" class="py-24 bg-macomo-dark text-white relative overflow-hidden section-spy">
+        <div class="absolute inset-0 opacity-5 bg-[url('https://www.transparenttextures.com/patterns/washi.png')]"></div>
+        
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="fade-in-section">
+                <div class="text-center mb-16">
+                    <span class="text-macomo-light tracking-widest text-sm uppercase font-sans" data-i18n="hist.subtitle">The Sacred Plant</span>
+                    <h2 class="text-4xl md:text-5xl font-medium mt-4" data-i18n="hist.title">神の草 — Makomo</h2>
+                    <p class="mt-6 text-gray-300 font-light leading-relaxed max-w-2xl mx-auto" data-i18n="hist.desc">
+                        神話の時代、<span class="text-white border-b border-macomo-accent/50 pb-1">素戔嗚（スサノオ）が最初に地上に植えた植物</span>と伝えられています。<br>
+                        縄文時代より日本人の生活に深く根付き、私たちを守り続けてきた聖なる存在です。
+                    </p>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-12 max-w-6xl mx-auto">
+                <!-- Item 1 -->
+                <div class="fade-in-section delay-[200ms] h-full">
+                    <div class="text-center p-10 border border-white/10 bg-white/5 hover:bg-white/10 transition-colors duration-500 rounded-sm h-full flex flex-col items-center group">
+                        <i data-lucide="sun" class="w-10 h-10 text-macomo-accent mb-6 stroke-1 group-hover:rotate-180 transition-transform duration-700"></i>
+                        <h3 class="text-xl font-medium mb-4 tracking-wide" data-i18n="hist.item1.title">縄文からの記憶</h3>
+                        <p class="text-sm leading-8 text-gray-300 font-light" data-i18n="hist.item1.desc">
+                            1億年前から姿を変えず、縄文時代より衣食住すべてにおいて日本人の生活を支えてきました。米よりも古く、日本人のDNAに刻まれた「根源」の植物です。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="fade-in-section delay-[400ms] h-full">
+                    <div class="text-center p-10 border border-white/10 bg-white/5 hover:bg-white/10 transition-colors duration-500 rounded-sm h-full flex flex-col items-center group">
+                        <div class="w-10 h-10 rounded-full border border-macomo-accent flex items-center justify-center text-macomo-accent font-serif mb-6 text-lg group-hover:bg-macomo-accent group-hover:text-macomo-dark transition-all duration-500">祓</div>
+                        <h3 class="text-xl font-medium mb-4 tracking-wide" data-i18n="hist.item2.title">浄化と神事</h3>
+                        <p class="text-sm leading-8 text-gray-300 font-light" data-i18n="hist.item2.desc">
+                            <span class="text-white">「払いたまえ、清めたまえ」</span>。出雲大社では今も「マコモ祭」が執り行われ、その強力な浄化の力は神事に欠かせないものとして受け継がれています。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="fade-in-section delay-[600ms] h-full">
+                    <div class="text-center p-10 border border-white/10 bg-white/5 hover:bg-white/10 transition-colors duration-500 rounded-sm h-full flex flex-col items-center group">
+                        <i data-lucide="leaf" class="w-10 h-10 text-macomo-accent mb-6 stroke-1 group-hover:scale-110 transition-transform duration-500"></i>
+                        <h3 class="text-xl font-medium mb-4 tracking-wide" data-i18n="hist.item3.title">再生の象徴</h3>
+                        <p class="text-sm leading-8 text-gray-300 font-light" data-i18n="hist.item3.desc">
+                            泥の中に根を張りながら、天に向かって真っ直ぐに伸びる姿。混沌とした現代において、本来の自分へと「再生」する力を与えてくれます。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Science / Harmony Bacteria Section -->
+    <section id="harmony" class="py-24 px-6 relative overflow-hidden section-spy">
+        <div class="absolute top-0 right-0 w-64 h-64 bg-macomo-light/10 rounded-full blur-3xl -z-10 animate-pulse"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-macomo-accent/5 rounded-full blur-3xl -z-10 animate-pulse"></div>
+
+        <div class="max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="fade-in-section">
+                    <div class="relative p-4">
+                        <div class="absolute -top-0 -left-0 w-20 h-20 border-t-2 border-l-2 border-macomo-accent/50"></div>
+                        <div class="absolute -bottom-0 -right-0 w-20 h-20 border-b-2 border-r-2 border-macomo-accent/50"></div>
+                        
+                        <h2 class="text-3xl md:text-5xl font-medium leading-tight mb-6 mt-4">
+                            <span class="text-xs block tracking-widest text-macomo-light mb-4 uppercase font-sans" data-i18n="sci.subtitle">The Science of Harmony</span>
+                            <span data-i18n="sci.title">
+                            水と土地にやさしく働きかけ、<br>
+                            本来の清らかさを呼び覚ます真菰。
+                            </span>
+                        </h2>
+                        <div class="bg-white p-8 shadow-sm border-l-4 border-macomo-accent italic text-gray-600 leading-relaxed font-serif hover:shadow-md transition-shadow duration-300" data-i18n="sci.quote">
+                            真菰は、水辺の環境を整えながら、<br>
+                            微生物と共生し、<br>
+                            場の循環を高める植物とされてきました。
+                        </div>
+                    </div>
+                </div>
+
+                <div class="fade-in-section delay-[300ms]">
+                    <div class="space-y-8">
+                        <div class="flex items-start gap-6 group hover:translate-x-2 transition-transform duration-300">
+                            <div class="bg-macomo-dark p-4 rounded-full text-white mt-1 group-hover:bg-macomo-accent transition-colors duration-300">
+                                <i data-lucide="droplets" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold mb-2 tracking-wide text-macomo-dark" data-i18n="sci.item1.title">水の浄化 <span class="text-sm font-normal text-gray-500 font-sans ml-2">Water Purification</span></h4>
+                                <p class="text-sm text-gray-600 leading-relaxed" data-i18n="sci.item1.desc">真菰が生息する水辺は、その強力な浄化作用により水質が劇的に改善されます。</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-6 group hover:translate-x-2 transition-transform duration-300">
+                            <div class="bg-macomo-dark p-4 rounded-full text-white mt-1 group-hover:bg-macomo-accent transition-colors duration-300">
+                                <i data-lucide="wind" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold mb-2 tracking-wide text-macomo-dark" data-i18n="sci.item2.title">場の浄化 <span class="text-sm font-normal text-gray-500 font-sans ml-2">Spiritual Sanctuary</span></h4>
+                                <p class="text-sm text-gray-600 leading-relaxed" data-i18n="sci.item2.desc">空気を整え、ネガティブなエネルギーを中和する「聖域」を作り出します。</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-6 group hover:translate-x-2 transition-transform duration-300">
+                            <div class="bg-macomo-dark p-4 rounded-full text-white mt-1 group-hover:bg-macomo-accent transition-colors duration-300">
+                                <i data-lucide="globe" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold mb-2 tracking-wide text-macomo-dark" data-i18n="sci.item3.title">体内浄化 <span class="text-sm font-normal text-gray-500 font-sans ml-2">Inner Detox</span></h4>
+                                <p class="text-sm text-gray-600 leading-relaxed" data-i18n="sci.item3.desc">体内に取り入れることで、不要なものを排出し、本来の生体リズムを取り戻します。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Revelation / Future -->
+    <section class="py-32 bg-[#e8e6e1] text-center px-6">
+        <div class="fade-in-section">
+            <div class="max-w-3xl mx-auto">
+                <h2 class="text-2xl md:text-3xl font-medium mb-10 leading-relaxed text-macomo-dark" data-i18n="future.title">
+                    この植物が、現代に再び姿を現そうとしているのは――<br />
+                    世界が<span class="inline-block border-b border-macomo-dark pb-1 mx-2">“調和の時代”</span>に入った<br class="md:hidden" />証なのかもしれません。
+                </h2>
+                <p class="text-gray-600 mb-12 tracking-widest font-light font-serif text-lg" data-i18n="future.subtitle">
+                    We are entering the Era of Harmony.<br/>
+                    Makomo is here to guide us back to our roots.
+                </p>
+                
+                <button class="group relative px-12 py-5 bg-macomo-dark text-white overflow-hidden transition-all hover:shadow-2xl hover:-translate-y-1 inline-block">
+                    <span class="relative z-10 flex items-center gap-3 font-medium tracking-widest text-sm uppercase">
+                        <span data-i18n="future.btn">Explore The Products</span> <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                    </span>
+                    <div class="absolute inset-0 bg-[#3e5542] transform scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100"></div>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Founder Section - MACCO -->
+    <section id="founder" class="py-24 bg-gradient-to-b from-macomo-bg to-[#f4f1ea] relative overflow-hidden section-spy">
+        <div class="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-[#e8e6e1] to-transparent opacity-50"></div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="fade-in-section">
+                <div class="flex flex-col md:flex-row items-center gap-12 lg:gap-24">
+                    <!-- Image Side -->
+                    <div class="md:w-5/12 relative">
+                        <div class="absolute -inset-4 border border-macomo-accent/20 transform rotate-2 rounded-sm z-0 pointer-events-none transition-transform duration-1000 group-hover:rotate-6"></div>
+                        <div class="absolute -inset-4 border border-macomo-accent/20 transform -rotate-2 rounded-sm z-0 pointer-events-none transition-transform duration-1000 group-hover:-rotate-6"></div>
+                        
+                        <div class="relative z-10 overflow-hidden rounded-sm shadow-2xl group">
+                            <img 
+                                src="macco.jpg" 
+                                alt="MACCO - The Messenger" 
+                                class="w-full h-[600px] object-cover object-center grayscale-[30%] group-hover:grayscale-0 transition-all duration-1000 transform group-hover:scale-105"
+                            />
+                            <div class="absolute inset-0 bg-gradient-to-t from-macomo-dark/80 via-transparent to-transparent opacity-90 transition-opacity duration-1000 group-hover:opacity-70"></div>
+                            <div class="absolute bottom-8 left-8 text-white text-opacity-95">
+                                <p class="text-xs tracking-superwide uppercase mb-2 font-sans text-macomo-accent">Founder</p>
+                                <p class="font-serif text-2xl italic font-light">Messenger of Light</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Text Side -->
+                    <div class="md:w-7/12">
+                        <div class="flex items-center gap-4 mb-8">
+                           <div class="h-[1px] w-12 bg-macomo-accent"></div>
+                           <span class="text-macomo-accent tracking-widest text-xs uppercase font-sans">The Evangelist</span>
+                        </div>
+                        
+                        <h2 class="text-5xl lg:text-6xl font-medium text-macomo-dark mb-10 font-serif">MACCO</h2>
+
+                        <div class="space-y-6 text-gray-600 leading-loose font-light text-justify">
+                            <p data-i18n="founder.text1">
+                                私は、25年以上にわたり美容師・セラピスト・エステティシャンとして「人の心と身体、そしてエネルギー」に向き合ってきました。
+                            </p>
+                            <p data-i18n="founder.text2">
+                                アロマ、漢方、自然療法──長年扱ってきたあらゆる自然の叡智を超える存在として出会ったのが、素戔嗚が最初に地上に植えたといわれ、他の植物とは明らかに異なる存在 ― 古来の聖なる植物「真菰」でした。
+                            </p>
+                            <p data-i18n="founder.text3">
+                                真菰は、争わず、対立せず、すべてと調和する菌を持つ極めて稀有な植物。縄文時代から人々の暮らしと祈りの中にあり、「清め」「再生」「本来のバランス」へと還す力を秘めています。
+                            </p>
+                            <p data-i18n="founder.text4">
+                                私の名前には、“真実・クリアであること”を意味する「真」 という音が含まれています。それは、私自身の生き方の軸でもあり、真菰と深く響き合うものだと感じています。
+                            </p>
+                            
+                            <div class="bg-white/60 p-8 border-l-2 border-macomo-accent my-10 shadow-sm transition-transform duration-300 hover:translate-x-2">
+                                <p class="italic text-sm text-gray-500 mb-3 font-serif">My Vision</p>
+                                <p class="text-macomo-dark font-medium text-lg leading-relaxed" data-i18n="founder.vision">
+                                    真菰は、この新しい時代を生きるための<br>
+                                    Holistic Japanese Healing。<br>
+                                    それは、人を癒すこと。地球を癒すこと。<br>
+                                    そして、調和の世界へと還っていくこと。
+                                </p>
+                            </div>
+                            
+                            <p data-i18n="founder.text5">
+                                MACCOは、この真菰の本質的な価値を単なる健康素材やスピリチュアルの枠を超えて、日本から世界へと橋渡しするメッセンジャーとしての使命を帯びています。
+                            </p>
+                        </div>
+
+                        <!-- Tags -->
+                        <div class="mt-10 flex flex-wrap gap-3">
+                            <span class="px-5 py-2 border border-macomo-dark/20 text-macomo-dark text-xs tracking-wider uppercase rounded-full hover:bg-macomo-dark hover:text-white transition-colors duration-300 cursor-default" data-i18n="founder.tag1">Holistic Japanese Healing</span>
+                            <span class="px-5 py-2 border border-macomo-dark/20 text-macomo-dark text-xs tracking-wider uppercase rounded-full hover:bg-macomo-dark hover:text-white transition-colors duration-300 cursor-default" data-i18n="founder.tag2">Natural Therapy</span>
+                            <span class="px-5 py-2 border border-macomo-dark/20 text-macomo-dark text-xs tracking-wider uppercase rounded-full hover:bg-macomo-dark hover:text-white transition-colors duration-300 cursor-default" data-i18n="founder.tag3">Art & Peace</span>
+                            <span class="px-5 py-2 border border-macomo-dark/20 text-macomo-dark text-xs tracking-wider uppercase rounded-full hover:bg-macomo-dark hover:text-white transition-colors duration-300 cursor-default" data-i18n="founder.tag4">Global Messenger</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-macomo-footer text-white py-20 px-6 border-t border-white/10 font-sans">
+        <div class="max-w-6xl mx-auto grid md:grid-cols-4 gap-12">
+            <div class="md:col-span-1">
+                <h3 class="text-2xl font-bold tracking-widest uppercase mb-6 font-serif">
+                    MACOMO <span class="text-xs block font-light opacity-70 mt-1 font-sans">by MACCO</span>
+                </h3>
+                <p class="text-gray-400 text-sm leading-7 font-serif" data-i18n="footer.tagline">
+                    Illuminating Truth,<br/>Purifying the World.
+                </p>
+            </div>
+            
+            <div>
+                <h4 class="text-xs font-bold uppercase tracking-widest text-[#a8bba0] mb-8" data-i18n="footer.about">About</h4>
+                <ul class="space-y-4 text-sm text-gray-300">
+                    <li><a href="#" class="hover:text-white transition-colors" data-i18n="footer.link1">Our Story</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors" data-i18n="footer.link2">The Farm</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors" data-i18n="footer.link3">Sustainability</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-xs font-bold uppercase tracking-widest text-[#a8bba0] mb-8" data-i18n="footer.products">Products</h4>
+                <ul class="space-y-4 text-sm text-gray-300">
+                    <li><a href="#" class="hover:text-white transition-colors" data-i18n="footer.link4">Makomo Tea</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors" data-i18n="footer.link5">Fermented Powder</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors" data-i18n="footer.link6">Ritual Sets</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-xs font-bold uppercase tracking-widest text-[#a8bba0] mb-8" data-i18n="footer.news">Newsletter</h4>
+                <p class="text-xs text-gray-400 mb-4" data-i18n="footer.newsdesc">Join the journey of harmony.</p>
+                <div class="flex border-b border-gray-600 pb-2 group focus-within:border-macomo-accent transition-colors duration-300">
+                    <input type="email" placeholder="Email Address" class="bg-transparent w-full outline-none text-sm placeholder-gray-500 focus:placeholder-gray-400 text-white" />
+                    <button class="text-xs uppercase hover:text-[#a8bba0] tracking-widest font-bold">Send</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="max-w-6xl mx-auto mt-20 pt-8 border-t border-white/5 text-center text-xs text-gray-500 tracking-wide">
+            <p>&copy; 2026 MACOMO by MACCO. Spreading Harmony to the World.</p>
+            <p class="mt-4">
+                Produced by <a href="https://flowerangelhk.com/" target="_blank" rel="noopener noreferrer" class="hover:text-macomo-accent transition-colors duration-300">Flower Angel</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+
+        // --- Multi-language Support ---
+        const translations = {
+            ja: {
+                "nav.philosophy": "PHILOSOPHY",
+                "nav.history": "HISTORY",
+                "nav.harmony": "HARMONY",
+                "nav.founder": "FOUNDER",
+                "nav.shop": "GLOBAL SHOP",
+                "hero.subtitle": "The Japanese Healing Plant",
+                "hero.title": "人と地球を癒し、<br/>世界を調和へ導く植物<br><span class='text-5xl md:text-7xl lg:text-8xl mt-4 block'>真菰</span>",
+                "hero.desc": "Illuminating the Truth, Purifying the World.",
+                "philo.title": "― 真を照らし、世界を浄化する真菰 ―",
+                "philo.text1": "世界が混乱し、心と身体のバランスを崩す人が増えている今。<br>私たちは外側に答えを求め、戦い続けてきました。",
+                "philo.text2": "しかし今、本当に必要なのは「強さ」ではなく、<br>本来の自分へ還る <strong class='font-medium text-macomo-dark'>「調和の力」</strong> です。",
+                "philo.text3": "真菰は、日本古来から<br>浄化・再生・調和を象徴してきた植物。<br>「神の草」とも呼ばれ、<br>他の菌と対立せず、調和する菌を持つ<br>唯一の存在です。",
+                "philo.quote": "私たちが本来の自分へ還るために<br>静かに思い出させてくれる植物。<br>それが真菰です。",
+                "hist.subtitle": "The Sacred Plant",
+                "hist.title": "神の草 — Makomo",
+                "hist.desc": "神話の時代、<span class='text-white border-b border-macomo-accent/50 pb-1'>素戔嗚（スサノオ）が最初に地上に植えた植物</span>と伝えられています。<br>縄文時代より日本人の生活に深く根付き、私たちを守り続けてきた聖なる存在です。",
+                "hist.item1.title": "縄文からの記憶",
+                "hist.item1.desc": "1億年前から姿を変えず、縄文時代より衣食住すべてにおいて日本人の生活を支えてきました。米よりも古く、日本人のDNAに刻まれた「根源」の植物です。",
+                "hist.item2.title": "浄化と神事",
+                "hist.item2.desc": "<span class='text-white'>「払いたまえ、清めたまえ」</span>。出雲大社では今も「マコモ祭」が執り行われ、その強力な浄化の力は神事に欠かせないものとして受け継がれています。",
+                "hist.item3.title": "再生の象徴",
+                "hist.item3.desc": "泥の中に根を張りながら、天に向かって真っ直ぐに伸びる姿。混沌とした現代において、本来の自分へと「再生」する力を与えてくれます。",
+                "sci.subtitle": "The Science of Harmony",
+                "sci.title": "水と土地にやさしく働きかけ、<br>本来の清らかさを呼び覚ます真菰。",
+                "sci.desc": "",
+                "sci.quote": "真菰は、水辺の環境を整えながら、<br>微生物と共生し、<br>場の循環を高める植物とされてきました。",
+                "sci.item1.title": "水の浄化 <span class='text-sm font-normal text-gray-500 font-sans ml-2'>Water Purification</span>",
+                "sci.item1.desc": "真菰が生息する水辺は、その強力な浄化作用により水質が劇的に改善されます。",
+                "sci.item2.title": "場の浄化 <span class='text-sm font-normal text-gray-500 font-sans ml-2'>Spiritual Sanctuary</span>",
+                "sci.item2.desc": "空気を整え、ネガティブなエネルギーを中和する「聖域」を作り出します。",
+                "sci.item3.title": "体内浄化 <span class='text-sm font-normal text-gray-500 font-sans ml-2'>Inner Detox</span>",
+                "sci.item3.desc": "体内に取り入れることで、不要なものを排出し、本来の生体リズムを取り戻します。",
+                "future.title": "この植物が、現代に再び姿を現そうとしているのは――<br />世界が<span class='inline-block border-b border-macomo-dark pb-1 mx-2'>“調和の時代”</span>に入った<br class='md:hidden' />証なのかもしれません。",
+                "future.subtitle": "We are entering the Era of Harmony.<br/>Makomo is here to guide us back to our roots.",
+                "future.btn": "Explore The Products",
+                "founder.text1": "私は、25年以上にわたり美容師・セラピスト・エステティシャンとして「人の心と身体、そしてエネルギー」に向き合ってきました。",
+                "founder.text2": "アロマ、漢方、自然療法──長年扱ってきたあらゆる自然の叡智を超える存在として出会ったのが、素戔嗚が最初に地上に植えたといわれ、他の植物とは明らかに異なる存在 ― 古来の聖なる植物「真菰」でした。",
+                "founder.text3": "真菰は、争わず、対立せず、すべてと調和する菌を持つ極めて稀有な植物。縄文時代から人々の暮らしと祈りの中にあり、「清め」「再生」「本来のバランス」へと還す力を秘めています。",
+                "founder.text4": "私の名前には、“真実・クリアであること”を意味する「真」 という音が含まれています。それは、私自身の生き方の軸でもあり、真菰と深く響き合うものだと感じています。",
+                "founder.vision": "真菰は、この新しい時代を生きるための<br>Holistic Japanese Healing。<br>それは、人を癒すこと。地球を癒すこと。<br>そして、調和の世界へと還っていくこと。",
+                "founder.text5": "MACCOは、この真菰の本質的な価値を単なる健康素材やスピリチュアルの枠を超えて、日本から世界へと橋渡しするメッセンジャーとしての使命を帯びています。",
+                "founder.tag1": "Holistic Japanese Healing",
+                "founder.tag2": "Natural Therapy",
+                "founder.tag3": "Art & Peace",
+                "founder.tag4": "Global Messenger",
+                "footer.tagline": "Illuminating Truth,<br/>Purifying the World.",
+                "footer.about": "About",
+                "footer.link1": "Our Story",
+                "footer.link2": "The Farm",
+                "footer.link3": "Sustainability",
+                "footer.products": "Products",
+                "footer.link4": "Makomo Tea",
+                "footer.link5": "Fermented Powder",
+                "footer.link6": "Ritual Sets",
+                "footer.news": "Newsletter",
+                "footer.newsdesc": "Join the journey of harmony."
+            },
+            en: {
+                "nav.philosophy": "PHILOSOPHY",
+                "nav.history": "HISTORY",
+                "nav.harmony": "HARMONY",
+                "nav.founder": "FOUNDER",
+                "nav.shop": "GLOBAL SHOP",
+                "hero.subtitle": "The Japanese Healing Plant",
+                "hero.title": "Healing People and Earth,<br/>Leading the World to Harmony<br><span class='text-5xl md:text-7xl lg:text-8xl mt-4 block'>Makomo</span>",
+                "hero.desc": "Illuminating the Truth, Purifying the World.",
+                "philo.title": "― Illuminating Truth, Purifying the World: Makomo ―",
+                "philo.text1": "In a world of chaos, where more people are losing balance in mind and body.<br>We have sought answers outside ourselves and kept fighting.",
+                "philo.text2": "But now, what is truly needed is not 'strength',<br>but the <strong class='font-medium text-macomo-dark'>'Power of Harmony'</strong> to return to our true selves.",
+                "philo.text3": "Makomo is a plant that has symbolized purification, regeneration, and harmony since ancient times in Japan.<br>Also called 'God's Grass', it is the only being that possesses bacteria that harmonize without conflicting with others.",
+                "philo.quote": "A plant that quietly reminds us<br>to return to our true selves.<br>That is Makomo.",
+                "hist.subtitle": "The Sacred Plant",
+                "hist.title": "God's Grass — Makomo",
+                "hist.desc": "Legend says <span class='text-white border-b border-macomo-accent/50 pb-1'>Susanoo planted this as the first plant on Earth.</span><br>Rooted deeply in Jomon life, it has protected us as a sacred entity for millennia.",
+                "hist.item1.title": "Memory from Jomon",
+                "hist.item1.desc": "Unchanged for 100 million years, supporting Japanese clothing, food, and shelter since the Jomon period. Older than rice, it is the 'root' carved into our DNA.",
+                "hist.item2.title": "Purification & Rituals",
+                "hist.item2.desc": "<span class='text-white'>'Harae-tamae, Kiyome-tamae'</span>. The Makomo Festival at Izumo Taisha Shrine continues today, passing down its powerful purifying force as essential for divine rituals.",
+                "hist.item3.title": "Symbol of Rebirth",
+                "hist.item3.desc": "Rooted in mud, growing straight towards the heavens. It empowers us to 'regenerate' into our true selves amidst modern chaos.",
+                "sci.subtitle": "The Science of Harmony",
+                "sci.title": "Gently working on water and land,<br>Awakening their original purity.",
+                "sci.desc": "",
+                "sci.quote": "Makomo has been considered a plant that prepares the waterside environment,<br>coexists with microorganisms,<br>and enhances the circulation of the field.",
+                "sci.item1.title": "Water Purification",
+                "sci.item1.desc": "Watersides inhabited by Makomo see dramatic improvements in quality due to its powerful purifying action.",
+                "sci.item2.title": "Spiritual Sanctuary",
+                "sci.item2.desc": "It harmonizes the air and neutralizes negative energy, creating a sanctuary.",
+                "sci.item3.title": "Inner Detox",
+                "sci.item3.desc": "Ingesting it helps expel waste and restores the body's natural biorhythm.",
+                "future.title": "This plant is reappearing now because...<br />The World may have entered<span class='inline-block border-b border-macomo-dark pb-1 mx-2'>The Era of Harmony.</span>",
+                "future.subtitle": "We are entering the Era of Harmony.<br/>Makomo is here to guide us back to our roots.",
+                "future.btn": "Explore The Products",
+                "founder.text1": "For over 25 years, I have faced 'human mind, body, and energy' as a hair stylist, therapist, and esthetician.",
+                "founder.text2": "Beyond aroma, herbal medicine, and natural remedies—surpassing all natural wisdom I handled for years, I encountered the ancient sacred plant 'Makomo', said to be the first plant Susanoo planted on Earth, a distinct existence from other plants.",
+                "founder.text3": "Makomo is an extremely rare plant possessing bacteria that do not fight or conflict but harmonize with everything. Existing in people's lives and prayers since the Jomon period, it holds the power to return us to 'purification', 'regeneration', and 'original balance'.",
+                "founder.text4": "My name contains the sound 'Ma' (Truth), meaning 'to be true and clear'. I feel this is the axis of my own way of living and something that resonates deeply with Makomo.",
+                "founder.vision": "Makomo is Holistic Japanese Healing<br>to live in this new era.<br>It is to heal people. To heal the Earth.<br>And to return to a world of harmony.",
+                "founder.text5": "MACCO bears the mission of a messenger bridging this essential value of Makomo from Japan to the world, going beyond the framework of mere health materials or spirituality.",
+                "founder.tag1": "Holistic Japanese Healing",
+                "founder.tag2": "Natural Therapy",
+                "founder.tag3": "Art & Peace",
+                "founder.tag4": "Global Messenger",
+                "footer.tagline": "Illuminating Truth,<br/>Purifying the World.",
+                "footer.about": "About",
+                "footer.link1": "Our Story",
+                "footer.link2": "The Farm",
+                "footer.link3": "Sustainability",
+                "footer.products": "Products",
+                "footer.link4": "Makomo Tea",
+                "footer.link5": "Fermented Powder",
+                "footer.link6": "Ritual Sets",
+                "footer.news": "Newsletter",
+                "footer.newsdesc": "Join the journey of harmony."
+            },
+            fr: {
+                "nav.philosophy": "PHILOSOPHIE",
+                "nav.history": "HISTOIRE",
+                "nav.harmony": "HARMONIE",
+                "nav.founder": "FONDATRICE",
+                "nav.shop": "BOUTIQUE",
+                "hero.subtitle": "La Plante Guérisseuse Japonaise",
+                "hero.title": "Guérir les Gens et la Terre,<br/>Mener le Monde vers l'Harmonie<br><span class='text-5xl md:text-7xl lg:text-8xl mt-4 block'>Makomo</span>",
+                "hero.desc": "Illuminer la Vérité, Purifier le Monde.",
+                "philo.title": "― Illuminer la Vérité, Purifier le Monde : Makomo ―",
+                "philo.text1": "Dans un monde chaotique, où de plus en plus de gens perdent l'équilibre du corps et de l'esprit.<br>Nous avons cherché des réponses à l'extérieur et continué à nous battre.",
+                "philo.text2": "Mais maintenant, ce qui est vraiment nécessaire n'est pas la 'force',<br>mais le <strong class='font-medium text-macomo-dark'>'Pouvoir de l'Harmonie'</strong> pour revenir à notre vrai soi.",
+                "philo.text3": "Le Makomo est une plante qui symbolise la purification, la régénération et l'harmonie depuis les temps anciens au Japon.<br>Aussi appelée 'Herbe de Dieu', c'est la seule existence qui possède des bactéries qui s'harmonisent sans entrer en conflit avec les autres.",
+                "philo.quote": "Une plante qui nous rappelle doucement<br>de revenir à notre vrai soi.<br>C'est le Makomo.",
+                "hist.subtitle": "La Plante Sacrée",
+                "hist.title": "L'Herbe de Dieu — Makomo",
+                "hist.desc": "La légende dit que <span class='text-white border-b border-macomo-accent/50 pb-1'>Susanoo l'a plantée comme première plante sur Terre.</span><br>Enracinée dans la vie Jomon, elle nous protège depuis des millénaires.",
+                "hist.item1.title": "Mémoire de Jomon",
+                "hist.item1.desc": "Inchangée depuis 100 millions d'années. Plus ancienne que le riz, c'est la 'racine' gravée dans notre ADN japonais.",
+                "hist.item2.title": "Purification & Rituels",
+                "hist.item2.desc": "<span class='text-white'>'Harae-tamae, Kiyome-tamae'</span>. Le festival Makomo au sanctuaire Izumo Taisha perpétue ce pouvoir purificateur essentiel aux rituels divins.",
+                "hist.item3.title": "Symbole de Renaissance",
+                "hist.item3.desc": "Enracinée dans la boue, s'élevant droit vers les cieux. Elle nous donne la force de nous 'régénérer' au milieu du chaos moderne.",
+                "sci.subtitle": "La Science de l'Harmonie",
+                "sci.title": "Agissant doucement sur l'eau et la terre,<br>Réveillant leur pureté originelle.",
+                "sci.desc": "",
+                "sci.quote": "Le Makomo a été considéré comme une plante qui prépare l'environnement aquatique,<br>coexiste avec les micro-organismes,<br>et améliore la circulation du champ.",
+                "sci.item1.title": "Purification de l'Eau",
+                "sci.item1.desc": "Les eaux habitées par le Makomo voient leur qualité s'améliorer considérablement.",
+                "sci.item2.title": "Sanctuaire Spirituel",
+                "sci.item2.desc": "Il harmonise l'air et neutralise les énergies négatives, créant un sanctuaire.",
+                "sci.item3.title": "Détox Intérieure",
+                "sci.item3.desc": "Son ingestion aide à expulser les déchets et rétablit le biorythme naturel.",
+                "future.title": "Cette plante réapparaît maintenant car...<br />Le Monde est peut-être entré dans<span class='inline-block border-b border-macomo-dark pb-1 mx-2'>L'Ère de l'Harmonie.</span>",
+                "future.subtitle": "Nous entrons dans l'Ère de l'Harmonie.<br/>Makomo est là pour nous guider vers nos racines.",
+                "future.btn": "Découvrir les Produits",
+                "founder.text1": "Depuis plus de 25 ans, j'ai fait face à 'l'esprit, le corps et l'énergie humains' en tant que coiffeuse, thérapeute et esthéticienne.",
+                "founder.text2": "Au-delà de l'aromathérapie, de la phytothérapie et des remèdes naturels — surpassant toute la sagesse naturelle que j'ai manipulée pendant des années, j'ai rencontré l'ancienne plante sacrée 'Makomo', dite être la première plante que Susanoo a plantée sur Terre.",
+                "founder.text3": "Le Makomo est une plante extrêmement rare possédant des bactéries qui ne combattent ni n'entrent en conflit mais s'harmonisent avec tout. Existante dans la vie et les prières des gens depuis la période Jomon, elle détient le pouvoir de nous ramener à la 'purification', la 'régénération' et 'l'équilibre originel'.",
+                "founder.text4": "Mon nom contient le son 'Ma' (Vérité), signifiant 'être vrai et clair'. Je sens que c'est l'axe de ma propre façon de vivre et quelque chose qui résonne profondément avec le Makomo.",
+                "founder.vision": "Le Makomo est une Guérison Holistique Japonaise<br>pour vivre dans cette nouvelle ère.<br>C'est guérir les gens. Guérir la Terre.<br>Et retourner vers un monde d'harmonie.",
+                "founder.text5": "MACCO porte la mission d'une messagère reliant cette valeur essentielle du Makomo du Japon au monde, allant au-delà du cadre de simples matériaux de santé ou de spiritualité.",
+                "founder.tag1": "Guérison Holistique Japonaise",
+                "founder.tag2": "Thérapie Naturelle",
+                "founder.tag3": "Art & Paix",
+                "founder.tag4": "Messagère Mondiale",
+                "footer.tagline": "Illuminer la Vérité,<br/>Purifier le Monde.",
+                "footer.about": "À Propos",
+                "footer.link1": "Notre Histoire",
+                "footer.link2": "La Ferme",
+                "footer.link3": "Durabilité",
+                "footer.products": "Produits",
+                "footer.link4": "Thé Makomo",
+                "footer.link5": "Poudre Fermentée",
+                "footer.link6": "Sets Rituels",
+                "footer.news": "Newsletter",
+                "footer.newsdesc": "Rejoignez le voyage de l'harmonie."
+            }
+        };
+
+        function setLanguage(lang) {
+            // Update active state of buttons
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active', 'opacity-100'));
+            // Desktop buttons
+            const dtBtn = document.getElementById(`btn-${lang}`);
+            if(dtBtn) dtBtn.classList.add('active', 'opacity-100');
+            // Mobile buttons
+            const mobBtn = document.getElementById(`btn-mob-${lang}`);
+            if(mobBtn) mobBtn.classList.add('active', 'opacity-100');
+            
+            // Update Text Content
+            const elements = document.querySelectorAll('[data-i18n]');
+            elements.forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+        }
+
+        // --- Mobile Menu Toggle ---
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        function toggleMenu() {
+            const isHidden = mobileMenu.classList.contains('hidden');
+            if (isHidden) {
+                mobileMenu.classList.remove('hidden');
+                mobileMenu.classList.add('active'); // Use active class for opacity
+                menuBtn.innerHTML = '<i data-lucide="x" class="w-8 h-8"></i>';
+                lucide.createIcons(); // Re-render icon
+                document.body.style.overflow = 'hidden'; // Prevent scrolling
+            } else {
+                mobileMenu.classList.remove('active');
+                mobileMenu.classList.add('hidden');
+                menuBtn.innerHTML = '<i data-lucide="menu" class="w-8 h-8"></i>';
+                lucide.createIcons();
+                document.body.style.overflow = '';
+            }
+        }
+        menuBtn.addEventListener('click', toggleMenu);
+
+        // 1. Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-macomo-dark/95', 'backdrop-blur-md', 'shadow-lg');
+                navbar.classList.remove('pt-10', 'pb-6');
+                navbar.classList.add('py-4');
+            } else {
+                navbar.classList.remove('bg-macomo-dark/95', 'backdrop-blur-md', 'shadow-lg');
+                navbar.classList.remove('py-4');
+                navbar.classList.add('pt-10', 'pb-6');
+            }
+        });
+
+        // 2. Intersection Observer for Fade In Animation
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15
+        };
+
+        const fadeObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target); 
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in-section').forEach(section => {
+            fadeObserver.observe(section);
+        });
+
+        // 3. Scroll Spy (Highlight Active Nav Link)
+        const sections = document.querySelectorAll('.section-spy');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - sectionHeight / 3)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
