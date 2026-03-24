@@ -27,6 +27,26 @@
         .btn-gold { background: linear-gradient(135deg, #D4AF37 0%, #B4941F 100%); color: white; transition: all 0.3s; display: inline-block; padding: 0.75rem 2rem; border-radius: 9999px; font-weight: bold; cursor: pointer; }
         .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4); }
 
+        .btn-return-home {
+            background: linear-gradient(135deg, #008282 0%, #00A3A3 100%);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 0.75rem 3rem;
+            border-radius: 9999px;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .btn-return-home:hover {
+            background: linear-gradient(135deg, #00A3A3 0%, #00C2C2 100%);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+        }
+
         .impact-banner {
             background: linear-gradient(135deg, #D4AF37 0%, #B4941F 100%);
             color: white;
@@ -156,7 +176,7 @@
         </div>
     </section>
 
-    <!-- 5月フィリピン支援ロードマップ -->
+    <!-- 5月支援プロジェクト・ロードマップ -->
     <section class="py-16 bg-gray-50 border-y border-gray-200">
         <div class="container mx-auto px-4 text-center">
             <h2 class="text-2xl md:text-4xl font-bold teal-text mb-12" data-i18n="roadmap_title">5月支援プロジェクト・ロードマップ</h2>
@@ -177,7 +197,6 @@
                     </div>
                 </div>
 
-                <!-- セブ島スケジュール -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div class="bg-white p-6 rounded-xl shadow border border-gray-100">
                         <div class="text-xs font-bold text-gray-400 mb-2">2026.05.08 - 05.09</div>
@@ -211,14 +230,26 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-[#00A3A3] text-white py-12 text-center">
+    <footer class="bg-[#00A3A3] text-white py-16 text-center">
         <div class="container mx-auto px-4">
             <h2 class="text-xl md:text-3xl font-bold mb-3" data-i18n="footer_cta_title">まずはご相談ください</h2>
-            <div class="flex flex-col md:flex-row justify-center gap-4 mb-8">
+            <p class="mb-10 text-lg opacity-90" data-i18n="footer_cta_desc">お客様の運と幸を全力でサポートいたします。</p>
+            
+            <div class="flex flex-col md:flex-row justify-center gap-4 mb-12">
                 <a href="mailto:helpful@unkou-japan.jp" class="btn-gold">📧 <span data-i18n="footer_email">お問い合わせ</span></a>
                 <a href="tel:0366667996" class="bg-white teal-text font-bold py-3 px-8 rounded-full text-sm">📞 03-6666-7996</a>
             </div>
-            <p class="text-[10px] opacity-60">&copy; 2024 株式会社運幸ジャパン (UNKOU Japan Co., Ltd.) All Rights Reserved.</p>
+
+            <div class="mb-12">
+                <a href="https://unkou-japan.jp/" class="btn-return-home">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                    <span data-i18n="footer_hp_link">公式サイトへ戻る</span>
+                </a>
+            </div>
+
+            <div class="border-t border-white/20 pt-8 text-[10px] opacity-60">
+                <p>&copy; 2024 株式会社運幸ジャパン (UNKOU Japan Co., Ltd.) All Rights Reserved.</p>
+            </div>
         </div>
     </footer>
 
@@ -259,7 +290,8 @@
                 'recruit_head': '日本・世界で一緒に人道支援、社会貢献したい人へ。<br>株式会社運幸ジャパンで一緒に働こう！',
                 'recruit_text': 'あなたの志を、大きな循環の一部にしませんか？海外での活躍の場も提供します。経験がない方でも、豊富な知識と経験を持つチームがあなたを導きます。',
                 'btn_join_us': 'JOIN OUR TEAM (LINE)', 'btn_partnership': 'GLOBAL PARTNERSHIP',
-                'footer_cta_title': 'まずはご相談ください', 'footer_email': 'お問い合わせ'
+                'footer_cta_title': 'まずはご相談ください', 'footer_cta_desc': 'お客様の運と幸を全力でサポートいたします。', 'footer_email': 'お問い合わせ',
+                'footer_hp_link': '公式サイトへ戻る'
             },
             'en': {
                 'nav_brand': 'UNKOU Japan Co., Ltd.',
@@ -269,7 +301,7 @@
                 'main_sub_highlight': 'Through your request, more people are saved and smiles spread. Your choice connects to the "power of support," becoming a pillar for someone\'s future.',
                 'main_sub': 'Through our diverse businesses, we help more people build wealth while having luck on their side, directing that brilliance toward global humanitarian aid.',
                 'hope_statement': 'Let\'s create countless smiles through your request.',
-                'pillar_1_title': 'Global Aid', 'pillar_1_desc': 'Transforming profits into global luck for those in difficult regions.',
+                'pillar_1_title': 'Global Aid', 'pillar_1_desc': 'Transforming profits into luck for those in difficult regions.',
                 'pillar_2_title': 'Youth Support', 'pillar_2_desc': 'Supporting Japan\'s future by creating environments where dreams come true.',
                 'pillar_3_title': 'Entrepreneur Aid', 'pillar_3_desc': 'Fostering leaders to accelerate a healthy economic cycle from Japan.',
                 'mission_quote': '"Our mission is to bring luck and fortune by supporting people and their communities with our partners."',
@@ -287,7 +319,7 @@
                 'roadmap_title': 'May Project Roadmap',
                 'location_bohol': 'BOHOL ISLAND',
                 'bohol_event_title': '10,000 Bowl Journey: Sutadon GIVE AWAY',
-                'bohol_event_desc': 'Special joint project with KABILIN Team & NONKI Foundation. Celebrating 10,000 bowls of Sutadon, we provide free meals to Bohol. We aim to cheer up the community with smiles on this special day.',
+                'bohol_event_desc': 'Special joint project with KABILIN Team & NONKI Foundation. Celebrating the milestone of SUTADONYA CEBU, we provide 10,000 free meals to children and residents in Bohol. We aim to cheer up the community with smiles on this special day.',
                 'collab_tag': 'Collaboration: KABILIN Team & NONKI Foundation',
                 'cebu_event_1_title': 'Cebu: ASEAN Summit',
                 'cebu_event_1_desc': 'Promoting international humanitarian alliance during the ASEAN Summit in Cebu.',
@@ -296,10 +328,12 @@
                 'recruit_head': 'Join UNKOU Japan today to make a global impact!',
                 'recruit_text': 'Turn your vision into a cycle of support. Even without experience, our expert team will guide you.',
                 'btn_join_us': 'JOIN OUR TEAM (LINE)', 'btn_partnership': 'GLOBAL PARTNERSHIP',
-                'footer_cta_title': 'Contact Us First', 'footer_email': 'Contact'
+                'footer_cta_title': 'Contact Us First', 'footer_cta_desc': 'Full support for your luck and fortune.', 'footer_email': 'Contact',
+                'footer_hp_link': 'Back to Official Site'
             },
             'de': {
                 'nav_brand': 'UNKOU Japan Co., Ltd.',
+                'header_qual_no': 'Staatsqualifikation Nr.<br>0000233096',
                 'impact_message': 'Ihr Auftrag führt direkt zum Glück für jemanden.',
                 'main_title': 'Glück für die Welt.<br><span class="gold-text">Humanitäre Wirtschaft</span>',
                 'main_sub_highlight': 'Durch Ihren Auftrag wächst die Zahl der Menschen, denen geholfen wird. Jeder Auftrag an uns wird zu einer warmen Kraft der Unterstützung.',
@@ -307,10 +341,12 @@
                 'act_sakura_desc': '21.-27. März 2026 in Cebu. Kostenlose Konzerte und Mahlzeiten für 10.000 Kinder sowie direkte Übergabe von Spenden.',
                 'roadmap_title': 'Projekt-Roadmap für Mai',
                 'bohol_event_title': '10.000 Bowl Journey: Sutadon GIVE AWAY',
-                'bohol_event_desc': 'Gemeinschaftsprojekt mit KABILIN Team & NONKI Foundation. Kostenlose Mahlzeiten für Bohol, um die Gemeinschaft an diesem besonderen Tag aufzuheitern.'
+                'bohol_event_desc': 'Gemeinschaftsprojekt mit KABILIN Team & NONKI Foundation. Kostenlose Mahlzeiten für Bohol, um die Gemeinschaft an diesem besonderen Tag aufzuheitern.',
+                'footer_hp_link': 'Zur Hauptseite'
             },
             'th': {
                 'nav_brand': 'บจก. อุนโค เจแปน',
+                'header_qual_no': 'หมายเลขคุณสมบัติรัฐบาล<br>0000233096',
                 'impact_message': 'คำสั่งซื้อของคุณเชื่อมต่อโดยตรงกับ "โชค" ของใครบางคน',
                 'main_title': 'โชคและความสุขสู่โลก<br><span class="gold-text">เศรษฐกิจเพื่อมนุษยธรรม</span>',
                 'main_sub_highlight': 'ด้วยคำสั่งซื้อของคุณ จำนวนผู้ได้รับความช่วยเหลือจะเพิ่มขึ้นและรอยยิ้มจะขยายตัว ทุกคำขอคือพลังแห่งการสนับสนุนที่อบอุ่น',
@@ -318,21 +354,25 @@
                 'act_sakura_desc': '21-27 มีนาคม 2026 ณ เกาะเซบู มอบคอนเสิร์ตและอาหารฟรีสำหรับเด็ก 10,000 คน พร้อมมอบเงินบริจาคโดยตรง',
                 'roadmap_title': 'แผนงานโครงการเดือนพฤษภาคม',
                 'bohol_event_title': '10,000 Bowl Journey: แจกข้าวหน้าหมู Sutadon ฟรี',
-                'bohol_event_desc': 'โครงการความร่วมมือกับ KABILIN Team & NONKI Foundation มอบอาหารฟรี 10,000 ชามเพื่อสร้างรอยยิ้มและความสุขให้ชาวโบโฮลในวันพิเศษนี้'
+                'bohol_event_desc': 'โครงการความร่วมมือกับ KABILIN Team & NONKI Foundation มอบอาหารฟรี 10,000 ชามเพื่อสร้างรอยยิ้มและความสุขให้ชาวโบโฮลในวันพิเศษนี้',
+                'footer_hp_link': 'กลับไปที่หน้าหลัก'
             },
             'kr': {
                 'nav_brand': '주식회사 운코 재팬',
+                'header_qual_no': '전성청 통일 자격자 번호<br>제0000233096호',
                 'impact_message': '당신의 의뢰가 누군가의 "행복"에 직결됩니다.',
                 'main_title': '운과 행복을 세계로.<br><span class="gold-text">인도적 경제</span>',
-                'main_sub_highlight': '당신의 의뢰로 도움을 받는 사람들이 늘어나고 미소의 고리가 넓어집니다. 저희에게 주시는 의뢰는 따뜻한 "지원의 힘"이 됩니다.',
+                'main_sub_highlight': '당신의 의뢰로 도움을 받는 사람들이 늘어나고 미소의 고리가 넓어집니다. 저희에게 주시는 의뢰は 따뜻한 "지원의 힘"이 됩니다.',
                 'act_sakura_title': '[최신 활동] SAKURA BLOOM 2026',
                 'act_sakura_desc': '2026년 3월 21일~27일, 세부섬에서 1만 명의 아이들에게 무료 콘서트와 식사를 제공하고 기부금을 전달합니다.',
                 'roadmap_title': '5월 지원 프로젝트 로드맵',
                 'bohol_event_title': '10,000 Bowl Journey: 스타동 GIVE AWAY',
-                'bohol_event_desc': 'KABILIN 팀 × NONKI Foundation 특별 공동 프로젝트. SUTADONYA CEBU 1만 그릇 달성 지원의 일환으로 보홀 주민들에게 무료 식사를 제공하고 활력을 전합니다.'
+                'bohol_event_desc': 'KABILIN 팀 × NONKI Foundation 특별 공동 프로젝트. 보홀 주민들에게 무료 식사를 제공하고 이 특별한 하루를 통해 활력을 전합니다.',
+                'footer_hp_link': '공식 사이트로 돌아가기'
             },
             'cn': {
                 'nav_brand': '运幸日本株式会社',
+                'header_qual_no': '全省厅统一资格证号码<br>0000233096',
                 'impact_message': '您的委托将直接转化为他人的“幸福”。',
                 'main_title': '将运气与幸福带给世界。<br><span class="gold-text">人道主义经济</span>',
                 'main_sub_highlight': '通过您的委托，获得救助的人数不断增加，笑容的圈子日益扩大。在本公司的每一份委托都将化作温暖的“支援力量”。',
@@ -340,7 +380,8 @@
                 'act_sakura_desc': '2026年3月21日至27日，在宿务岛为1万名儿童提供免费演唱会和膳食，并递交赞助商捐赠。',
                 'roadmap_title': '5月支援项目路线图',
                 'bohol_event_title': '10,000 Bowl Journey: Sutadon 免费发放',
-                'bohol_event_desc': 'KABILIN 团队 × NONKI Foundation 特别合作项目。为支持达成1万份目标，在薄荷岛提供免费膳食，通过这特别的一天为当地社区带来欢笑。'
+                'bohol_event_desc': 'KABILIN 团队 × NONKI Foundation 特别合作项目。在薄荷岛提供免费膳食，通过这特别的一天为当地社区带来欢笑。',
+                'footer_hp_link': '返回官方主页'
             }
         };
 
