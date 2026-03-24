@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Takuma Miyata × TAMARA RICE by Yamachiyo Farm | SAKURA BLOOM 2026</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,900&family=Noto+Sans+JP:wght@300;400;700;900&display=swap');
+
+        :root {
+            --sakura-pink: #ffb7c5;
+            --rice-gold: #e6b422;
+            --soft-white: #ffffff;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            scroll-behavior: smooth;
+            background-color: var(--soft-white);
+            color: #1a1a1a;
+        }
+
+        .serif { font-family: 'Playfair Display', serif; }
+
+        .sakura-gradient {
+            background: linear-gradient(135deg, #ffffff 0%, #fffafa 100%);
+        }
+
+        .text-huge {
+            font-size: clamp(2.5rem, 8vw, 6.5rem);
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+
+        /* 桜の花びらアニメーション */
+        .petal {
+            position: absolute;
+            background-color: var(--sakura-pink);
+            border-radius: 150% 0 150% 0;
+            opacity: 0.3;
+            pointer-events: none;
+            z-index: 20;
+            animation: fall linear infinite;
+        }
+        @keyframes fall {
+            0% { transform: translateY(-10vh) translateX(0) rotate(0deg); opacity: 0.8; }
+            100% { transform: translateY(100vh) translateX(100px) rotate(360deg); opacity: 0; }
+        }
+
+        /* 黄金の稲穂アニメーション：全画面一列 */
+        .rice-stalk-container-sub {
+            width: 100%;
+            height: 100px;
+            pointer-events: none;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            overflow: hidden;
+            margin-bottom: 2.5rem;
+        }
+        .rice-stalk {
+            width: 30px; 
+            height: 50px; 
+            position: relative;
+            display: flex;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .rice-stalk::after {
+            content: '🌾';
+            position: absolute;
+            top: -15px;
+            font-size: 42px;
+            opacity: 0.7;
+            filter: grayscale(100%) sepia(100%) saturate(500%) hue-rotate(10deg);
+            transform-origin: bottom center;
+            animation: sway-ear 4s ease-in-out infinite;
+        }
+        @keyframes sway-ear {
+            0%, 100% { transform: rotate(-15deg) translateY(0); }
+            50% { transform: rotate(20deg) translateY(-5px); }
+        }
+
+        /* クッキング・パーティクル */
+        .cooking-particle {
+            position: absolute;
+            pointer-events: none;
+            z-index: 15;
+            font-size: 28px;
+            animation: cooking-float linear forwards;
+        }
+        @keyframes cooking-float {
+            0% { transform: translate(0, 0) rotate(0deg) scale(0); opacity: 0; }
+            20% { opacity: 1; scale: 1.2; }
+            100% { transform: translate(var(--tw-x), var(--tw-y)) rotate(360deg) scale(0.4); opacity: 0; }
+        }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(15px);
+        }
+
+        .btn-bloom {
+            background: linear-gradient(90deg, #ffb7c5, #ff8fa3);
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 143, 163, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .text-gradient-sakura {
+            background: linear-gradient(90deg, #ff758c, #ffb7c5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .header-badge {
+            font-size: 9px;
+            font-weight: 900;
+            text-transform: uppercase;
+            padding: 3px 10px;
+            border-radius: 6px;
+            border: 1px solid rgba(230, 180, 34, 0.3);
+            background: rgba(230, 180, 34, 0.05);
+            color: #8c7b6c;
+            white-space: nowrap;
+        }
+
+        .chef-photo-container {
+            border-radius: 4rem;
+            overflow: hidden;
+            box-shadow: 0 40px 80px rgba(255, 183, 197, 0.3);
+            position: relative;
+            z-index: 10;
+        }
+
+        .event-banner {
+            background: linear-gradient(90deg, #1a1a1a, #333);
+            color: white;
+            padding: 2.5rem 0;
+        }
+
+        .text-gold { color: var(--rice-gold); }
+        .text-sakura { color: var(--sakura-pink); }
+
+        .ja-text {
+            display: block;
+            font-size: 0.85em;
+            color: #666;
+            margin-top: 0.5rem;
+            font-weight: 400;
+            line-height: 1.8;
+        }
+        .ja-text-title {
+            display: block;
+            font-size: 0.6em;
+            color: #888;
+            margin-top: 0.2rem;
+            letter-spacing: 0.1em;
+        }
+
+        .produce-link {
+            transition: all 0.3s ease;
+        }
+        .produce-link:hover {
+            color: var(--sakura-pink);
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <div id="petals-container"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-nav border-b border-pink-50">
+        <div class="max-w-7xl mx-auto px-6 h-32 flex flex-col justify-center">
+            <div class="flex justify-between items-center mb-2">
+                <div class="font-black text-lg md:text-xl tracking-tighter uppercase serif text-pink-400">
+                    Takuma Miyata <span class="text-gray-200 font-light mx-1">×</span> <span class="text-gold">TAMARA RICE</span>
+                </div>
+                <div class="flex items-center space-x-3">
+                    <button onclick="toggleLang('en')" id="btn-en" class="text-[10px] font-bold px-4 py-1.5 rounded-full bg-pink-100 text-pink-600 shadow-sm transition">EN</button>
+                    <button onclick="toggleLang('fr')" id="btn-fr" class="text-[10px] font-bold px-4 py-1.5 rounded-full text-pink-300 transition">FR</button>
+                </div>
+            </div>
+            <div class="flex items-center space-x-3 overflow-x-auto no-scrollbar pb-1">
+                <div class="header-badge flex items-center">
+                    <i class="fas fa-hotel mr-1 text-[8px]"></i> Imperial Hotel Tokyo
+                </div>
+                <div class="header-badge flex items-center border-pink-200 bg-pink-50/30 text-pink-500">
+                    <i class="fas fa-star mr-1 text-[8px]"></i> Quintessence (3-Star, 19 Consecutive Years)
+                </div>
+                <div class="hidden md:flex space-x-6 text-[9px] font-bold uppercase tracking-widest text-gray-400 ml-auto">
+                    <a href="#vision" class="hover:text-pink-400">Roots</a>
+                    <a href="#heritage" class="hover:text-pink-400">Heritage</a>
+                    <a href="#activities" class="hover:text-pink-400">Experience</a>
+                    <a href="#tamara" class="hover:text-pink-400">The Farm</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center pt-32 overflow-hidden sakura-gradient">
+        <div class="container mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center relative z-10">
+            <div class="order-2 lg:order-1 chef-aura-container" id="chef-animation-zone">
+                <div class="chef-photo-container">
+                    <img src="takumapic.jpg" alt="Chef Takuma Miyata" class="w-full h-auto" onerror="this.src='https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=800&q=80'">
+                </div>
+            </div>
+
+            <div class="text-left order-1 lg:order-2">
+                <h2 class="text-pink-400 font-bold tracking-[0.6em] uppercase mb-6 text-xs">
+                    <span class="lang-content" data-en="French Cuisine x TAMARA RICE by Yamachiyo Farm" data-fr="Cuisine Française x TAMARA RICE par Yamachiyo Farm">French Cuisine x TAMARA RICE by Yamachiyo Farm</span>
+                    <span class="ja-text-title text-gold">最高峰フランス料理 × TAMARA RICE by やまちよ農園</span>
+                </h2>
+                <h1 class="text-huge font-black serif mb-8 text-gray-900 leading-[1.0]">
+                    Takuma <br><span class="text-gradient-sakura">Miyata</span>
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-600 mb-6 leading-relaxed">
+                    <span class="lang-content" 
+                        data-en="Fusing elite French technique with the vibration of life. A global innovation starting from Tokyo." 
+                        data-fr="Fusionner la technique française d'élite avec la vibration de la vie. Une innovation mondiale.">
+                        Fusing elite French technique with the vibration of life. A global innovation starting from Tokyo.
+                    </span>
+                    <span class="ja-text">三つ星の技を高波動のお米『TAMARA RICE by Yamachiyo Farm』に宿し、東京の中心から世界へ。本当の意味でフレンチを全国に浸透させる挑戦が今、加速します。</span>
+                </p>
+
+                <div class="rice-stalk-container-sub" id="hero-rice-container"></div>
+
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="https://uzuworld.com/sakurabloom2026" target="_blank" class="btn-bloom px-12 py-5 font-black rounded-full hover:scale-105 transition duration-300 text-center uppercase tracking-widest text-xs">
+                        Official Roadmap
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Roadmap (Updated with requested changes) -->
+    <section id="roadmap" class="event-banner relative z-20 text-center">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-5 items-center gap-4">
+            <div class="md:col-span-1">
+                <p class="text-pink-400 font-bold uppercase tracking-widest text-[10px] mb-2">Stage 01: Tokyo</p>
+                <h3 class="text-xl font-black serif leading-tight">2026.02.04</h3>
+                <p class="text-[10px] text-gray-400">
+                    <span class="lang-content" data-en="Elite Collaboration" data-fr="Collaboration d'Élite">Elite Collaboration</span><br>東京プレイベント
+                </p>
+            </div>
+            <div class="hidden md:block opacity-20 text-pink-400"><i class="fas fa-chevron-right text-2xl"></i></div>
+            <div class="md:col-span-1">
+                <p class="text-pink-400 font-bold uppercase tracking-widest text-[10px] mb-2">Stage 02: Cebu</p>
+                <h3 class="text-xl font-black serif text-gradient-sakura leading-tight">2026.03.21-27</h3>
+                <p class="text-[10px] text-gray-400">
+                    <span class="lang-content" data-en="SAKURA BLOOM 2026" data-fr="SAKURA BLOOM 2026">SAKURA BLOOM 2026</span><br>セブ島イベント進出
+                </p>
+            </div>
+            <div class="hidden md:block opacity-20 text-pink-400"><i class="fas fa-chevron-right text-2xl"></i></div>
+            <div class="md:col-span-1">
+                <p class="text-pink-400 font-bold uppercase tracking-widest text-[10px] mb-2">Stage 03: World</p>
+                <h3 class="text-xl font-black serif text-gold leading-tight">2026.06 - 08</h3>
+                <p class="text-[10px] text-gray-400">
+                    <span class="lang-content" data-en="World Expansion" data-fr="Expansion Mondiale">World Expansion</span><br>世界進出予定
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chef Profile -->
+    <section id="vision" class="py-32 bg-white">
+        <div class="max-w-4xl mx-auto px-6">
+            <h3 class="text-pink-400 font-black uppercase tracking-[0.4em] text-xs text-center mb-12 serif">The Visionary Chef</h3>
+            <div class="space-y-12 text-lg text-gray-700 leading-[2.2]">
+                <div class="bg-yellow-50/30 p-10 md:p-16 rounded-[3.5rem] border border-yellow-100 shadow-sm text-left">
+                    <p class="font-bold text-3xl text-gray-900 serif mb-8">
+                        <span class="lang-content" 
+                            data-en="Takuma Miyata: Redefining Gastronomy." 
+                            data-fr="Takuma Miyata : Redéfinir la Gastronomie.">
+                            Takuma Miyata: Redefining Gastronomy.
+                        </span>
+                        <span class="ja-text-title text-xl">宮田卓磨：日本におけるフレンチの再定義。</span>
+                    </p>
+                    <div class="text-gray-700">
+                        <span class="lang-content" 
+                           data-en="Born in 1991. Career at Imperial Hotel Tokyo and the 3-star Michelin giant Quintessence. Chef Miyata recognized a fundamental gap: French cuisine had not become an everyday meal in Japan. By pairing elite French technique with TAMARA RICE by Yamachiyo Farm, he pioneers the 'French with Rice' movement to create a cultural base everyone can understand."
+                           data-fr="Né en 1991. Carrière à l'Hôtel Impérial et au Quintessence 3 étoiles. Le Chef Miyata a associé la technique française au riz TAMARA.">
+                           Born in 1991. Career at Imperial Hotel Tokyo and the 3-star Michelin giant Quintessence. Chef Miyata recognized a fundamental gap: French cuisine had not become an everyday meal in Japan.
+                        </span>
+                        <span class="ja-text">1991年生まれ。帝国ホテル、カンテサンスといった日本の食文化の頂点でキャリアを積む中で、宮田シェフはある違和感を覚えました。「なぜイタリアンやタイ料理は日常なのに、フレンチは浸透していないのか」。現在は早稲田にて、やまちよ農園の高波動米と食べるフレンチを掲げる【みやた食堂】を経営。三つ星の技を家庭の食卓へ繋ぐ、文化の架け橋としての活動を続けています。</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Career Timeline -->
+    <section id="heritage" class="py-32 bg-gray-50 text-left">
+        <div class="max-w-7xl mx-auto px-6">
+            <h3 class="text-pink-400 font-black uppercase tracking-[0.4em] text-xs text-center mb-16 serif">Elite Career Timeline</h3>
+            <div class="grid lg:grid-cols-3 gap-8">
+                <div class="bg-white p-10 rounded-[3rem] shadow-sm flex flex-col">
+                    <span class="text-[10px] font-black text-gray-400 mb-4 uppercase tracking-widest">Foundation</span>
+                    <h4 class="text-2xl font-black mb-4 serif uppercase">Imperial Hotel Tokyo</h4>
+                    <p class="text-xs text-gray-500 leading-relaxed">
+                        <span class="lang-content" data-en="Mastering standard hospitality and classical French base." data-fr="Maîtriser l'hospitalité standard et la base française classique.">Mastering standard hospitality and classical French base.</span>
+                        <span class="ja-text">日本最高峰のホスピタリティの原点。クラシックな技法と『お客様第一』の精神を徹底的に習得。</span>
+                    </p>
+                </div>
+                <div class="bg-white p-10 rounded-[3rem] shadow-md border-t-8 border-pink-300 flex flex-col">
+                    <span class="text-[10px] font-black text-pink-400 mb-4 uppercase tracking-widest">Pinnacle</span>
+                    <h4 class="text-2xl font-black mb-4 serif uppercase">Quintessence</h4>
+                    <p class="text-xs text-gray-500 leading-relaxed">
+                        <span class="lang-content" data-en="19 consecutive years of 3-Star Michelin excellence." data-fr="19 années consécutives d'excellence 3 étoiles Michelin.">19 consecutive years of 3-Star Michelin excellence.</span>
+                        <span class="ja-text">日本フレンチ界の絶対的な頂点。岸田周三シェフのもと、19年連続三つ星の精密な技術を体得。</span>
+                    </p>
+                </div>
+                <div class="bg-white p-10 rounded-[3rem] shadow-sm flex flex-col">
+                    <span class="text-[10px] font-black text-gray-400 mb-4 uppercase tracking-widest">Mastery</span>
+                    <h4 class="text-2xl font-black mb-4 serif uppercase">Further Excellence</h4>
+                    <ul class="text-xs text-gray-500 space-y-3">
+                        <li>• Restaurant Valinol (ヴァリノール)</li>
+                        <li>• Simplicité (サンプリシテ)</li>
+                        <li>• Maison Kaiser (メゾンカイザー)</li>
+                        <li class="font-black text-gray-900 mt-4 serif">Current: Miyata Shokudo (Waseda)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Engagement & Fusion Experiences -->
+    <section id="activities" class="py-32 bg-white text-left">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h3 class="text-pink-400 font-black uppercase tracking-[0.4em] text-xs mb-4 serif">Engagement</h3>
+            <h4 class="text-4xl md:text-5xl font-black serif mb-10 text-gray-900">
+                <span class="lang-content" data-en="French x TAMARA RICE Fusion" data-fr="Fusion Français x Riz TAMARA">French x TAMARA RICE Fusion</span>
+                <span class="ja-text-title text-2xl text-gold">フレンチ × TAMARA RICE by やまちよ農園 × セブ文化</span>
+            </h4>
+            <div class="grid lg:grid-cols-3 gap-8">
+                <div class="activity-card p-10 rounded-[2.5rem] bg-white border border-pink-100 text-left transition hover:shadow-lg">
+                    <h5 class="text-2xl font-black mb-6 serif text-pink-400 uppercase">Fusion Art</h5>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        <span class="lang-content" data-en="A groundbreaking collaboration where 3-star technique meets TAMARA RICE by Yamachiyo Farm." data-fr="Une collaboration révolutionnaire où la technique rencontre le riz TAMARA par Yamachiyo Farm.">A groundbreaking collaboration where 3-star technique meets TAMARA RICE by Yamachiyo Farm.</span>
+                        <span class="ja-text">三つ星の技法、やまちよ農園の高波動米、セブの食材。これらが一つに溶け合う、SAKURA BLOOM 2026限定のフュージョン作品を披露。</span>
+                    </p>
+                </div>
+                <div class="activity-card p-10 rounded-[2.5rem] bg-pink-50/20 text-left transition hover:shadow-lg">
+                    <h5 class="text-2xl font-black mb-6 serif text-pink-400 uppercase">Workshop</h5>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        <span class="lang-content" data-en="Join Chef Miyata's sessions to learn how to transform local vibration into French masterpieces." data-fr="Apprenez à transformer la vibration locale en chefs-d'œuvre avec le Chef Miyata.">Join Chef Miyata's sessions to learn how to transform local vibration into French masterpieces.</span>
+                        <span class="ja-text">宮田シェフ直伝の料理ワークショップを開催。フレンチの技でお米の波動をどう昇華させるのか、美食の魔法を体験。</span>
+                    </p>
+                </div>
+                <div class="activity-card p-10 rounded-[2.5rem] bg-white border border-pink-100 text-left transition hover:shadow-lg">
+                    <h5 class="text-2xl font-black mb-6 serif text-pink-400 uppercase">10,000 Meals</h5>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        <span class="lang-content" data-en="Serving 10,000 'Dreaming Pork Bowls' to prove the power of generosity in Cebu." data-fr="Servir 10 000 repas pour prouver le pouvoir de la générosité à Cebu.">Serving 10,000 'Dreaming Pork Bowls' to prove the power of generosity in Cebu.</span>
+                        <span class="ja-text">セブでの挑戦：10,000食の『夢見るポーク丼』を提供。善意の循環がコミュニティを活性化させる『人道的経済』を実証。</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Yamachiyo Farm Section -->
+    <section id="tamara" class="py-32 bg-white overflow-hidden text-left relative border-t border-pink-50">
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                <div class="w-full lg:w-1/2 text-left">
+                    <h3 class="text-gold font-black tracking-[0.4em] uppercase text-xs mb-4 serif">The Sacred Origin</h3>
+                    <h4 class="text-4xl md:text-5xl font-black serif mb-10 text-gray-900">
+                        <span class="lang-content" data-en="TAMARA RICE by Yamachiyo Farm" data-fr="Riz TAMARA par Yamachiyo Farm">TAMARA RICE by Yamachiyo Farm</span>
+                        <span class="ja-text-title text-2xl text-gold">高波動の生命：TAMARA RICE by やまちよ農園</span>
+                    </h4>
+                    <div class="space-y-6 text-gray-700 leading-[2.0]">
+                        <div class="bg-yellow-50/50 p-8 rounded-[2rem] border-l-8 border-yellow-400">
+                            <span class="lang-content italic font-bold text-gray-900" 
+                                data-en="'TAMARA' is the solar energy that supports every life on Earth." 
+                                data-fr="'TAMARA' est l'énergie solaire qui soutient toute vie sur Terre.">
+                                "TAMARA" is the solar energy that supports every life on Earth.
+                            </span>
+                            <span class="ja-text font-bold text-gray-900">『TAMARA（タマラ）』とは、地球上のすべての人と生命をサポートする「陽のエネルギー」の名前です。</span>
+                        </div>
+                        <span class="lang-content" 
+                            data-en="Grown by Fumiya Sekiguchi in Ryugasaki, Ibaraki, this rice is infused with high-frequency energy. Its vibrations activate every atom and cell, providing a sacred foundation for wellness and Chef Miyata's culinary mission. It is a catalyst for life." 
+                            data-fr="Cultivé par Fumiya Sekiguchi, ce riz est infusé d'une énergie à haute fréquence qui active chaque atome et chaque cellule.">
+                            Grown by Fumiya Sekiguchi in Ryugasaki, Ibaraki, this rice is infused with high-frequency energy. Its vibrations activate every atom and cell, providing a sacred foundation for wellness and Chef Miyata's culinary mission. It is a catalyst for life.
+                        </span>
+                        <span class="ja-text">茨城県龍ヶ崎市、関口郁哉（Fumiya Sekiguchi）氏と孝子氏が運営する「やまちよ農園」で育つ『TAMARA RICE』。この米の波動は極めて細かく強力に振動し、摂取する人のすべての原子や細胞を活性化させます。宮田シェフの挑戦を支える、唯一無二の高波動エネルギー基盤です。</span>
+                    </div>
+                    
+                    <div class="mt-12 grid grid-cols-2 gap-8 text-center mb-12">
+                        <div>
+                            <img src="sekiguchipic.jpg" class="w-32 h-32 rounded-full mx-auto mb-4 border-2 border-yellow-200 object-cover shadow-lg">
+                            <p class="font-bold text-gray-900 serif text-sm">Fumiya Sekiguchi</p>
+                        </div>
+                        <div>
+                            <img src="takako.jpg" class="w-32 h-32 rounded-full mx-auto mb-4 border-2 border-yellow-200 object-cover shadow-lg">
+                            <p class="font-bold text-gray-900 serif text-sm">Takako Sekiguchi</p>
+                        </div>
+                    </div>
+
+                    <a href="https://sites.google.com/view/yamachiyonouen/ホーム" target="_blank" rel="noopener noreferrer" class="inline-block px-12 py-5 bg-yellow-500 text-white font-black rounded-full hover:bg-yellow-600 transition shadow-xl uppercase tracking-widest text-[10px]">
+                        Visit Yamachiyo Farm Official Site
+                    </a>
+                </div>
+                <div class="w-full lg:w-1/2">
+                    <img src="roastporkbowl.jpg" alt="Pork Bowl" class="rounded-[3rem] shadow-2xl w-full h-auto border-8 border-white">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Area -->
+    <section id="project" class="py-40 bg-white text-center">
+        <h3 class="text-huge font-black serif text-pink-400 mb-8 tracking-tighter uppercase italic leading-none">
+            SAKURA <br>BLOOM 2026
+        </h3>
+        <div class="text-2xl md:text-3xl font-black mb-12 text-gray-800 uppercase">
+            <span class="lang-content" data-en="Cebu. 10,000 Meals. Pay It Forward." data-fr="Cebu. 10 000 Repas. Donnez au Suivant.">Cebu. 10,000 Meals. Pay It Forward.</span>
+            <span class="ja-text-title text-xl">セブ島。10,000食。ペイ・フォワード。</span>
+        </div>
+        <div class="flex flex-col md:flex-row justify-center gap-6 mb-16 px-6">
+            <a href="https://uzuworld.com/sakurabloom2026" target="_blank" rel="noopener noreferrer" class="btn-bloom px-16 py-6 text-lg font-black rounded-full transition shadow-2xl serif uppercase tracking-widest">
+                OFFICIAL SITE
+            </a>
+            <a href="https://uzuworld.com/sakurabloom2026" target="_blank" rel="noopener noreferrer" class="bg-white text-gray-900 px-16 py-6 text-lg font-black rounded-full border-2 border-pink-100 transition shadow-xl serif uppercase tracking-widest">
+                SUPPORT MISSION
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer with Producer Links -->
+    <footer class="py-20 bg-white border-t border-pink-50 relative">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-3 items-center">
+            <div class="md:text-left text-center order-2 md:order-1 mt-8 md:mt-0">
+                <a href="https://flowerangelhk.com/" target="_blank" class="produce-link flex flex-col md:items-start items-center space-y-2">
+                    <span class="text-[10px] font-black text-gray-400 uppercase tracking-widest">Hong Kong Office</span>
+                    <span class="text-sm font-bold text-gray-900 serif">Flower Angel HK</span>
+                </a>
+            </div>
+
+            <div class="text-center order-1 md:order-2">
+                <div class="serif text-lg font-black mb-4 text-pink-400 uppercase tracking-tighter">
+                    Takuma Miyata <span class="text-gray-200 font-light mx-1">×</span> <span class="text-gold">TAMARA RICE by Yamachiyo Farm</span>
+                </div>
+                <p class="text-[10px] uppercase tracking-[0.4em]">
+                    <span class="text-sakura">© 2026 SAKURA BLOOM PROJECT.</span> <span class="text-gold">INNOVATING GASTRO ECONOMY.</span>
+                </p>
+            </div>
+
+            <div class="md:text-right text-center order-3 mt-12 md:mt-0 flex flex-col md:items-end items-center space-y-4">
+                <p class="text-[10px] font-black text-gray-400 uppercase tracking-widest">Produced by Flower Angel</p>
+                <div class="flex space-x-5 text-gray-400">
+                    <a href="https://www.youtube.com/@flower_angel_japan" target="_blank" class="produce-link text-xl"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="https://www.facebook.com/profile.php?id=61584970334658" target="_blank" class="produce-link text-xl"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/flower_angel_japan/" target="_blank" class="produce-link text-xl"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.tiktok.com/@flower_angel_japan" target="_blank" class="produce-link text-xl"><i class="fa-brands fa-tiktok"></i></a>
+                    <a href="https://line.me/R/ti/p/@yyr4459y" target="_blank" class="produce-link text-xl"><i class="fa-brands fa-line"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function createPetal() {
+            const container = document.getElementById('petals-container');
+            if (!container) return;
+            const petal = document.createElement('div');
+            petal.className = 'petal';
+            const size = Math.random() * 10 + 10 + 'px';
+            petal.style.width = size; petal.style.height = size;
+            petal.style.left = Math.random() * 100 + 'vw';
+            petal.style.animationDuration = Math.random() * 6 + 4 + 's';
+            container.appendChild(petal);
+            setTimeout(() => petal.remove(), 10000);
+        }
+        setInterval(createPetal, 450);
+
+        function setupRiceHeads(containerId) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+            const calculatedCount = Math.floor(window.innerWidth / 45);
+            for (let i = 0; i < calculatedCount; i++) {
+                const stalk = document.createElement('div');
+                stalk.className = 'rice-stalk';
+                stalk.style.animationDelay = (Math.random() * 4) + 's';
+                container.appendChild(stalk);
+            }
+        }
+
+        function createCookingSparkle() {
+            const container = document.getElementById('chef-animation-zone');
+            if (!container) return;
+            const particle = document.createElement('div');
+            particle.className = 'cooking-particle';
+            const assets = ['🌸', '✨', '🍽️', '🥄', '🔪', '🍳', '👨‍🍳', '🥖', '🌿', '🍲'];
+            particle.innerHTML = assets[Math.floor(Math.random() * assets.length)];
+            particle.style.left = '50%';
+            particle.style.top = '50%';
+            const tx = (Math.random() - 0.5) * 600 + 'px';
+            const ty = (Math.random() - 0.5) * 600 + 'px';
+            particle.style.setProperty('--tw-x', tx);
+            particle.style.setProperty('--tw-y', ty);
+            particle.style.animationDuration = (Math.random() * 2 + 2) + 's';
+            container.appendChild(particle);
+            setTimeout(() => particle.remove(), 4000);
+        }
+        setInterval(createCookingSparkle, 350);
+
+        function toggleLang(lang) {
+            const contents = document.querySelectorAll('.lang-content');
+            const btnEn = document.getElementById('btn-en');
+            const btnFr = document.getElementById('btn-fr');
+            
+            contents.forEach(el => {
+                const text = el.getAttribute(`data-${lang}`);
+                if (text) el.innerHTML = text.replace(/\n/g, '<br>');
+            });
+
+            if (lang === 'en') {
+                btnEn.classList.add('bg-pink-100', 'text-pink-600'); btnEn.classList.remove('text-pink-300');
+                btnFr.classList.add('text-pink-300'); btnFr.classList.remove('bg-pink-100', 'text-pink-600');
+            } else {
+                btnFr.classList.add('bg-pink-100', 'text-pink-600'); btnFr.classList.remove('text-pink-300');
+                btnEn.classList.add('text-pink-300'); btnEn.classList.remove('bg-pink-100', 'text-pink-600');
+            }
+        }
+
+        window.onload = () => {
+            toggleLang('en');
+            setupRiceHeads('hero-rice-container');
+        };
+    </script>
+</body>
+</html>
