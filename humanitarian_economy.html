@@ -24,7 +24,7 @@
         .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 0.5rem; }
         .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 
-        .btn-gold { background: linear-gradient(135deg, #D4AF37 0%, #B4941F 100%); color: white; transition: all 0.3s; display: inline-block; padding: 0.75rem 2rem; border-radius: 9999px; font-weight: bold; }
+        .btn-gold { background: linear-gradient(135deg, #D4AF37 0%, #B4941F 100%); color: white; transition: all 0.3s; display: inline-block; padding: 0.75rem 2rem; border-radius: 9999px; font-weight: bold; cursor: pointer; }
         .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4); }
 
         .impact-banner {
@@ -42,6 +42,11 @@
 
         .hope-highlight { display: inline-block; background: linear-gradient(transparent 65%, rgba(212, 175, 55, 0.35) 0%); padding: 0 8px; margin-top: 1.5rem; }
         .sakura-card { background: linear-gradient(to bottom right, #fff5f7, #ffffff); border: 2px solid #fbcfe8; }
+        
+        .bohol-highlight {
+            background: linear-gradient(135deg, #E0F2F1 0%, #FFFFFF 100%);
+            border: 2px solid #00A3A3;
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -121,7 +126,7 @@
                         <p class="text-sm text-gray-700 leading-relaxed" data-i18n="flood_desc">洪水時、甚大な被害を受けたリロアンへ急行。被災者の方々へ支援品を直接手渡しました。</p>
                     </div>
                     <div class="report-card p-5 rounded-xl border-l-4 border-blue-500">
-                        <h4 class="font-bold text-blue-700 text-base mb-1" data-i18n="legacy_title">海洋保護プロジェクト「KABILIN」 / 2025.11</h4>
+                        <h4 class="font-bold text-blue-700 text-base mb-1" data-i18n="legacy_title">海洋保護プロジェクト「KABILINチーム」 / 2025.11</h4>
                         <p class="text-sm text-gray-600 leading-relaxed" data-i18n="legacy_desc">珊瑚礁再生やマングローブ保護を推進。美しい海という遺産を次世代へ手渡す活動です。</p>
                     </div>
                     <div class="report-card p-5 rounded-xl border-l-4 border-gold bg-gold/5">
@@ -136,7 +141,7 @@
                         <h4 class="font-bold teal-text mb-3" data-i18n="sustainable_title">持続可能な社会への計画</h4>
                         <ul class="text-xs md:text-sm text-gray-600 space-y-2 list-disc pl-4 mb-6" data-i18n="sustainable_list">
                             <li>サンゴ礁の再生とダメージを受けたサンゴの救出・集約</li>
-                            <li>エコツーリズムを通じた現地の教育と雇用創出</li>
+                            <li>エコツーリズムを通じた現地的教育と雇用創出</li>
                             <li>Fish Cage設置による地域住民への生計支援</li>
                             <li>州知事や市長と連携した公的な支援体制の構築</li>
                         </ul>
@@ -145,6 +150,44 @@
                             <p class="text-xs text-gray-700 leading-relaxed mb-3" data-i18n="act_sakura_desc">2026年3月21日〜27日、セブ島で1万人の子供たちへ無料コンサートと食事を提供し、スポンサー様からの寄付を手渡します。</p>
                             <a href="https://uzuworld.com/sakurabloom2026" target="_blank" class="inline-block text-[10px] font-bold text-pink-500 hover:underline" data-i18n="link_sakura">SAKURA BLOOM 2026 特設サイト ↗</a>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5月フィリピン支援ロードマップ -->
+    <section class="py-16 bg-gray-50 border-y border-gray-200">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-2xl md:text-4xl font-bold teal-text mb-12" data-i18n="roadmap_title">5月支援プロジェクト・ロードマップ</h2>
+            
+            <div class="max-w-4xl mx-auto space-y-8 text-left">
+                <!-- ボホール島プロジェクト -->
+                <div class="bohol-highlight p-8 rounded-2xl shadow-lg border-l-8 border-teal-600">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="bg-teal-600 text-white px-3 py-1 rounded text-xs font-bold" data-i18n="location_bohol">BOHOL ISLAND</span>
+                        <span class="text-teal-700 font-bold">2026.05.10</span>
+                    </div>
+                    <h3 class="text-2xl font-bold gold-text mb-4" data-i18n="bohol_event_title">10,000 Bowl Journey: すた丼 GIVE AWAY</h3>
+                    <p class="text-gray-700 leading-relaxed mb-6" data-i18n="bohol_event_desc">
+                        KABILINチーム × NONKI Foundationとの特別共同プロジェクト。ボホール島にて、SUTADONYA CEBUオープン記念の「すた丼」1万食達成支援の一環として、子供たちや現地住民へ無料で提供します。この特別な1日を通じて、ボホールのコミュニティを笑顔でいっぱいに盛り上げ、活力を届けます。
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <span class="text-xs font-bold text-teal-600 bg-white px-3 py-1 rounded-full border border-teal-200" data-i18n="collab_tag">Collaboration: KABILINチーム & NONKI Foundation</span>
+                    </div>
+                </div>
+
+                <!-- セブ島スケジュール -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-white p-6 rounded-xl shadow border border-gray-100">
+                        <div class="text-xs font-bold text-gray-400 mb-2">2026.05.08 - 05.09</div>
+                        <h4 class="font-bold teal-text mb-2" data-i18n="cebu_event_1_title">セブ: ASEAN Summit</h4>
+                        <p class="text-sm text-gray-600" data-i18n="cebu_event_1_desc">ASEAN首脳会議期間中、国際的な枠組みでの支援体制構築に向けた活動を推進します。</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow border border-gray-100">
+                        <div class="text-xs font-bold text-gray-400 mb-2">2026.05.16</div>
+                        <h4 class="font-bold teal-text mb-2" data-i18n="cebu_event_2_title">セブ: 盆踊り (Bon Odori)</h4>
+                        <p class="text-sm text-gray-600" data-i18n="cebu_event_2_desc">日本文化を通じた交流イベントに参加。笑顔の輪を広げ、地域社会との絆をさらに深めます。</p>
                     </div>
                 </div>
             </div>
@@ -172,7 +215,7 @@
         <div class="container mx-auto px-4">
             <h2 class="text-xl md:text-3xl font-bold mb-3" data-i18n="footer_cta_title">まずはご相談ください</h2>
             <div class="flex flex-col md:flex-row justify-center gap-4 mb-8">
-                <a href="mailto:helpful@unkou-japan.jp" class="btn-gold font-bold py-3 px-8 rounded-full text-sm">📧 <span data-i18n="footer_email">お問い合わせ</span></a>
+                <a href="mailto:helpful@unkou-japan.jp" class="btn-gold">📧 <span data-i18n="footer_email">お問い合わせ</span></a>
                 <a href="tel:0366667996" class="bg-white teal-text font-bold py-3 px-8 rounded-full text-sm">📞 03-6666-7996</a>
             </div>
             <p class="text-[10px] opacity-60">&copy; 2024 株式会社運幸ジャパン (UNKOU Japan Co., Ltd.) All Rights Reserved.</p>
@@ -196,14 +239,23 @@
                 'report_head': '支援活動報告 & グローバル連携',
                 'act_1_title': 'Humanitarian Aid (フィリピン) / 2025.06', 'act_1_desc': 'ボホール島での炊き出しや教育機材寄贈を実施。1100名以上の子供たちの未来を支えています。',
                 'flood_title': 'セブ洪水緊急支援（Liloan） / 2025.11', 'flood_desc': '洪水時、甚大な被害を受けたリロアンへ急行。被災者の方々へ支援品を直接手渡しました。',
-                'legacy_title': '海洋保護プロジェクト「KABILIN」 / 2025.11', 'legacy_desc': '珊瑚礁再生やマングローブ保護を推進。美しい海という遺産を次世代へ手渡す活動です。',
+                'legacy_title': '海洋保護プロジェクト「KABILINチーム」 / 2025.11', 'legacy_desc': '珊瑚礁再生やマングローブ保護を推進。美しい海という遺産を次世代へ手渡す活動です。',
                 'act_christmas_title': 'Christmas Charity / 2025.12', 'act_christmas_desc': 'フィリピンの子供たちへクリスマスプレゼントと温かい食事を届けるチャリティイベントを開催。',
                 'link_christmas': '12月クリスマスチャリティ企画・募集詳細 ↗',
                 'sustainable_title': '持続可能な社会への計画',
-                'sustainable_list': '<li>サンゴ礁の再生とダメージを受けたサンゴの救出・集約</li><li>エコツーリズムを通じた現地の教育と雇用創出</li><li>Fish Cage設置による地域住民への生計支援</li><li>州知事や市長と連携した公的な支援体制の構築</li>',
+                'sustainable_list': '<li>サンゴ礁の再生とダメージを受けたサンゴの救出・集約</li><li>エコツーリズムを通じた現地的教育と雇用創出</li><li>Fish Cage設置による地域住民への生計支援</li><li>州知事や市長と連携した公的な支援体制の構築</li>',
                 'act_sakura_title': '【最新の取り組み】 SAKURA BLOOM 2026',
                 'act_sakura_desc': '2026年3月21日〜27日、セブ島で1万人の子供たちへ無料コンサートと食事を提供し、スポンサー様からの寄付を直接手渡します。',
                 'link_sakura': 'SAKURA BLOOM 2026 特設サイト ↗',
+                'roadmap_title': '5月支援プロジェクト・ロードマップ',
+                'location_bohol': 'ボホール島',
+                'bohol_event_title': '10,000 Bowl Journey: すた丼 GIVE AWAY',
+                'bohol_event_desc': 'KABILINチーム × NONKI Foundationとの特別共同プロジェクト。ボホール島にて、SUTADONYA CEBUオープン記念の「すた丼」1万食達成支援の一環として、子供たちや現地住民へ無料で提供します。この特別な1日を通じて、ボホールのコミュニティを笑顔でいっぱいに盛り上げ、活力を届けます。',
+                'collab_tag': 'Collaboration: KABILINチーム & NONKI Foundation',
+                'cebu_event_1_title': 'セブ: ASEAN Summit',
+                'cebu_event_1_desc': 'ASEAN首脳会議期間中、国際的な支援体制構築に向けた活動を推進します。',
+                'cebu_event_2_title': 'セブ: 盆踊り (Bon Odori)',
+                'cebu_event_2_desc': '日本文化を通じた交流イベントに参加。笑顔の輪を広げ、絆を深めます。',
                 'recruit_head': '日本・世界で一緒に人道支援、社会貢献したい人へ。<br>株式会社運幸ジャパンで一緒に働こう！',
                 'recruit_text': 'あなたの志を、大きな循環の一部にしませんか？海外での活躍の場も提供します。経験がない方でも、豊富な知識と経験を持つチームがあなたを導きます。',
                 'btn_join_us': 'JOIN OUR TEAM (LINE)', 'btn_partnership': 'GLOBAL PARTNERSHIP',
@@ -214,73 +266,81 @@
                 'header_qual_no': 'Gov. Unified Qualification No.<br>0000233096',
                 'impact_message': 'Your request directly connects to someone\'s "fortune".',
                 'main_title': 'Fortune to the World.<br><span class="gold-text">Humanitarian Economy</span>',
-                'main_sub_highlight': 'Through your request, more people are saved and the circle of smiles expands. Your choice becomes the "power of support" for someone\'s future.',
+                'main_sub_highlight': 'Through your request, more people are saved and smiles spread. Your choice connects to the "power of support," becoming a pillar for someone\'s future.',
                 'main_sub': 'Through our diverse businesses, we help more people build wealth while having luck on their side, directing that brilliance toward global humanitarian aid.',
                 'hope_statement': 'Let\'s create countless smiles through your request.',
-                'pillar_1_title': 'Global Aid', 'pillar_1_desc': 'Transforming profits into luck for those in difficult regions.',
+                'pillar_1_title': 'Global Aid', 'pillar_1_desc': 'Transforming profits into global luck for those in difficult regions.',
                 'pillar_2_title': 'Youth Support', 'pillar_2_desc': 'Supporting Japan\'s future by creating environments where dreams come true.',
                 'pillar_3_title': 'Entrepreneur Aid', 'pillar_3_desc': 'Fostering leaders to accelerate a healthy economic cycle from Japan.',
                 'mission_quote': '"Our mission is to bring luck and fortune by supporting people and their communities with our partners."',
                 'report_head': 'Activity Report & Global Alliance',
                 'act_1_title': 'Humanitarian Aid / June 2025', 'act_1_desc': 'Conducting feeding programs and school equipment donations in Bohol and Cebu.',
                 'flood_title': 'Cebu Flood Relief / Nov 2025', 'flood_desc': 'Directly providing water, food, and donations to flood victims in Liloan.',
-                'legacy_title': 'Marine Protection "KABILIN" / 2025.11', 'legacy_desc': 'Promoting coral reef regeneration and mangrove protection for the next generation.',
+                'legacy_title': 'Marine Protection "KABILIN Team" / 2025.11', 'legacy_desc': 'Promoting coral reef regeneration and mangrove protection for the next generation.',
                 'act_christmas_title': 'Christmas Charity / Dec 2025', 'act_christmas_desc': 'Charity event delivering presents and warm meals to children in the Philippines.',
                 'link_christmas': 'Dec Charity Project & Recruitment Details ↗',
                 'sustainable_title': 'Sustainable Society Plan',
-                'sustainable_list': '<li>Coral reef restoration and coral rescue</li><li>Education and job creation via eco-tourism</li><li>Livelihood support through Fish Cage installations</li><li>Public partnerships with local authorities</li>',
+                'sustainable_list': '<li>Coral reef restoration and rescue</li><li>Education and job creation via eco-tourism</li><li>Livelihood support through Fish Cage installations</li><li>Public partnerships with local authorities</li>',
                 'act_sakura_title': '[Latest Initiative] SAKURA BLOOM 2026',
                 'act_sakura_desc': 'March 21-27, 2026 in Cebu. Providing free concerts and meals to 10,000 children and delivering donations from Japanese sponsors.',
                 'link_sakura': 'SAKURA BLOOM 2026 Project ↗',
-                'recruit_head': 'Join UNKOU Japan Today!',
-                'recruit_text': 'Turn your vision into action. Even without experience, our expert team will guide you to make a global impact.',
+                'roadmap_title': 'May Project Roadmap',
+                'location_bohol': 'BOHOL ISLAND',
+                'bohol_event_title': '10,000 Bowl Journey: Sutadon GIVE AWAY',
+                'bohol_event_desc': 'Special joint project with KABILIN Team & NONKI Foundation. Celebrating 10,000 bowls of Sutadon, we provide free meals to Bohol. We aim to cheer up the community with smiles on this special day.',
+                'collab_tag': 'Collaboration: KABILIN Team & NONKI Foundation',
+                'cebu_event_1_title': 'Cebu: ASEAN Summit',
+                'cebu_event_1_desc': 'Promoting international humanitarian alliance during the ASEAN Summit in Cebu.',
+                'cebu_event_2_title': 'Cebu: Bon Odori Festival',
+                'cebu_event_2_desc': 'Participating in cultural exchange to spread smiles and strengthen community bonds.',
+                'recruit_head': 'Join UNKOU Japan today to make a global impact!',
+                'recruit_text': 'Turn your vision into a cycle of support. Even without experience, our expert team will guide you.',
                 'btn_join_us': 'JOIN OUR TEAM (LINE)', 'btn_partnership': 'GLOBAL PARTNERSHIP',
                 'footer_cta_title': 'Contact Us First', 'footer_email': 'Contact'
             },
             'de': {
                 'nav_brand': 'UNKOU Japan Co., Ltd.',
-                'header_qual_no': 'Staatsqualifikation Nr.<br>0000233096',
                 'impact_message': 'Ihr Auftrag führt direkt zum Glück für jemanden.',
                 'main_title': 'Glück für die Welt.<br><span class="gold-text">Humanitäre Wirtschaft</span>',
                 'main_sub_highlight': 'Durch Ihren Auftrag wächst die Zahl der Menschen, denen geholfen wird. Jeder Auftrag an uns wird zu einer warmen Kraft der Unterstützung.',
-                'hope_statement': 'Lassen Sie uns durch Ihren Auftrag viele Gesichter zum Lächeln bringen.',
                 'act_sakura_title': '[Neueste Initiative] SAKURA BLOOM 2026',
                 'act_sakura_desc': '21.-27. März 2026 in Cebu. Kostenlose Konzerte und Mahlzeiten für 10.000 Kinder sowie direkte Übergabe von Spenden.',
-                'link_sakura': 'SAKURA BLOOM 2026 Details ↗',
-                'footer_cta_title': 'Kontaktieren Sie uns zuerst'
+                'roadmap_title': 'Projekt-Roadmap für Mai',
+                'bohol_event_title': '10.000 Bowl Journey: Sutadon GIVE AWAY',
+                'bohol_event_desc': 'Gemeinschaftsprojekt mit KABILIN Team & NONKI Foundation. Kostenlose Mahlzeiten für Bohol, um die Gemeinschaft an diesem besonderen Tag aufzuheitern.'
             },
             'th': {
                 'nav_brand': 'บจก. อุนโค เจแปน',
-                'header_qual_no': 'หมายเลขคุณสมบัติรัฐบาล<br>0000233096',
                 'impact_message': 'คำสั่งซื้อของคุณเชื่อมต่อโดยตรงกับ "โชค" ของใครบางคน',
                 'main_title': 'โชคและความสุขสู่โลก<br><span class="gold-text">เศรษฐกิจเพื่อมนุษยธรรม</span>',
                 'main_sub_highlight': 'ด้วยคำสั่งซื้อของคุณ จำนวนผู้ได้รับความช่วยเหลือจะเพิ่มขึ้นและรอยยิ้มจะขยายตัว ทุกคำขอคือพลังแห่งการสนับสนุนที่อบอุ่น',
-                'hope_statement': 'มาสร้างรอยยิ้มมากมายผ่านคำสั่งซื้อของคุณกันเถอะ',
                 'act_sakura_title': '[โครงการล่าสุด] SAKURA BLOOM 2026',
                 'act_sakura_desc': '21-27 มีนาคม 2026 ณ เกาะเซบู มอบคอนเสิร์ตและอาหารฟรีสำหรับเด็ก 10,000 คน พร้อมมอบเงินบริจาคโดยตรง',
-                'link_sakura': 'ข้อมูล SAKURA BLOOM 2026 ↗'
+                'roadmap_title': 'แผนงานโครงการเดือนพฤษภาคม',
+                'bohol_event_title': '10,000 Bowl Journey: แจกข้าวหน้าหมู Sutadon ฟรี',
+                'bohol_event_desc': 'โครงการความร่วมมือกับ KABILIN Team & NONKI Foundation มอบอาหารฟรี 10,000 ชามเพื่อสร้างรอยยิ้มและความสุขให้ชาวโบโฮลในวันพิเศษนี้'
             },
             'kr': {
                 'nav_brand': '주식회사 운코 재팬',
-                'header_qual_no': '전성청 통일 자격자 번호<br>제0000233096호',
                 'impact_message': '당신의 의뢰가 누군가의 "행복"에 직결됩니다.',
                 'main_title': '운과 행복을 세계로.<br><span class="gold-text">인도적 경제</span>',
                 'main_sub_highlight': '당신의 의뢰로 도움을 받는 사람들이 늘어나고 미소의 고리가 넓어집니다. 저희에게 주시는 의뢰는 따뜻한 "지원의 힘"이 됩니다.',
-                'hope_statement': '당신의 의뢰로 많은 사람들의 미소를 만들어 갑시다.',
                 'act_sakura_title': '[최신 활동] SAKURA BLOOM 2026',
                 'act_sakura_desc': '2026년 3월 21일~27일, 세부섬에서 1만 명의 아이들에게 무료 콘서트와 식사를 제공하고 기부금을 전달합니다.',
-                'link_sakura': 'SAKURA BLOOM 2026 상세 ↗'
+                'roadmap_title': '5월 지원 프로젝트 로드맵',
+                'bohol_event_title': '10,000 Bowl Journey: 스타동 GIVE AWAY',
+                'bohol_event_desc': 'KABILIN 팀 × NONKI Foundation 특별 공동 프로젝트. SUTADONYA CEBU 1만 그릇 달성 지원의 일환으로 보홀 주민들에게 무료 식사를 제공하고 활력을 전합니다.'
             },
             'cn': {
                 'nav_brand': '运幸日本株式会社',
-                'header_qual_no': '全省厅统一资格证号码<br>0000233096',
                 'impact_message': '您的委托将直接转化为他人的“幸福”。',
                 'main_title': '将运气与幸福带给世界。<br><span class="gold-text">人道主义经济</span>',
                 'main_sub_highlight': '通过您的委托，获得救助的人数不断增加，笑容的圈子日益扩大。在本公司的每一份委托都将化作温暖的“支援力量”。',
-                'hope_statement': '让您的委托，创造更多的笑脸。',
                 'act_sakura_title': '[最新动态] SAKURA BLOOM 2026',
                 'act_sakura_desc': '2026年3月21日至27日，在宿务岛为1万名儿童提供免费演唱会和膳食，并递交赞助商捐赠。',
-                'link_sakura': 'SAKURA BLOOM 2026 详情 ↗'
+                'roadmap_title': '5月支援项目路线图',
+                'bohol_event_title': '10,000 Bowl Journey: Sutadon 免费发放',
+                'bohol_event_desc': 'KABILIN 团队 × NONKI Foundation 特别合作项目。为支持达成1万份目标，在薄荷岛提供免费膳食，通过这特别的一天为当地社区带来欢笑。'
             }
         };
 
