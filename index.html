@@ -142,7 +142,6 @@
                         <table class="w-full text-left border-collapse company-table">
                             <tbody>
                                 <tr><th data-i18n="co_name">会社名</th><td data-i18n="co_name_val">株式会社 運幸ジャパン (UNKOU Japan Co., Ltd.)</td></tr>
-                                <tr><th data-i18n="co_rep">代表取締役</th><td data-i18n="co_rep_val">山中 歩</td></tr>
                                 <tr><th data-i18n="co_est">設立</th><td data-i18n="co_est_val">令和6年12月23日</td></tr>
                                 <tr><th data-i18n="co_cap">資本金</th><td data-i18n="co_cap_val">500万円</td></tr>
                                 <tr><th data-i18n="co_qual">資格番号</th><td class="text-xs" data-i18n="co_qual_val">全省庁統一：第0000233096号<br>古物商：第307712516806号<br>遺品整理士：第 IS 62039号</td></tr>
@@ -167,12 +166,12 @@
     <!-- Footer -->
     <footer id="footer" class="bg-[#00A3A3] text-white py-16 text-center">
         <h2 class="text-3xl font-bold mb-6" data-i18n="footer_cta_title">まずはご相談ください</h2>
-        <div class="flex flex-col md:flex-row justify-center gap-6 mb-12">
-            <a href="mailto:helpful@unkou-japan.jp" class="bg-[#D4AF37] hover:bg-[#B4941F] text-white font-bold py-4 px-12 rounded-full" data-i18n="btn_contact_email">📧 お問い合わせ</a>
-            <a href="tel:+81366667996" class="bg-white teal-text hover:bg-gray-100 font-bold py-4 px-12 rounded-full shadow-xl">📞 03-6666-7996</a>
+        <!-- 電話番号を削除し、お問い合わせメールボタンのみに集約 -->
+        <div class="flex justify-center mb-12">
+            <a href="mailto:helpful@unkou-japan.jp" class="bg-[#D4AF37] hover:bg-[#B4941F] text-white font-bold py-4 px-16 rounded-full shadow-2xl transition transform hover:scale-105" data-i18n="btn_contact_email">📧 お問い合わせ</a>
         </div>
         <p class="text-sm font-bold mb-4" data-i18n="footer_line_follow">LINE公式アカウント</p>
-        <a href="https://lin.ee/oEpxiJf" target="_blank" class="bg-white p-3 rounded-2xl inline-block shadow-lg">
+        <a href="https://lin.ee/oEpxiJf" target="_blank" class="bg-white p-3 rounded-2xl inline-block shadow-lg transition transform hover:scale-105">
             <img src="unkouqr.jpg" alt="LINE QR" style="width: 130px; height: 130px;">
         </a>
         <div class="border-t border-white/20 pt-8 text-sm opacity-75 mt-8">&copy; 2024 株式会社運幸ジャパン All Rights Reserved.</div>
@@ -194,10 +193,10 @@
                 'strength1_title': '誠実な価格交渉', 'strength1_desc': '他社様のお見積もりを拝見し、それよりも誠心誠意努力させていただきます。',
                 'strength2_title': '世界を繋ぐ総合力', 'strength2_desc': '国内から国際案件までワンストップで対応。課題を解決に導きます。',
                 'strength3_title': 'ニッチ分野の専門性', 'strength3_desc': '医療機器、NMN、特殊貿易など独自の商流。他社にはない価値を提供。',
-                'section_company_title': '会社情報', 'co_name': '会社名', 'co_rep': '代表取締役', 'co_est': '設立', 'co_cap': '資本金', 'co_qual': '資格番号', 'co_addr': '所在地',
-                'co_name_val': '株式会社 運幸ジャパン (UNKOU Japan Co., Ltd.)', 'co_rep_val': '山中 歩', 'co_est_val': '令和6年12月23日', 'co_cap_val': '500万円', 'co_qual_val': '全省庁：第0000233096号<br>古物商：第307712516806号<br>遺品整理士：第 IS 62039号', 'co_addr_val': '〒110-0005 東京都台東区上野6－1－6<br>御徒町グリーンハイツ1005号',
+                'section_company_title': '会社情報', 'co_name': '会社名', 'co_est': '設立', 'co_cap': '資本金', 'co_qual': '資格番号', 'co_addr': '所在地',
+                'co_name_val': '株式会社 運幸ジャパン (UNKOU Japan Co., Ltd.)', 'co_est_val': '令和6年12月23日', 'co_cap_val': '500万円', 'co_qual_val': '全省庁：第0000233096号<br>古物商：第307712516806号<br>遺品整理士：第 IS 62039号', 'co_addr_val': '〒110-0005 東京都台東区上野6－1－6<br>御徒町グリーンハイツ1005号',
                 'section_access_title': 'アクセス', 'access_station': 'JR御徒町駅 徒歩圏内', 'access_guide': '上野・御徒町エリアの拠点を中心に、国内外のご依頼に対応しています。', 'btn_map': 'Google Mapsで開く ↗',
-                'footer_cta_title': 'まずはご相談ください', 'footer_line_follow': 'LINE公式アカウント', 'btn_contact_email': 'お問い合わせ',
+                'footer_cta_title': 'まずはご相談ください', 'footer_line_follow': 'LINE公式アカウント', 'btn_contact_email': '📧 お問い合わせ',
                 'services_list': [
                     { category: 'domestic', icon: '🗑️', title: '不用品回収・遺品整理・特殊清掃', desc: '丁寧な仕分けと回収、心に寄り添う整理と清掃を。<br>遺品整理士：第 IS 62039号' },
                     { category: 'domestic', icon: '🐀', title: '害虫・害獣駆除', desc: '迅速かつ安全な駆除対応で、快適な環境を。' },
@@ -205,7 +204,7 @@
                     { category: 'domestic', icon: '🧪', title: '水質・アスベスト調査', desc: '専門的な検体業を通じ、安全な環境づくり。' },
                     { category: 'domestic', icon: '🤝', title: '人道支援活動', desc: '世界中へ笑顔を届ける私たちの使命。' },
                     { category: 'consulting', icon: '🏢', title: '不動産業 (売買)', desc: 'お客様の資産価値を最大化する取引をサポート。' },
-                    { category: 'consulting', icon: '🕵️', title: '探偵業', desc: '秘密厳守の調査により、懸念解決に貢献。' },
+                    { category: 'consulting', icon: '🕵️', title: '探偵業', desc: '秘密厳守 of 調査により、懸念解決に貢献。' },
                     { category: 'consulting', icon: '🤝', title: '各種M&A (売買)', desc: '企業価値算定から買収・売却まで専門支援。' },
                     { category: 'consulting', icon: '🔗', title: '企業ジョイントコンサル', desc: '企業間の連携を強化し、新たな価値を創出。' },
                     { category: 'global', icon: '🏥', title: '中古医療機器輸出', desc: '高品質な日本の中古医療機器を世界へ。' },
@@ -229,10 +228,10 @@
                 'strength1_title': 'Honest Pricing', 'strength1_desc': 'We review other quotes and work sincerely to offer a better deal.',
                 'strength2_title': 'Global Synergy', 'strength2_desc': 'One-stop support from local daily needs to global business cases.',
                 'strength3_title': 'Niche Expertise', 'strength3_desc': 'Unique networks in medical devices, NMN, and regenerative medicine.',
-                'section_company_title': 'Company Info', 'co_name': 'Name', 'co_rep': 'Representative', 'co_est': 'Established', 'co_cap': 'Capital', 'co_qual': 'Qualifications', 'co_addr': 'Location',
-                'co_name_val': 'UNKOU Japan Co., Ltd.', 'co_rep_val': 'Ayumu Yamanaka', 'co_est_val': 'Dec 23, 2024', 'co_cap_val': '5 Million JPY', 'co_qual_val': 'Unified: #0000233096<br>Secondhand: #307712516806<br>Estate Org: #IS 62039', 'co_addr_val': 'Room 1005, 6-1-6 Ueno, Taito-ku, Tokyo',
+                'section_company_title': 'Company Info', 'co_name': 'Name', 'co_est': 'Established', 'co_cap': 'Capital', 'co_qual': 'Qualifications', 'co_addr': 'Location',
+                'co_name_val': 'UNKOU Japan Co., Ltd.', 'co_est_val': 'Dec 23, 2024', 'co_cap_val': '5 Million JPY', 'co_qual_val': 'Unified: #0000233096<br>Secondhand: #307712516806<br>Estate Org: #IS 62039', 'co_addr_val': 'Room 1005, 6-1-6 Ueno, Taito-ku, Tokyo',
                 'section_access_title': 'Access', 'access_station': 'Walk from JR Okachimachi Station', 'access_guide': 'Serving clients domestically and globally from our Ueno base.', 'btn_map': 'Open Google Maps ↗',
-                'footer_cta_title': 'Contact Us First', 'footer_line_follow': 'LINE Official Account', 'btn_contact_email': 'Email Us',
+                'footer_cta_title': 'Contact Us First', 'footer_line_follow': 'LINE Official Account', 'btn_contact_email': '📧 Email Us',
                 'services_list': [
                     { category: 'domestic', icon: '🗑️', title: 'Estate & Special Cleaning', desc: 'Careful sorting, removal, and special cleaning.<br>Organizer No. IS 62039' },
                     { category: 'domestic', icon: '🐀', title: 'Pest Control', desc: 'Swift and safe extermination for a clean environment.' },
